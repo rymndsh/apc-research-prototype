@@ -1,0 +1,27 @@
+<!-- Substack / Blog Preview Cards — shown on homepage -->
+<section class="substack-preview" id="latest-articles">
+  <div class="section-header">
+    <h2>Latest Articles</h2>
+    <p>Stay up to date with our latest research insights and announcements.</p>
+  </div>
+
+  <div class="articles-grid">
+    {% for post in site.posts limit:3 %}
+    <article class="article-card" id="article-{{ forloop.index }}">
+      <div class="card-meta">
+        <time datetime="{{ post.date | date_to_xmlschema }}">
+          {{ post.date | date: "%B %d, %Y" }}
+        </time>
+        {% if post.categories.size > 0 %}
+        <span class="card-category">{{ post.categories | first }}</span>
+        {% endif %}
+      </div>
+      <h3 class="card-title">
+        <a href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+      </h3>
+      <p class="card-excerpt">{{ post.excerpt | strip_html | truncatewords: 30 }}</p>
+      <a href="{{ post.url | relative_url }}" class="card-link">Read more →</a>
+    </article>
+    {% endfor %}
+  </div>
+</section>

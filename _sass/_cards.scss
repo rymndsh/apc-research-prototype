@@ -1,0 +1,123 @@
+// Cards (article, highlight, publication, person)
+.highlight-card, .article-card, .publication-card, .person-card {
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $radius-xl;
+  padding: $space-2xl;
+  transition: all $transition-base;
+
+  &:hover {
+    border-color: rgba($color-primary, 0.3);
+    transform: translateY(-4px);
+    box-shadow: $shadow-glow;
+  }
+}
+
+.highlight-icon { font-size: 2rem; margin-bottom: $space-md; }
+.highlight-card h3 { margin-bottom: $space-sm; font-size: 1.125rem; }
+.highlight-card p { color: $color-text-muted; font-size: 0.9375rem; }
+
+// Article cards (substack preview)
+.substack-preview {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: $space-4xl $container-padding;
+}
+
+.articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: $space-lg;
+}
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  gap: $space-md;
+  margin-bottom: $space-md;
+  font-size: 0.8125rem;
+  color: $color-text-dim;
+
+  time { color: $color-text-muted; }
+}
+
+.card-category {
+  padding: 2px 8px;
+  background: rgba($color-primary, 0.15);
+  color: $color-primary-hover;
+  border-radius: $radius-sm;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.card-title {
+  margin-bottom: $space-sm;
+  a { color: #fff; &:hover { color: $color-primary-hover; } }
+}
+
+.card-excerpt { color: $color-text-muted; font-size: 0.9375rem; margin-bottom: $space-md; }
+.card-link { font-size: 0.875rem; font-weight: 600; color: $color-primary-hover; }
+
+// Publication cards
+.publications-section { max-width: $container-max; margin: 0 auto; padding: 0 $container-padding $space-4xl; }
+
+.publications-grid { display: flex; flex-direction: column; gap: $space-lg; }
+
+.publication-card {
+  display: flex;
+  gap: $space-xl;
+  align-items: flex-start;
+}
+
+.pub-year {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: $color-primary-hover;
+  min-width: 60px;
+  padding-top: 2px;
+}
+
+.pub-title { margin-bottom: $space-xs; font-size: 1.125rem; }
+.pub-authors { color: $color-text-muted; font-size: 0.9375rem; margin-bottom: $space-xs; }
+.pub-journal { color: $color-text-dim; font-size: 0.875rem; margin-bottom: $space-sm; }
+.pub-abstract { color: $color-text-muted; font-size: 0.875rem; margin-bottom: $space-md; line-height: 1.6; }
+
+.pub-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: $space-sm; }
+.pub-tags { display: flex; flex-wrap: wrap; gap: $space-xs; }
+.tag {
+  padding: 2px 10px;
+  background: rgba($color-accent, 0.1);
+  color: $color-accent;
+  border-radius: $radius-full;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.pub-doi { font-size: 0.875rem; font-weight: 600; color: $color-primary-hover; white-space: nowrap; }
+
+// Person cards
+.people-section { max-width: $container-max; margin: 0 auto; padding: 0 $container-padding $space-4xl; }
+
+.people-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: $space-lg;
+}
+
+.person-avatar {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: $gradient-primary;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: $space-md;
+}
+
+.person-card h3 { margin-bottom: $space-xs; font-size: 1.125rem; }
+.person-role { color: $color-accent; font-size: 0.8125rem; font-weight: 600; display: block; margin-bottom: $space-sm; }
+.person-card p { color: $color-text-muted; font-size: 0.9375rem; }

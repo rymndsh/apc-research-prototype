@@ -1,0 +1,142 @@
+// ============================================================
+// Base Styles & Reset
+// ============================================================
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: $font-sans;
+  font-size: 1rem;
+  line-height: 1.7;
+  color: $color-text;
+  background-color: $color-bg;
+  overflow-x: hidden;
+}
+
+a {
+  color: $color-primary-hover;
+  text-decoration: none;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #fff;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+h2 { font-size: clamp(1.5rem, 3vw, 2.25rem); }
+h3 { font-size: clamp(1.125rem, 2vw, 1.5rem); }
+
+// Utility
+.gradient-text {
+  background: $gradient-hero;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+// Container
+.container {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 $container-padding;
+}
+
+// Buttons
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.75rem;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  border-radius: $radius-lg;
+  border: none;
+  cursor: pointer;
+  transition: all $transition-base;
+  text-decoration: none;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: $gradient-primary;
+  color: #fff;
+  box-shadow: 0 4px 15px rgba($color-primary, 0.4);
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba($color-primary, 0.5);
+    color: #fff;
+  }
+}
+
+.btn-outline {
+  background: transparent;
+  color: $color-text;
+  border: 1px solid $color-border;
+
+  &:hover {
+    background: $color-surface;
+    border-color: $color-primary;
+    color: #fff;
+    transform: translateY(-2px);
+  }
+}
+
+// Section utility
+.section-header {
+  text-align: center;
+  margin-bottom: $space-3xl;
+
+  h2 {
+    margin-bottom: $space-md;
+  }
+
+  p {
+    color: $color-text-muted;
+    max-width: 600px;
+    margin: 0 auto;
+    font-size: 1.0625rem;
+  }
+}
+
+// Page hero (reusable for inner pages)
+.page-hero {
+  text-align: center;
+  padding: $space-4xl $container-padding $space-3xl;
+  max-width: $container-max;
+  margin: 0 auto;
+
+  h1 {
+    margin-bottom: $space-md;
+  }
+
+  p {
+    color: $color-text-muted;
+    font-size: 1.125rem;
+    max-width: 640px;
+    margin: 0 auto;
+  }
+}

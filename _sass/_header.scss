@@ -1,0 +1,126 @@
+// ============================================================
+// Header Styles
+// ============================================================
+
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: rgba($color-bg, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid $color-border;
+  transition: background $transition-base;
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: $space-md $container-padding;
+}
+
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: $space-sm;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 700;
+  font-size: 1.25rem;
+
+  .logo-icon {
+    font-size: 1.5rem;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: $space-xl;
+}
+
+.nav-link {
+  color: $color-text-muted;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color $transition-fast;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: $gradient-primary;
+    transition: width $transition-base;
+    border-radius: 2px;
+  }
+
+  &:hover {
+    color: #fff;
+
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+// Mobile toggle
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: $space-sm;
+
+  span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: $color-text;
+    border-radius: 2px;
+    transition: all $transition-fast;
+  }
+}
+
+@media (max-width: $bp-md) {
+  .nav-toggle {
+    display: flex;
+  }
+
+  .site-nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    background: rgba($color-bg, 0.95);
+    backdrop-filter: blur(20px);
+    padding: $space-lg;
+    gap: $space-md;
+    border-bottom: 1px solid $color-border;
+
+    &.active {
+      display: flex;
+    }
+  }
+}

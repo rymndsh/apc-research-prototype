@@ -1,0 +1,45 @@
+# ============================================================
+# Publications Data — APC Research
+# Ganti/tambahkan data publikasi di sini
+# ============================================================
+
+- title: "Exploring Quantum Computing Applications in Drug Discovery"
+  authors: "Dr. A. Rahman, Dr. B. Santoso, C. Putri"
+  journal: "Journal of Computational Science"
+  year: 2025
+  doi: "https://doi.org/10.1000/example-001"
+  abstract: >-
+    This paper investigates the potential of quantum computing
+    algorithms in accelerating molecular simulations for drug
+    discovery pipelines.
+  tags:
+    - quantum computing
+    - drug discovery
+    - computational science
+
+- title: "Machine Learning for Climate Change Prediction Models"
+  authors: "Dr. D. Wijaya, E. Kusuma"
+  journal: "Environmental Data Science"
+  year: 2024
+  doi: "https://doi.org/10.1000/example-002"
+  abstract: >-
+    A comprehensive study on applying deep learning techniques
+    to improve the accuracy of regional climate prediction models.
+  tags:
+    - machine learning
+    - climate change
+    - data science
+
+- title: "Blockchain-Based Supply Chain Transparency Framework"
+  authors: "F. Hartono, Dr. G. Liem"
+  journal: "IEEE Transactions on Industrial Informatics"
+  year: 2024
+  doi: "https://doi.org/10.1000/example-003"
+  abstract: >-
+    We propose a decentralized framework leveraging blockchain
+    technology to enhance transparency and traceability in
+    global supply chains.
+  tags:
+    - blockchain
+    - supply chain
+    - transparency

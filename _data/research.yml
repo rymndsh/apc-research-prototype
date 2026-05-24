@@ -1,0 +1,35 @@
+- title: "High-Efficiency Perovskite Solar Cells with Nanostructured Interlayers"
+  image: "/assets/images/research-2.png"
+  tags:
+    - Nanotechnology
+    - Sustainable Energy
+    - Semiconductor
+  authors: "Dr. A. Rahman, S. Putri, M. Hasan"
+  date: "2026-04-15"
+  summary: "A novel approach to enhancing photovoltaic efficiency using ZnO nanorod interlayers in perovskite-based solar cells, achieving 24.3% power conversion efficiency."
+  link: "#"
+  substack: "https://substack.com"
+
+- title: "Graphene Oxide Nanomembranes for Advanced Water Purification Systems"
+  image: "/assets/images/research-3.png"
+  tags:
+    - Nanotechnology
+    - Environmental
+    - Nanomaterials
+  authors: "Dr. L. Wijaya, R. Kurniawan, F. Sari"
+  date: "2026-03-22"
+  summary: "Development of scalable graphene oxide membranes with tunable pore sizes for efficient removal of heavy metals and microplastics from industrial wastewater."
+  link: "#"
+  substack: "https://substack.com"
+
+- title: "Quantum Dot Semiconductor Arrays for Next-Gen Photonic Devices"
+  image: "/assets/images/research-1.png"
+  tags:
+    - Semiconductor
+    - Nanotechnology
+    - Photonics
+  authors: "Prof. B. Santoso, Dr. N. Dewi, K. Prasetyo"
+  date: "2026-02-10"
+  summary: "Fabrication and characterization of CdSe/ZnS quantum dot arrays with precise spatial ordering for applications in quantum computing and ultra-fast optical switches."
+  link: "#"
+  substack: "https://substack.com"

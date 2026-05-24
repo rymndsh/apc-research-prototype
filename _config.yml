@@ -1,0 +1,26 @@
+# Site settings
+title: "Applied Physics and Chemistry | Nano Center Indonesia"
+email: contact@nanocenter.id
+description: >-
+  Pioneering nanotechnology research in semiconductors, nanomaterials,
+  and sustainable energy at Nano Center Indonesia.
+baseurl: ""
+url: ""
+
+# Build settings
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+# Exclude from processing
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/

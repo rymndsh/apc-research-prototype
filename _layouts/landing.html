@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title | default: site.title }}</title>
+  <meta name="description" content="{{ page.description | default: site.description }}">
+  <meta name="keywords" content="nanotechnology, applied physics, chemistry, Nano Center Indonesia, semiconductor, nanomaterials, sustainable energy, APC Research">
+  <meta name="author" content="Nano Center Indonesia">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'navy': { 50:'#f0f4f8',100:'#d9e2ec',200:'#bcccdc',300:'#9fb3c8',400:'#829ab1',500:'#627d98',600:'#486581',700:'#334e68',800:'#1E3A5F',900:'#163152',950:'#0d1f38' },
+            'brand': { 50:'#e3f2fd',100:'#bbdefb',200:'#90caf9',300:'#64b5f6',400:'#42a5f5',500:'#2196F3',600:'#1e88e5',700:'#1976d2',800:'#1565c0',900:'#0d47a1' },
+          },
+          fontFamily: { 'inter': ['Inter','system-ui','sans-serif'] },
+        },
+      },
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  {% feed_meta %}
+  {% seo %}
+  <style>
+    *{font-family:'Inter',system-ui,sans-serif}
+    html{scroll-behavior:smooth}
+    .nav-link{position:relative}
+    .nav-link::after{content:'';position:absolute;bottom:-4px;left:50%;width:0;height:2px;background:#2196F3;transition:all .3s ease;transform:translateX(-50%)}
+    .nav-link:hover::after,.nav-link.active::after{width:100%}
+    .btn-shine{position:relative;overflow:hidden}
+    .btn-shine::after{content:'';position:absolute;top:-50%;left:-60%;width:40%;height:200%;background:linear-gradient(90deg,transparent,rgba(255,255,255,.15),transparent);transform:skewX(-25deg);transition:left .6s ease}
+    .btn-shine:hover::after{left:120%}
+    .mobile-menu{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.4,0,.2,1)}
+    .mobile-menu.open{max-height:600px}
+    .card-hover{transition:all .35s cubic-bezier(.4,0,.2,1);box-shadow:0 4px 10px -2px rgba(0,0,0,.08),0 2px 5px -2px rgba(0,0,0,.04)}
+    .card-hover:hover{transform:translateY(-6px);box-shadow:0 20px 40px -12px rgba(33,150,243,.12),0 8px 20px -8px rgba(0,0,0,.08)}
+    @keyframes fadeInUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+    .animate-fade-in-up{animation:fadeInUp .7s ease-out forwards}
+    .animate-delay-100{animation-delay:.1s;opacity:0}
+    .animate-delay-200{animation-delay:.2s;opacity:0}
+    .animate-delay-300{animation-delay:.3s;opacity:0}
+    .animate-delay-400{animation-delay:.4s;opacity:0}
+    .scroll-reveal{opacity:0;transform:translateY(24px);transition:all .7s cubic-bezier(.4,0,.2,1)}
+    .scroll-reveal.revealed{opacity:1;transform:translateY(0)}
+    .faq-answer{max-height:0;overflow:hidden;transition:max-height .35s ease}
+    .faq-answer.open{max-height:400px}
+    .faq-chevron{transition:transform .3s ease}
+    .faq-chevron.open{transform:rotate(180deg)}
+    .modal-overlay{opacity:0;pointer-events:none;transition:opacity .3s ease}
+    .modal-overlay.active{opacity:1;pointer-events:auto}
+    .modal-card{transform:scale(.95) translateY(10px);transition:transform .3s ease}
+    .modal-overlay.active .modal-card{transform:scale(1) translateY(0)}
+    .tag-pill{transition:all .25s ease}
+    .tag-pill:hover{transform:scale(1.05)}
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+  {% include header.html %}
+  {{ content }}
+  {% include footer.html %}
+  <script>
+    // Mobile menu
+    const menuBtn=document.getElementById('mobile-menu-btn');
+    const mobileMenu=document.getElementById('mobile-menu');
+    if(menuBtn&&mobileMenu){menuBtn.addEventListener('click',()=>{mobileMenu.classList.toggle('open');const i=menuBtn.querySelector('svg');i.innerHTML=mobileMenu.classList.contains('open')?'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>':'<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>';})}
+    // Header scroll
+    const header=document.getElementById('main-header');
+    if(header){window.addEventListener('scroll',()=>{if(window.scrollY>50){header.classList.add('bg-white','shadow-md','border-b','border-gray-200');header.classList.remove('bg-white/0');document.querySelectorAll('.header-nav-link').forEach(l=>l.classList.replace('text-white','text-gray-700'));document.querySelectorAll('.header-logo-text').forEach(l=>l.classList.replace('text-white','text-gray-900'))}else{header.classList.remove('shadow-md','border-b','border-gray-200');header.classList.add('bg-white/0');document.querySelectorAll('.header-nav-link').forEach(l=>l.classList.replace('text-gray-700','text-white'));document.querySelectorAll('.header-logo-text').forEach(l=>l.classList.replace('text-gray-900','text-white'))}})}
+    // Scroll reveal
+    const sro={threshold:.12,rootMargin:'0px 0px -40px 0px'};
+    const sobs=new IntersectionObserver((e)=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('revealed');sobs.unobserve(en.target)}})},sro);
+    document.querySelectorAll('.scroll-reveal').forEach(el=>sobs.observe(el));
+    // Login modal
+    const modalOverlay=document.getElementById('login-modal');
+    const openModalBtns=document.querySelectorAll('[data-open-login]');
+    const closeModalBtn=document.getElementById('close-login-modal');
+    function openModal(){if(modalOverlay)modalOverlay.classList.add('active');document.body.style.overflow='hidden'}
+    function closeModal(){if(modalOverlay)modalOverlay.classList.remove('active');document.body.style.overflow=''}
+    openModalBtns.forEach(b=>b.addEventListener('click',e=>{e.preventDefault();openModal()}));
+    if(closeModalBtn)closeModalBtn.addEventListener('click',closeModal);
+    if(modalOverlay)modalOverlay.addEventListener('click',e=>{if(e.target===modalOverlay)closeModal()});
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+    // Password toggle
+    const pwToggle=document.getElementById('pw-toggle');
+    const pwInput=document.getElementById('login-password');
+    if(pwToggle&&pwInput){pwToggle.addEventListener('click',()=>{const t=pwInput.type==='password'?'text':'password';pwInput.type=t;pwToggle.querySelector('.eye-open').classList.toggle('hidden');pwToggle.querySelector('.eye-closed').classList.toggle('hidden')})}
+    // FAQ accordion
+    document.querySelectorAll('[data-faq-toggle]').forEach(btn=>{btn.addEventListener('click',()=>{const answer=btn.nextElementSibling;const chevron=btn.querySelector('.faq-chevron');answer.classList.toggle('open');chevron.classList.toggle('open')})});
+  </script>
+</body>
+</html>

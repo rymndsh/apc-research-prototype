@@ -1,0 +1,84 @@
+// ============================================================
+// Footer Styles
+// ============================================================
+
+.site-footer {
+  background: $color-bg-alt;
+  border-top: 1px solid $color-border;
+  margin-top: $space-4xl;
+}
+
+.footer-inner {
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: $space-4xl $container-padding $space-2xl;
+}
+
+.footer-brand {
+  margin-bottom: $space-2xl;
+
+  .logo-icon {
+    font-size: 1.5rem;
+    background: $gradient-primary;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .logo-text {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #fff;
+    margin-left: $space-sm;
+  }
+
+  .footer-tagline {
+    color: $color-text-muted;
+    margin-top: $space-sm;
+    font-size: 0.9375rem;
+  }
+}
+
+.footer-links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: $space-2xl;
+  margin-bottom: $space-3xl;
+
+  h4 {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: $color-text-muted;
+    margin-bottom: $space-md;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  li {
+    margin-bottom: $space-sm;
+  }
+
+  a {
+    color: $color-text-dim;
+    font-size: 0.9375rem;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+}
+
+.footer-bottom {
+  border-top: 1px solid $color-border;
+  padding-top: $space-xl;
+  text-align: center;
+
+  p {
+    color: $color-text-dim;
+    font-size: 0.875rem;
+  }
+}
