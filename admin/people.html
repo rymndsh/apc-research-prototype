@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>People - APC Research Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+      body {
+        background-color: #f0f9ff;
+      }
+      .file-input-wrapper input[type="file"] {
+        font-size: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        opacity: 0;
+        cursor: pointer;
+      }
+      .swal2-popup {
+        font-family: inherit !important;
+        border-radius: 1.5rem !important;
+      }
+    </style>
+  </head>
+  <body class="font-sans text-slate-800 flex h-screen overflow-hidden">
+    <aside
+      class="w-64 bg-white border-r border-sky-100 flex flex-col rounded-r-[2rem] shadow-sm flex-shrink-0 z-10"
+    >
+      <div class="p-8 pb-4">
+        <a href="dashboard.html" class="block cursor-pointer">
+          <img
+            src="logo-nci.png"
+            alt="Nano Center Indonesia"
+            class="w-40 mx-auto hover:opacity-80 transition"
+          />
+        </a>
+      </div>
+      <nav class="flex-1 mt-6">
+        <a
+          href="artikel.html"
+          class="flex items-center px-8 py-3 text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z"
+            />
+          </svg>
+          <span class="font-medium text-sm">Artikel</span>
+        </a>
+        <a
+          href="people.html"
+          class="flex items-center px-8 py-3 bg-sky-50 border-r-4 border-sky-500 text-sky-600 transition-colors cursor-pointer"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5 mr-3"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"
+            />
+          </svg>
+          <span class="font-medium text-sm">People</span>
+        </a>
+      </nav>
+      <div
+        class="p-6 border-t border-sky-50 mt-auto bg-white rounded-br-[2rem]"
+      >
+        <button
+          onclick="handleLogout()"
+          class="flex items-center justify-center gap-2 text-red-500 hover:bg-red-50 hover:text-red-600 font-semibold rounded-lg transition py-2 text-sm w-full"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-5 w-5"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"
+            />
+          </svg>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-10 overflow-y-auto">
+      <div
+        class="bg-white rounded-[2rem] shadow-sm p-8 md:p-10 max-w-5xl mx-auto border border-sky-50 min-h-[650px] relative"
+      >
+        <!-- LIST VIEW -->
+        <div id="list-view" class="block w-full h-full flex flex-col relative">
+          <h2
+            class="text-3xl font-medium mb-8 flex items-center text-slate-800"
+          >
+            <i class="fa-solid fa-user-group text-sky-500 mr-3"></i> Tim
+            Peneliti
+          </h2>
+
+          <!-- Loading indicator -->
+          <div id="loading-indicator" class="flex items-center justify-center py-12">
+            <div class="flex flex-col items-center gap-3">
+              <i class="fa-solid fa-spinner fa-spin text-3xl text-sky-400"></i>
+              <span class="text-sm text-slate-400">Memuat data dari GitHub...</span>
+            </div>
+          </div>
+
+          <div
+            id="members-grid"
+            class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16 hidden"
+          ></div>
+
+          <div class="absolute bottom-0 right-0 p-2 bg-white rounded-full">
+            <button
+              onclick="showView('add-view')"
+              class="bg-sky-100 hover:bg-sky-200 text-sky-700 font-semibold py-2.5 px-6 rounded-full flex items-center gap-2 transition-colors text-sm shadow-sm"
+            >
+              <i class="fa-solid fa-plus text-sky-700"></i> Tambah Member
+            </button>
+          </div>
+        </div>
+
+        <!-- ADD VIEW -->
+        <div id="add-view" class="hidden w-full h-full flex flex-col relative">
+          <h2
+            class="text-3xl font-medium mb-8 flex items-center text-slate-800"
+          >
+            <i class="fa-solid fa-user-plus text-sky-500 mr-3"></i> Tambah
+            Member Baru
+          </h2>
+          <form id="add-form" class="flex flex-col gap-6 max-w-2xl pb-16">
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Nama Lengkap</label
+              >
+              <input
+                type="text"
+                id="add-name"
+                required
+                class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
+              />
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Institusi Pendidikan</label
+              >
+              <input
+                type="text"
+                id="add-institution"
+                required
+                class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
+              />
+            </div>
+            <div
+              class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white"
+            >
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Upload Gambar Member</label
+              >
+              <input
+                type="file"
+                id="add-file"
+                accept="image/*"
+                class="cursor-pointer"
+              />
+              <div
+                id="add-image-box"
+                class="border border-dashed border-sky-300 rounded-lg h-32 flex items-center justify-center bg-sky-50/50 hover:bg-sky-100 transition-colors text-sky-400 overflow-hidden"
+              >
+                <img
+                  id="add-preview"
+                  src="#"
+                  alt="Preview"
+                  class="hidden h-full w-full object-cover"
+                />
+                <i
+                  id="add-placeholder-icon"
+                  class="fa-regular fa-image text-4xl"
+                ></i>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 flex gap-3 p-2 bg-white rounded-full"
+            >
+              <button
+                type="button"
+                onclick="showView('list-view')"
+                class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold py-2.5 px-6 rounded-full transition-colors"
+              >
+                <i class="fa-solid fa-xmark"></i> BATAL
+              </button>
+              <button
+                type="submit"
+                class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-2.5 px-6 rounded-full transition-colors shadow-sm"
+              >
+                <i class="fa-solid fa-plus"></i> SIMPAN MEMBER
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <!-- EDIT VIEW -->
+        <div id="edit-view" class="hidden w-full h-full flex flex-col relative">
+          <h2
+            class="text-3xl font-medium mb-8 flex items-center text-slate-800"
+          >
+            <i class="fa-solid fa-user-pen text-sky-500 mr-3"></i> Edit Member
+          </h2>
+          <form id="edit-form" class="flex flex-col gap-6 max-w-2xl pb-16">
+            <input type="hidden" id="edit-id" />
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Nama Lengkap</label
+              >
+              <input
+                type="text"
+                id="edit-name"
+                required
+                class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
+              />
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Institusi Pendidikan</label
+              >
+              <input
+                type="text"
+                id="edit-institution"
+                required
+                class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
+              />
+            </div>
+            <div
+              class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white"
+            >
+              <label class="block text-sm font-semibold text-sky-700 mb-2"
+                >Ganti Gambar Baru</label
+              >
+              <input
+                type="file"
+                id="edit-file"
+                accept="image/*"
+                class="cursor-pointer"
+              />
+              <div
+                id="edit-image-box"
+                class="border border-dashed border-sky-300 rounded-lg h-32 flex items-center justify-center bg-sky-50/50 hover:bg-sky-100 transition-colors text-sky-400 overflow-hidden"
+              >
+                <img
+                  id="edit-preview"
+                  src="#"
+                  alt="Preview"
+                  class="hidden h-full w-full object-cover"
+                />
+                <i
+                  id="edit-placeholder-icon"
+                  class="fa-regular fa-image text-4xl"
+                ></i>
+              </div>
+            </div>
+            <div
+              class="absolute bottom-0 right-0 flex gap-3 p-2 bg-white rounded-full w-full justify-end"
+            >
+              <button
+                type="button"
+                id="delete-btn"
+                class="flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-700 text-sm font-bold py-2.5 px-6 rounded-full transition-colors mr-auto"
+              >
+                <i class="fa-solid fa-trash-can"></i> HAPUS MEMBER
+              </button>
+              <button
+                type="button"
+                onclick="showView('list-view')"
+                class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold py-2.5 px-6 rounded-full transition-colors"
+              >
+                <i class="fa-solid fa-xmark"></i> BATAL
+              </button>
+              <button
+                type="submit"
+                class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-2.5 px-6 rounded-full transition-colors shadow-sm"
+              >
+                <i class="fa-solid fa-floppy-disk"></i> SIMPAN PERUBAHAN
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <!-- Settings Token (shared) -->
+    <script src="settings-token.js"></script>
+
+    <script>
+      // ============================================================
+      // PROTEKSI HALAMAN
+      // ============================================================
+      if (localStorage.getItem("apc_logged_in") !== "true") {
+        window.location.href = "login.html";
+      }
+
+      // ============================================================
+      // GITHUB API HELPERS
+      // ============================================================
+      const DATA_FILE_PATH = "_data/members.json";
+      let fileSha = null; // SHA of the file on GitHub (needed for updates)
+
+      /**
+       * Fetch current members.json from GitHub repo.
+       * Returns { members: [...], sha: "..." } or null if file doesn't exist.
+       */
+      async function fetchMembersFromGitHub() {
+        const token = APC_Settings.getToken();
+        if (!token) return null;
+
+        const url = `https://api.github.com/repos/${APC_GITHUB.OWNER}/${APC_GITHUB.REPO}/contents/${DATA_FILE_PATH}?ref=${APC_GITHUB.BRANCH}&t=${Date.now()}`;
+        try {
+          const resp = await fetch(url, {
+            headers: {
+              Authorization: `token ${token}`,
+              Accept: "application/vnd.github.v3+json",
+            },
+          });
+
+          if (resp.status === 404) return { members: [], sha: null };
+          if (!resp.ok) return null;
+
+          const data = await resp.json();
+          const content = decodeURIComponent(
+            escape(atob(data.content.replace(/\n/g, "")))
+          );
+          return { members: JSON.parse(content), sha: data.sha };
+        } catch (e) {
+          console.error("Fetch GitHub error:", e);
+          return null;
+        }
+      }
+
+      /**
+       * Push updated members array to GitHub.
+       * Creates or updates _data/members.json in the repo.
+       */
+      async function pushMembersToGitHub(membersArray, commitMessage) {
+        const token = await APC_Settings.requireToken();
+        if (!token) {
+          Swal.fire({ title: "Token Diperlukan", text: "Set GitHub Token di Settings terlebih dahulu.", icon: "warning", confirmButtonColor: "#0ea5e9" });
+          return false;
+        }
+
+        // Keep image data for GitHub (allow base64 strings so images are saved)
+        const cleanMembers = membersArray.map(function (m) {
+          return {
+            id: m.id,
+            name: m.name,
+            institution: m.institution,
+            imageUrl: m.imageUrl,
+          };
+        });
+
+        const jsonContent = JSON.stringify(cleanMembers, null, 2) + "\n";
+        const encoded = btoa(unescape(encodeURIComponent(jsonContent)));
+
+        const url = `https://api.github.com/repos/${APC_GITHUB.OWNER}/${APC_GITHUB.REPO}/contents/${DATA_FILE_PATH}`;
+        const payload = {
+          message: commitMessage || "Admin: Update members data",
+          content: encoded,
+          branch: APC_GITHUB.BRANCH,
+        };
+        if (fileSha) payload.sha = fileSha;
+
+        try {
+          const resp = await fetch(url, {
+            method: "PUT",
+            headers: {
+              Authorization: `token ${token}`,
+              "Content-Type": "application/json",
+              Accept: "application/vnd.github.v3+json",
+            },
+            body: JSON.stringify(payload),
+          });
+
+          if (resp.ok) {
+            const result = await resp.json();
+            fileSha = result.content.sha; // Update SHA for next operation
+            return true;
+          } else {
+            const err = await resp.json();
+            if (resp.status === 401) {
+              Swal.fire({
+                title: "Token Tidak Valid!",
+                text: "Token GitHub expired atau salah. Silakan update di Settings.",
+                icon: "error",
+                confirmButtonText: "Buka Settings",
+                confirmButtonColor: "#0ea5e9",
+              }).then(function () { APC_Settings.openSettings(); });
+            } else if (resp.status === 409) {
+              // Conflict — SHA mismatch, re-fetch and retry
+              Swal.fire({ title: "Konflik!", text: "Data berubah di GitHub. Halaman akan di-reload.", icon: "warning", confirmButtonColor: "#0ea5e9" })
+                .then(function () { location.reload(); });
+            } else {
+              Swal.fire({ title: "Gagal Push!", text: "Error: " + err.message, icon: "error" });
+            }
+            return false;
+          }
+        } catch (e) {
+          Swal.fire({ title: "Error Jaringan", text: "Gagal menyambung ke API GitHub.", icon: "error" });
+          return false;
+        }
+      }
+
+      // ============================================================
+      // LOCAL DATA & RENDERING
+      // ============================================================
+      const STORAGE_KEY = "apc_members_data";
+      const defaultMembers = [
+        { id: 1, name: "Syaifudin", institution: "Bina Sarana Informatika", imageUrl: null },
+        { id: 2, name: "Reymond", institution: "Universitas Indonesia", imageUrl: null },
+        { id: 3, name: "Siti Aminah", institution: "Institut Teknologi Bandung", imageUrl: null },
+      ];
+
+      let membersData = [];
+      let currentAddImageBase64 = null;
+      let currentEditImageBase64 = null;
+
+      function saveDataLocal() {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(membersData));
+      }
+
+      function renderMembers() {
+        const grid = document.getElementById("members-grid");
+        const loading = document.getElementById("loading-indicator");
+        grid.innerHTML = "";
+
+        if (membersData.length === 0) {
+          grid.innerHTML = '<div class="col-span-3 text-center py-12 text-slate-400"><i class="fa-regular fa-face-meh text-4xl mb-3"></i><p class="text-sm">Belum ada member. Klik "Tambah Member" untuk menambahkan.</p></div>';
+        }
+
+        membersData.forEach(function (member) {
+          const card = document.createElement("div");
+          card.className =
+            "border border-sky-100 rounded-2xl p-6 flex flex-col items-center justify-center text-center cursor-pointer hover:shadow-md hover:border-sky-300 transition-all bg-white h-full group";
+          card.onclick = function () { openEditView(member.id); };
+
+          let imageElement = member.imageUrl
+            ? '<img src="' + member.imageUrl + '" alt="' + member.name + '" class="w-20 h-20 rounded-full border-2 border-sky-200 mb-4 object-cover group-hover:scale-105 transition-transform">'
+            : '<div class="w-20 h-20 rounded-full border-2 border-sky-100 mb-4 bg-sky-50 flex items-center justify-center text-sky-400 group-hover:scale-105 transition-transform"><i class="fa-solid fa-user text-3xl"></i></div>';
+
+          card.innerHTML =
+            imageElement +
+            '<h3 class="font-bold text-slate-800 text-sm line-clamp-2">' + member.name + "</h3>" +
+            '<p class="text-xs text-slate-500 mt-1 line-clamp-1">' + member.institution + "</p>";
+
+          grid.appendChild(card);
+        });
+
+        loading.classList.add("hidden");
+        grid.classList.remove("hidden");
+      }
+
+      function showView(viewId) {
+        document.getElementById("list-view").classList.add("hidden");
+        document.getElementById("add-view").classList.add("hidden");
+        document.getElementById("edit-view").classList.add("hidden");
+        document.getElementById(viewId).classList.remove("hidden");
+        if (viewId === "list-view") {
+          resetImagePreview("add");
+          resetImagePreview("edit");
+        }
+      }
+
+      function openEditView(id) {
+        const member = membersData.find(function (m) { return m.id === id; });
+        if (member) {
+          document.getElementById("edit-id").value = member.id;
+          document.getElementById("edit-name").value = member.name;
+          document.getElementById("edit-institution").value = member.institution;
+          currentEditImageBase64 = member.imageUrl;
+          if (member.imageUrl) {
+            showImagePreview("edit", member.imageUrl);
+          } else {
+            resetImagePreview("edit");
+          }
+          showView("edit-view");
+        }
+      }
+
+      // ============================================================
+      // IMAGE UPLOAD HANDLERS
+      // ============================================================
+      function handleImageUpload(inputId, previewPrefix) {
+        document.getElementById(inputId).addEventListener("change", function (e) {
+          const file = e.target.files[0];
+          if (!file) return;
+          const reader = new FileReader();
+          reader.onload = function (event) {
+            const base64String = event.target.result;
+            if (previewPrefix === "add") currentAddImageBase64 = base64String;
+            else currentEditImageBase64 = base64String;
+            showImagePreview(previewPrefix, base64String);
+          };
+          reader.readAsDataURL(file);
+        });
+      }
+
+      function showImagePreview(prefix, imgSrc) {
+        document.getElementById(prefix + "-preview").src = imgSrc;
+        document.getElementById(prefix + "-preview").classList.remove("hidden");
+        document.getElementById(prefix + "-placeholder-icon").classList.add("hidden");
+      }
+
+      function resetImagePreview(prefix) {
+        document.getElementById(prefix + "-preview").src = "#";
+        document.getElementById(prefix + "-preview").classList.add("hidden");
+        document.getElementById(prefix + "-placeholder-icon").classList.remove("hidden");
+        document.getElementById(prefix + "-file").value = "";
+        if (prefix === "add") currentAddImageBase64 = null;
+        if (prefix === "edit") currentEditImageBase64 = null;
+      }
+
+      handleImageUpload("add-file", "add");
+      handleImageUpload("edit-file", "edit");
+
+      // ============================================================
+      // LOGOUT
+      // ============================================================
+      function handleLogout() {
+        localStorage.removeItem("apc_logged_in");
+        window.location.href = "login.html";
+      }
+
+      // ============================================================
+      // ADD MEMBER — Push to GitHub
+      // ============================================================
+      document.getElementById("add-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("add-name").value.trim();
+        const institution = document.getElementById("add-institution").value.trim();
+        const newId = membersData.length > 0 ? Math.max(...membersData.map(function (m) { return m.id; })) + 1 : 1;
+
+        const newMember = {
+          id: newId,
+          name: name,
+          institution: institution,
+          imageUrl: currentAddImageBase64,
+        };
+
+        membersData.push(newMember);
+        saveDataLocal();
+        renderMembers();
+
+        Swal.fire({
+          title: "Menyimpan ke GitHub...",
+          text: "Mohon tunggu sebentar",
+          allowOutsideClick: false,
+          didOpen: function () { Swal.showLoading(); },
+        });
+
+        const success = await pushMembersToGitHub(membersData, 'Admin: Tambah member "' + name + '"');
+
+        if (success) {
+          this.reset();
+          resetImagePreview("add");
+          showView("list-view");
+          Swal.fire({ title: "Berhasil!", text: 'Member "' + name + '" berhasil ditambahkan dan di-push ke GitHub.', icon: "success", confirmButtonColor: "#0ea5e9" });
+        } else {
+          // Revert local change if push failed
+          membersData = membersData.filter(function (m) { return m.id !== newId; });
+          saveDataLocal();
+          renderMembers();
+        }
+      });
+
+      // ============================================================
+      // EDIT MEMBER — Push to GitHub
+      // ============================================================
+      document.getElementById("edit-form").addEventListener("submit", async function (e) {
+        e.preventDefault();
+
+        const idToEdit = parseInt(document.getElementById("edit-id").value);
+        const index = membersData.findIndex(function (m) { return m.id === idToEdit; });
+        if (index === -1) return;
+
+        // Save old data for rollback
+        const oldData = { ...membersData[index] };
+
+        membersData[index].name = document.getElementById("edit-name").value.trim();
+        membersData[index].institution = document.getElementById("edit-institution").value.trim();
+        membersData[index].imageUrl = currentEditImageBase64;
+        saveDataLocal();
+        renderMembers();
+
+        Swal.fire({
+          title: "Menyimpan ke GitHub...",
+          text: "Mohon tunggu sebentar",
+          allowOutsideClick: false,
+          didOpen: function () { Swal.showLoading(); },
+        });
+
+        const success = await pushMembersToGitHub(membersData, 'Admin: Update member "' + membersData[index].name + '"');
+
+        if (success) {
+          showView("list-view");
+          Swal.fire({ title: "Diperbarui!", text: "Data member berhasil diubah dan di-push ke GitHub.", icon: "success", timer: 1500, showConfirmButton: false });
+        } else {
+          // Rollback
+          membersData[index] = oldData;
+          saveDataLocal();
+          renderMembers();
+        }
+      });
+
+      // ============================================================
+      // DELETE MEMBER — Push to GitHub
+      // ============================================================
+      document.getElementById("delete-btn").addEventListener("click", async function () {
+        const idToDelete = parseInt(document.getElementById("edit-id").value);
+        const memberName = document.getElementById("edit-name").value;
+
+        const result = await Swal.fire({
+          title: "Hapus Member?",
+          text: 'Apakah Anda yakin ingin menghapus "' + memberName + '"? Perubahan akan langsung di-push ke GitHub.',
+          icon: "warning",
+          showCancelButton: true,
+          confirmButtonColor: "#ef4444",
+          cancelButtonColor: "#64748b",
+          confirmButtonText: "Ya, Hapus!",
+          cancelButtonText: "Batal",
+          reverseButtons: true,
+        });
+
+        if (!result.isConfirmed) return;
+
+        const deletedMember = membersData.find(function (m) { return m.id === idToDelete; });
+        const deletedIndex = membersData.findIndex(function (m) { return m.id === idToDelete; });
+        membersData = membersData.filter(function (m) { return m.id !== idToDelete; });
+        saveDataLocal();
+        renderMembers();
+        showView("list-view");
+
+        Swal.fire({
+          title: "Menghapus dari GitHub...",
+          text: "Mohon tunggu sebentar",
+          allowOutsideClick: false,
+          didOpen: function () { Swal.showLoading(); },
+        });
+
+        const success = await pushMembersToGitHub(membersData, 'Admin: Hapus member "' + memberName + '"');
+
+        if (success) {
+          Swal.fire({ title: "Terhapus!", text: 'Member "' + memberName + '" berhasil dihapus dari GitHub.', icon: "success", timer: 1500, showConfirmButton: false });
+        } else {
+          // Rollback
+          membersData.splice(deletedIndex, 0, deletedMember);
+          saveDataLocal();
+          renderMembers();
+        }
+      });
+
+      // ============================================================
+      // INITIAL LOAD — Try GitHub first, fallback to localStorage
+      // ============================================================
+      window.addEventListener("error", function(e) {
+        alert("Error: " + e.message + " (Line: " + e.lineno + ")");
+      });
+      window.addEventListener("unhandledrejection", function(e) {
+        alert("Promise Error: " + (e.reason && e.reason.message ? e.reason.message : e.reason));
+      });
+
+      (async function init() {
+        const ghData = await fetchMembersFromGitHub();
+        if (ghData && ghData.members) {
+          membersData = ghData.members;
+          fileSha = ghData.sha;
+          saveDataLocal(); // Sync to localStorage
+        } else {
+          // Fallback to localStorage or defaults
+          membersData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || defaultMembers;
+        }
+        renderMembers();
+      })();
+    </script>
+  </body>
+</html>

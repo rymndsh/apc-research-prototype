@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Syaifudin",
+    "institution": "Bina Sarana Informatika",
+    "imageUrl": null
+  },
+  {
+    "id": 2,
+    "name": "Reymond",
+    "institution": "Universitas Indonesia",
+    "imageUrl": null
+  },
+  {
+    "id": 3,
+    "name": "Siti Aminah",
+    "institution": "Institut Teknologi Bandung",
+    "imageUrl": null
+  }
+]

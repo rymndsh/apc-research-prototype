@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Main Dashboard - APC Research Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      /* Gradient khusus Baby Blue untuk tombol utama */
+      .bg-baby-blue-gradient {
+        background: linear-gradient(90deg, #38bdf8 0%, #0ea5e9 100%);
+      }
+      body {
+        background-color: #f0f9ff; /* bg-sky-50 yang sangat lembut */
+      }
+    </style>
+  </head>
+  <body class="font-sans text-slate-800 flex h-screen overflow-hidden">
+    <aside
+      class="w-64 bg-white border-r border-sky-100 flex flex-col rounded-r-[2rem] shadow-sm flex-shrink-0 z-10"
+    >
+      <div class="p-8 pb-4">
+        <a href="dashboard.html" class="block cursor-pointer">
+          <img
+            src="logo-nci.png"
+            alt="Logo"
+            class="w-40 mx-auto hover:opacity-80 transition"
+          />
+        </a>
+      </div>
+      <nav class="flex-1 mt-6">
+        <a
+          href="artikel.html"
+          class="flex items-center px-8 py-3 text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors"
+        >
+          <i class="fa-regular fa-file-lines text-lg w-5 mr-3"></i>
+          <span class="font-medium text-sm">Artikel</span>
+        </a>
+        <a
+          href="people.html"
+          class="flex items-center px-8 py-3 text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors cursor-pointer"
+        >
+          <i class="fa-solid fa-user-group text-lg w-5 mr-3"></i>
+          <span class="font-medium text-sm">People</span>
+        </a>
+      </nav>
+      <div
+        class="p-6 border-t border-sky-50 mt-auto bg-white rounded-br-[2rem]"
+      >
+        <button
+          onclick="prosesLogout(event)"
+          class="w-full flex items-center justify-center gap-2 text-red-500 hover:bg-red-50 hover:text-red-600 font-semibold rounded-lg transition py-2 text-sm"
+        >
+          <i class="fa-solid fa-arrow-right-from-bracket"></i>
+          Logout
+        </button>
+      </div>
+    </aside>
+
+    <main class="flex-1 p-8 md:p-10 overflow-y-auto">
+      <div
+        class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6 border-b-2 border-sky-100 pb-4 gap-4"
+      >
+        <h1
+          class="text-2xl font-semibold text-slate-800 uppercase tracking-wider"
+        >
+          Main Dashboard Overview
+        </h1>
+
+        <a
+          href="/"
+          target="_blank"
+          class="flex items-center gap-2 bg-white border border-sky-200 hover:bg-sky-50 text-sky-700 font-bold py-2 px-4 rounded-lg transition-colors text-sm shadow-sm group"
+        >
+          <i
+            class="fa-solid fa-arrow-up-right-from-square text-sky-500 group-hover:text-sky-700 transition-colors"
+          ></i>
+          Lihat Website
+        </a>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
+          <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
+            Total Articles
+          </p>
+          <p
+            id="total-articles-metric"
+            class="text-4xl font-bold mt-2 text-slate-800"
+          >
+            14
+          </p>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
+          <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
+            Total Publications
+          </p>
+          <p class="text-4xl font-bold mt-2 text-slate-800">8</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
+          <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
+            Team Size
+          </p>
+          <p class="text-4xl font-bold mt-2 text-slate-800">7</p>
+        </div>
+        <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
+          <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
+            Upcoming Agenda
+          </p>
+          <p class="text-4xl font-bold mt-2 text-slate-800">3</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+        <div
+          class="bg-white p-6 rounded-xl shadow-sm border border-sky-50 lg:col-span-2"
+        >
+          <h3 class="font-semibold text-lg mb-4 text-slate-800">
+            Recent Drafts
+          </h3>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-sm text-slate-700">
+              <thead>
+                <tr class="text-slate-400 border-b border-sky-100">
+                  <th class="pb-3 font-medium">Title</th>
+                  <th class="pb-3 font-medium">Category</th>
+                  <th class="pb-3 font-medium text-right">Last Edited</th>
+                </tr>
+              </thead>
+              <tbody id="recent-drafts-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-sky-50">
+            <h3 class="font-semibold text-lg mb-4 text-slate-800">
+              System Activity Feed
+            </h3>
+            <ul class="text-sm space-y-4 text-slate-600">
+              <li class="flex flex-col gap-1">
+                <span>A. N. updated 'People' profile for J. D.</span>
+                <span class="text-slate-400 text-xs font-mono">2 hrs ago</span>
+              </li>
+              <li class="flex flex-col gap-1 border-t border-sky-50 pt-3">
+                <span>Alice published 'Publication A' draft</span>
+                <span class="text-slate-400 text-xs font-mono">4 hrs ago</span>
+              </li>
+              <li class="flex flex-col gap-1 border-t border-sky-50 pt-3">
+                <span class="text-sky-500 font-medium"
+                  >Jekyll Build Successful</span
+                >
+                <span class="text-slate-400 text-xs font-mono">5 hrs ago</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="bg-white p-6 rounded-xl shadow-sm border border-sky-50">
+            <h3 class="font-semibold text-lg mb-4 text-slate-800">
+              Quick Actions
+            </h3>
+            <div class="space-y-3">
+              <button
+                onclick="window.location.href = 'artikel.html'"
+                class="w-full bg-baby-blue-gradient hover:opacity-90 text-white font-bold py-3 px-4 rounded-lg transition uppercase tracking-widest text-xs shadow-sm"
+              >
+                Kelola Artikel
+              </button>
+              <button
+                onclick="window.location.href = 'people.html'"
+                class="w-full bg-white hover:bg-sky-50 border border-sky-100 text-sky-700 font-semibold py-3 px-4 rounded-lg transition uppercase tracking-widest text-xs"
+              >
+                Kelola Tim
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Settings Token (shared) -->
+    <script src="settings-token.js"></script>
+
+    <script>
+      const STORAGE_KEY = "apc_articles_data";
+      const defaultArticles = [
+        { title: "Nanoparticle Synthesis", date: "2026-05-24" },
+        { title: "Nanoparticle Synthesis A", date: "2026-05-24" },
+        { title: "Nanoparticle Publication Draft", date: "2026-05-24" },
+      ];
+
+      // Mengambil data dari local storage (disimpan dari halaman artikel.html)
+      let articlesData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      const tbody = document.getElementById("recent-drafts-body");
+      tbody.innerHTML = "";
+
+      // Jika belum ada artikel yang diupload, tampilkan data default
+      if (!articlesData || articlesData.length === 0) {
+        articlesData = defaultArticles;
+      }
+
+      // Tampilkan maksimal 5 artikel terbaru di tabel dashboard
+      articlesData.slice(0, 5).forEach((article) => {
+        const tr = document.createElement("tr");
+        tr.className = "border-b border-sky-50 hover:bg-sky-50 transition";
+        tr.innerHTML = `
+                <td class="py-4 font-medium text-slate-800 line-clamp-1 max-w-[200px] truncate">${article.title}</td>
+                <td class="py-4 text-sky-500 font-mono text-xs">Publication</td>
+                <td class="py-4 text-slate-400 font-mono text-xs text-right">${article.date}</td>
+            `;
+        tbody.appendChild(tr);
+      });
+
+      // Hitung total artikel (Data awal 14 + jumlah artikel yang diupload)
+      const totalBase = 14;
+      const uploadedCount =
+        JSON.parse(localStorage.getItem(STORAGE_KEY))?.length || 0;
+      document.getElementById("total-articles-metric").innerText =
+        totalBase + uploadedCount;
+
+      // ==========================================
+      // FUNGSI LOGOUT YANG AMAN UNTUK GITHUB PAGES
+      // ==========================================
+      function prosesLogout(e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        localStorage.removeItem("apc_logged_in");
+        sessionStorage.removeItem("apc_logged_in");
+
+        var loginUrl;
+        try {
+          loginUrl = new URL("login.html", document.baseURI).href;
+        } catch (_) {
+          var path = window.location.pathname;
+          var folder = path.substring(0, path.lastIndexOf("/") + 1);
+          loginUrl = window.location.origin + folder + "login.html";
+        }
+
+        window.location.replace(loginUrl);
+        throw new Error("LOGOUT_REDIRECT");
+      }
+    </script>
+  </body>
+</html>

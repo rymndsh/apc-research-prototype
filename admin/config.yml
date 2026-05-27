@@ -1,0 +1,32 @@
+# Pengaturan koneksi ke repositori (bisa disesuaikan nanti saat deploy)
+backend:
+  name: git-gateway
+  branch: main
+
+# Mengizinkan kamu test admin dashboard di localhost (komputer kamu)
+local_backend: true
+
+# Tempat CMS menyimpan gambar yang diupload staf klien
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+
+# "Collections" ini ibarat tabel di database. Kita arahkan ke folder _posts kamu
+collections:
+  - name: "artikel"
+    label: "Artikel & Update"
+    folder: "_posts"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      # Ini adalah form input yang akan dilihat klien di dashboard
+      - { label: "Judul", name: "title", widget: "string" }
+      - { label: "Tanggal", name: "date", widget: "datetime" }
+
+      # Ini solusi untuk masalah klien! Dropdown kategori agar rapi
+      - label: "Kategori"
+        name: "category"
+        widget: "select"
+        options: ["Publikasi", "Aktivitas Agenda Tim", "Portofolio", "Tutorial"]
+
+      # Editor teks utama yang mirip Word/GitBook
+      - { label: "Isi Tulisan", name: "body", widget: "markdown" }
