@@ -9,9 +9,21 @@ module.exports = async (req, res) => {
   try {
     const { username, password } = req.body;
     
-    // In production, ADMIN_USERS should be an env variable like: '[{"user":"admin","pass":"secret123"}]'
-    const adminUsersStr = process.env.ADMIN_USERS || '[{"user":"admin","pass":"admin"}]';
-    const adminUsers = JSON.parse(adminUsersStr);
+    // Support both JSON array (old) and simple string format: "admin:pass,user2:pass2"
+    const adminUsersStr = process.env.ADMIN_USERS || 'admin:admin';
+    let adminUsers = [];
+    
+    try {
+      // Try parsing as JSON first
+      adminUsers = JSON.parse(adminUsersStr);
+    } catch (e) {
+      // Fallback: parse as comma-separated "user:pass"
+      const pairs = adminUsersStr.split(',');
+      adminUsers = pairs.map(pair => {
+        const [u, p] = pair.split(':').map(s => s.trim());
+        return { user: u, pass: p };
+      });
+    }
 
     const user = adminUsers.find(u => u.user === username && u.pass === password);
 
