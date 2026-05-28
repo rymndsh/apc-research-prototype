@@ -1,46 +1,53 @@
-# APC Research — Applied Physics and Chemistry @ Nano Center Indonesia
+# APC Research Redesign Project
 
-> Official website of the **Applied Physics and Chemistry (APC)** research group at **Nano Center Indonesia**, built with Jekyll and deployed via GitHub Pages.
+> Website redesign project for the **Applied Physics and Chemistry (APC)** research group at **Nano Center Indonesia**.
 
 [![Jekyll](https://img.shields.io/badge/Jekyll-4.x-red?logo=jekyll&logoColor=white)](https://jekyllrb.com/)
-[![GitHub Pages](https://img.shields.io/badge/Deployed%20on-GitHub%20Pages-blue?logo=github)](https://pages.github.com/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?logo=vercel)](https://vercel.com/)
+
+---
+
+## 🔗 Live Links
+
+- **Main Website:** [https://apc-research-prototype.vercel.app/](https://apc-research-prototype.vercel.app/)
+- **Admin Dashboard:** [https://apc-research-prototype.vercel.app/admin/](https://apc-research-prototype.vercel.app/admin/)
+
+---
+
+## 🔐 Admin Access
+
+To access the admin dashboard, please use the following credentials:
+- **Username:** `admin`
+- **Password:** `apc2026`
 
 ---
 
 ## 🔬 About
 
-The APC Research website serves as the central hub for the Applied Physics and Chemistry group at Nano Center Indonesia. It features:
+This is a redesign project for the APC Research website, which serves as the central hub for the Applied Physics and Chemistry group at Nano Center Indonesia. It features:
 
-- **Research publications** synced from Substack via webhook integration
-- **Research subteam profiles** (Wastewater, Nanofibers, Nano-Petro, Low-Dimensional Materials)
-- **Team & people** directory
-- **Partnership & openings** information
-- **Contact** page
+- **Research publications** synced and managed efficiently.
+- **Admin Dashboard** to manage articles, people, and other content directly from the web.
+- **Research subteam profiles** (Wastewater, Nanofibers, Nano-Petro, Low-Dimensional Materials).
+- **Team & people** directory.
+- **Partnership & openings** information.
 
 ---
 
 ## 🗂️ Project Structure
 
-```
+```text
 apcresearch-redesign/
 ├── _config.yml           # Jekyll site configuration
-├── _data/
-│   ├── publications.yml  # Publications data
-│   └── research.yml      # Research areas data
+├── _data/                # Site data (publications, research areas)
 ├── _includes/            # Reusable HTML partials (header, footer, etc.)
 ├── _layouts/             # Page layout templates
 ├── _posts/               # Blog/news posts
 ├── _sass/                # SCSS stylesheets
+├── admin/                # Custom Admin Dashboard (CMS)
 ├── assets/               # Static assets (images, CSS, JS)
-├── pages/
-│   ├── contact.html      # Contact page
-│   ├── openings.html     # Job/research openings
-│   ├── partnership.html  # Partnership opportunities
-│   ├── people.html       # Team members
-│   ├── publications.html # Research publications
-│   └── research.html     # Research overview
-├── 404.html              # Custom 404 error page
+├── pages/                # Main site pages (people, research, etc.)
+├── vercel.json           # Vercel deployment configuration
 ├── Gemfile               # Ruby dependencies
 └── index.html            # Homepage (landing page)
 ```
@@ -74,63 +81,6 @@ bundle exec jekyll serve
 
 Then open your browser and visit: `http://localhost:4000`
 
-### Building for Production
+### Admin Dashboard Access
+To access the local admin dashboard, navigate to: `http://localhost:4000/admin/` and use the credentials provided above.
 
-```bash
-bundle exec jekyll build
-```
-
-The output will be generated in the `_site/` directory.
-
----
-
-## 🧪 Research Subteams
-
-| Subteam | Focus Area |
-|---|---|
-| 💧 **Wastewater Solutions** | Nanobubbles & advanced oxidation for industrial wastewater treatment |
-| 🧵 **Nanofibers via Electrospinning** | Polymer nanofibers for biomedical and filtration applications |
-| 🛢️ **Nano-Petro** | Nanofluids for enhanced oil recovery (EOR) and reservoir simulation |
-| ⚛️ **Low-Dimensional Materials** | 2D materials (graphene, MoS₂) for next-gen electronics |
-
----
-
-## 📄 Publishing Workflow
-
-Researchers publish directly to our **Substack** account (`apcresearch.substack.com`), and new papers are automatically synced to this website via webhook integration — no manual deployment required.
-
-```
-Write Paper → Publish on Substack → Auto-Sync (Webhook) → Live on Website
-```
-
----
-
-## 🤝 Contributing
-
-We welcome contributions! If you'd like to improve the website:
-
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/improvement`)
-3. Commit your changes (`git commit -m 'Add some improvement'`)
-4. Push to the branch (`git push origin feature/improvement`)
-5. Open a Pull Request
-
----
-
-## 📬 Contact
-
-- **Email:** contact@nanocenter.id
-- **Substack:** [apcresearch.substack.com](https://apcresearch.substack.com/)
-- **Institution:** [Nano Center Indonesia](https://nanocenter.id)
-
----
-
-## 📝 License
-
-This project is licensed under the **MIT License** — see the [LICENSE](LICENSE) file for details.
-
----
-
-<p align="center">
-  Made with ❤️ by the APC Research Team @ Nano Center Indonesia
-</p>
