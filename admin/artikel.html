@@ -200,19 +200,7 @@
       </div>
     </main>
 
-    <!-- Settings Token is now managed by Backend Vercel Functions -->
-
     <script>
-      // ============================================================
-      // PROTEKSI HALAMAN — redirect ke login kalau belum login
-      // ============================================================
-      // Dalam implementasi TRD v2, proteksi sesungguhnya ada di backend via cookie.
-      // JS ini hanya sebagai fallback UX jika cookie belum ter-set dengan baik.
-      // ============================================================
-
-
-      // LOCAL DATA & RENDERING
-      // ============================================================
       const STORAGE_KEY = "apc_articles_data";
       let articlesData = JSON.parse(localStorage.getItem(STORAGE_KEY)) || [];
       let currentAddImage = null, currentEditImage = null;
@@ -309,10 +297,13 @@
         // Pada TRD v2, kita mengambil data dari _data/publications.yml 
         // secara public local fetch, bukan direct GitHub API lagi.
         try {
-          const resp = await fetch("/_data/publications.yml");
+          const resp = await fetch("/api/read?path=_data/publications.yml");
           if (!resp.ok) return null;
           
-          const yamlText = await resp.text();
+          const result = await resp.json();
+          if (!result.success) return null;
+          
+          const yamlText = result.content;
           const doc = jsyaml.load(yamlText);
           if (!doc) return [];
 
@@ -328,7 +319,7 @@
             rawContent: pub.abstract || ""
           }));
         } catch (e) {
-          console.error("Fetch local data error:", e);
+          console.error("Fetch API data error:", e);
           return null;
         }
       }

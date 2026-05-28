@@ -369,13 +369,16 @@
        */
       async function fetchMembersFromGitHub() {
         try {
-          const resp = await fetch(DATA_FILE_PATH);
+          const resp = await fetch("/api/read?path=_data/members.json");
           if (!resp.ok) return null;
 
-          const data = await resp.json();
+          const result = await resp.json();
+          if (!result.success) return null;
+          
+          const data = JSON.parse(result.content);
           return { members: data };
         } catch (e) {
-          console.error("Fetch local data error:", e);
+          console.error("Fetch API data error:", e);
           return null;
         }
       }
