@@ -97,5 +97,16 @@
     "photo_url": "",
     "researchgate_url": "",
     "linkedin_url": ""
+  },
+  {
+    "id": "member-1779966648901",
+    "name": "Reymond",
+    "position": "magang",
+    "role": "member",
+    "institution": "universitas hongkong",
+    "status": "active",
+    "join_year": 2026,
+    "internship_period": "2026-2027",
+    "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/boom-8bXWSVmfeYzWxfICq13tzZQWK5O5N2.jpg"
   }
 ]
