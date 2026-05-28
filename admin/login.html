@@ -103,6 +103,7 @@
 
           if (res.ok && data.success) {
             // Success, cookie is set automatically as HttpOnly
+            localStorage.setItem("apc_logged_in", "true");
             window.location.href = "dashboard.html";
           } else {
             errorMsg.textContent = data.error || "Username atau password salah.";
