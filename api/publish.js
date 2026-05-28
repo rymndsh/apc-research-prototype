@@ -23,22 +23,72 @@ module.exports = async (req, res) => {
   try {
     const payload = req.body;
     
-    if (!payload || !payload.data) {
-      return res.status(400).json({ error: 'Missing required data payload' });
+    // Check if we have path and content
+    if (!payload || !payload.path || payload.content === undefined) {
+      return res.status(400).json({ error: 'Missing required data (path, content)' });
     }
 
     const githubToken = process.env.GITHUB_TOKEN;
-    const githubRepo = process.env.GITHUB_REPO; // e.g. "username/repo"
+    // Strip trailing slash or full URL if they accidentally pasted the full github URL
+    let githubRepo = process.env.GITHUB_REPO; 
+    if (githubRepo) {
+      githubRepo = githubRepo.replace('https://github.com/', '').replace('.git', '').replace(/\/$/, '');
+    }
     
     if (!githubToken || !githubRepo) {
       console.warn("GitHub environment variables are not set. Simulating success for prototype.");
       return res.status(200).json({ success: true, message: 'Data accepted (Simulation mode - no GitHub commit made)' });
     }
 
-    // Here you would implement the fetch call to GitHub API using GITHUB_TOKEN
-    // GET contents to get SHA -> modify YAML/JSON -> PUT to update contents.
+    const apiUrl = `https://api.github.com/repos/${githubRepo}/contents/${payload.path}`;
     
-    return res.status(200).json({ success: true, message: 'Published successfully to GitHub' });
+    // 1. Get current file SHA
+    let fileSha = null;
+    try {
+      const getResp = await fetch(apiUrl, {
+        headers: {
+          'Authorization': `token ${githubToken}`,
+          'Accept': 'application/vnd.github.v3+json',
+          'User-Agent': 'APC-Admin-App'
+        }
+      });
+      if (getResp.ok) {
+        const getData = await getResp.json();
+        fileSha = getData.sha;
+      }
+    } catch (e) {
+      console.error('Error fetching file SHA:', e);
+    }
+
+    // 2. PUT new content
+    const contentBase64 = Buffer.from(payload.content).toString('base64');
+    const putPayload = {
+      message: payload.message || `Admin: Update ${payload.path}`,
+      content: contentBase64,
+      branch: 'main'
+    };
+    if (fileSha) {
+      putPayload.sha = fileSha;
+    }
+
+    const putResp = await fetch(apiUrl, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `token ${githubToken}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json',
+        'User-Agent': 'APC-Admin-App'
+      },
+      body: JSON.stringify(putPayload)
+    });
+
+    if (putResp.ok) {
+      return res.status(200).json({ success: true, message: 'Published successfully to GitHub' });
+    } else {
+      const errData = await putResp.json();
+      console.error('GitHub API error:', errData);
+      return res.status(500).json({ error: `GitHub Error: ${errData.message}` });
+    }
   } catch (error) {
     console.error('Publish error:', error);
     return res.status(500).json({ error: 'Publish failed' });

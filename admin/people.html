@@ -385,10 +385,12 @@
        */
       async function pushMembersToGitHub(membersArray, commitMessage) {
         try {
+          const contentStr = JSON.stringify(membersArray, null, 2);
           const payload = {
-            action: "update_members",
-            message: commitMessage || "Admin: Update members data",
-            data: membersArray
+            action: "update",
+            path: "_data/members.json",
+            content: contentStr + "\n",
+            message: commitMessage
           };
 
           const response = await fetch("/api/publish", {

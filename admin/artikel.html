@@ -334,13 +334,34 @@
       }
 
       async function pushArticleToGitHub(articleObj, commitMessage, isDelete = false) {
-        // Dalam implementasi TRD v2, kita menembak ke Vercel Function untuk security.
-        // Frontend tidak boleh tahu GITHUB_TOKEN.
         try {
+          // Construct the new full array to push
+          let newArray = [...articlesData];
+          if (isDelete) {
+            newArray = newArray.filter(a => a.id !== articleObj.id);
+          } else {
+            const existing = newArray.findIndex(a => a.id === articleObj.id);
+            if (existing >= 0) newArray[existing] = articleObj;
+            else newArray.unshift(articleObj);
+          }
+
+          // Convert to YAML format
+          const yamlObj = newArray.map(a => ({
+            title: a.title,
+            authors: a.author,
+            year: parseInt(a.year) || a.year,
+            doi: a.doi || "",
+            abstract: a.rawContent || "",
+            graphical_abstract_url: a.imageUrl || ""
+          }));
+          
+          const yamlContent = jsyaml.dump(yamlObj);
+
           const payload = {
-            action: isDelete ? "delete" : "publish",
-            message: commitMessage,
-            data: articleObj
+            action: "update",
+            path: "_data/publications.yml",
+            content: yamlContent,
+            message: commitMessage
           };
 
           const response = await fetch("/api/publish", {
