@@ -14,295 +14,222 @@ title: "Team | APC Research"
   </div>
 </section>
 
-<!-- LEADERSHIP SECTION -->
-<section class="py-20 bg-gray-50 border-b border-gray-200">
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-3xl font-bold text-gray-900">Leadership</h2>
+<!-- DIRECTOR SECTION -->
+{% assign director = site.data.members | where: "role", "director" %}
+{% if director.size > 0 %}
+<section class="py-16 bg-white border-b border-gray-100">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 scroll-reveal">
+      <h2 class="text-2xl font-bold text-gray-900">Leadership</h2>
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 scroll-reveal">
-      
-      <!-- Leader 1 -->
-      <article class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-md card-hover">
-        <div class="flex gap-4 sm:gap-6">
-          <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-navy-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold">
-            P
-          </div>
-          <div class="text-left flex-1">
-            <h3 class="text-lg sm:text-xl font-bold text-navy-800 mb-1">Prof. Dr. Hendra Wijaya</h3>
-            <p class="text-sm font-semibold text-yellow-500 mb-3">Principal Investigator</p>
-            <p class="text-sm text-gray-600 mb-4 leading-relaxed">Full professor at Nano Center Indonesia with 20+ years in applied nanophysics and materials science. Leads the APC Research Group since 2018.</p>
-            <div class="flex justify-start gap-3">
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-1.644 0-2.924.588-3.834 1.754C14.842 3.02 14.4 4.696 14.4 6.78c0 2.07.438 3.732 1.318 4.998.886 1.27 2.122 1.906 3.714 1.906.87 0 1.632-.182 2.28-.546.648-.368 1.146-.882 1.494-1.542l-1.2-.852c-.576.93-1.404 1.398-2.484 1.398-1.014 0-1.794-.414-2.34-1.242-.546-.828-.822-1.962-.822-3.402h7.08c.024-.276.036-.57.036-.882 0-1.89-.414-3.396-1.236-4.524C21.396.564 20.274 0 19.586 0zm-2.1 5.64c.072-1.116.342-1.986.81-2.61.468-.624 1.068-.936 1.8-.936.756 0 1.338.294 1.746.882.408.588.612 1.428.612 2.52v.144h-4.968zM2.4 7.2h2.208c1.392 0 2.424.264 3.096.792.672.528 1.008 1.332 1.008 2.412 0 1.092-.354 1.926-1.062 2.502-.708.576-1.716.864-3.024.864H3.6V18H2.4V7.2z"/></svg></a>
-            </div>
-          </div>
+    {% for person in director %}
+    <article class="bg-gradient-to-br from-navy-900 to-navy-800 p-8 rounded-2xl shadow-xl text-white scroll-reveal max-w-2xl mx-auto">
+      <div class="flex gap-6 items-center">
+        <div class="flex-shrink-0">
+          {% if person.photo_url and person.photo_url != "" %}
+          <img src="{{ person.photo_url }}" alt="{{ person.name }}" class="w-24 h-24 rounded-full object-cover border-4 border-brand-400/50">
+          {% else %}
+          <div class="w-24 h-24 rounded-full bg-brand-500/20 border-4 border-brand-400/30 flex items-center justify-center text-4xl font-bold text-brand-300">{{ person.name | slice: 0 }}</div>
+          {% endif %}
         </div>
-      </article>
-
-      <!-- Leader 2 -->
-      <article class="bg-white p-6 sm:p-8 rounded-2xl border border-gray-100 shadow-md card-hover">
-        <div class="flex gap-4 sm:gap-6">
-          <div class="flex-shrink-0 w-12 h-12 sm:w-16 sm:h-16 bg-navy-700 text-white rounded-full flex items-center justify-center text-xl sm:text-2xl font-bold">
-            D
-          </div>
-          <div class="text-left flex-1">
-            <h3 class="text-lg sm:text-xl font-bold text-navy-800 mb-1">Dr. Anisa Kusumawati</h3>
-            <p class="text-sm font-semibold text-yellow-500 mb-3">Co-Investigator</p>
-            <p class="text-sm text-gray-600 mb-4 leading-relaxed">Specializes in computational nanomaterials and ab initio modeling. Oversees cross-subteam collaboration and external grants.</p>
-            <div class="flex justify-start gap-3">
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></a>
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
-              <a href="#" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-1.644 0-2.924.588-3.834 1.754C14.842 3.02 14.4 4.696 14.4 6.78c0 2.07.438 3.732 1.318 4.998.886 1.27 2.122 1.906 3.714 1.906.87 0 1.632-.182 2.28-.546.648-.368 1.146-.882 1.494-1.542l-1.2-.852c-.576.93-1.404 1.398-2.484 1.398-1.014 0-1.794-.414-2.34-1.242-.546-.828-.822-1.962-.822-3.402h7.08c.024-.276.036-.57.036-.882 0-1.89-.414-3.396-1.236-4.524C21.396.564 20.274 0 19.586 0zm-2.1 5.64c.072-1.116.342-1.986.81-2.61.468-.624 1.068-.936 1.8-.936.756 0 1.338.294 1.746.882.408.588.612 1.428.612 2.52v.144h-4.968zM2.4 7.2h2.208c1.392 0 2.424.264 3.096.792.672.528 1.008 1.332 1.008 2.412 0 1.092-.354 1.926-1.062 2.502-.708.576-1.716.864-3.024.864H3.6V18H2.4V7.2z"/></svg></a>
-            </div>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
-
-<!-- RESEARCH SUBTEAMS SECTION -->
-<section class="py-20 bg-white">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-16 scroll-reveal">
-      <h2 class="text-3xl font-bold text-gray-900">Research Subteams</h2>
-    </div>
-
-    <!-- Subteam 1 -->
-    <div class="mb-20 scroll-reveal">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 bg-blue-100 text-blue-600 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900">Wastewater Solutions</h3>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold">D</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Dr. Budi Santoso</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Subteam Lead</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Expert in advanced oxidation processes and nanomaterial-assisted filtration systems.</p>
-              <a href="mailto:budi.s@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>budi.s@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold">R</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Ratna Dewi, M.Sc.</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Researcher</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Focuses on electrocoagulation and photocatalytic degradation of industrial effluents.</p>
-              <a href="mailto:ratna.d@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>ratna.d@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-brand-600 text-white rounded-full flex items-center justify-center text-xl font-bold">A</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Ahmad Fauzi</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">PhD Candidate</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Investigating biochar-TiO₂ composites for heavy metal removal from water.</p>
-              <a href="mailto:ahmad.f@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>ahmad.f@nano.id</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- Subteam 2 -->
-    <div class="mb-20 scroll-reveal">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 bg-yellow-100 text-yellow-600 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"/></svg>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900">Nanofibers via Electrospinning</h3>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xl font-bold">D</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Dr. Siti Rahayu</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Subteam Lead</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Specializes in polymer nanofiber synthesis and functional coatings for biomedical scaffolds.</p>
-              <a href="mailto:siti.r@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>siti.r@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xl font-bold">K</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Kevin Pratama, M.Sc.</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Researcher</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Developing piezoelectric nanofiber membranes for energy harvesting applications.</p>
-              <a href="mailto:kevin.p@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>kevin.p@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-yellow-500 text-white rounded-full flex items-center justify-center text-xl font-bold">I</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Indah Kusuma</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">PhD Candidate</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Studying antibacterial silver-PAN nanofibers for wound-dressing applications.</p>
-              <a href="mailto:indah.k@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>indah.k@nano.id</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- Subteam 3 -->
-    <div class="mb-20 scroll-reveal">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 bg-gray-200 text-gray-700 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900">Nano-Petro for Oil Extraction</h3>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center text-xl font-bold">R</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Dr. Rizky Hidayat</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Subteam Lead</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Research on nanoparticle-enhanced oil recovery (EOR) and reservoir simulation.</p>
-              <a href="mailto:rizky.h@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>rizky.h@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center text-xl font-bold">M</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Maya Putri, M.Sc.</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Researcher</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Characterizing silica nanofluid transport in porous sandstone media.</p>
-              <a href="mailto:maya.p@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>maya.p@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-gray-500 text-white rounded-full flex items-center justify-center text-xl font-bold">D</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Danu Wirawan</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">PhD Candidate</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Modeling wettability alteration by nano-surfactant injection in tight formations.</p>
-              <a href="mailto:danu.w@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>danu.w@nano.id</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-
-    <!-- Subteam 4 -->
-    <div class="scroll-reveal">
-      <div class="flex items-center gap-3 mb-8">
-        <div class="w-10 h-10 bg-purple-100 text-purple-600 rounded-lg flex items-center justify-center">
-          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M14 10l-2 1m0 0l-2-1m2 1v2.5M20 7l-2 1m2-1l-2-1m2 1v2.5M14 4l-2-1-2 1M4 7l2-1M4 7l2 1M4 7v2.5M12 21l-2-1m2 1l2-1m-2 1v-2.5M6 18l-2-1v-2.5M18 18l2-1v-2.5"/></svg>
-        </div>
-        <h3 class="text-2xl font-bold text-gray-900">Low-Dimensional Materials</h3>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-bold">L</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Dr. Lia Amara</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Subteam Lead</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Expert in 2D materials growth, characterization, and quantum transport phenomena.</p>
-              <a href="mailto:lia.a@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>lia.a@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-bold">F</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Fajar Nugroho, M.Sc.</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">Researcher</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Synthesizing MoS&sub2; and WSe&sub2; heterostructures for next-generation transistors.</p>
-              <a href="mailto:fajar.n@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>fajar.n@nano.id</a>
-            </div>
-          </div>
-        </article>
-        <!-- Card -->
-        <article class="bg-white p-6 rounded-xl border border-gray-100 shadow-md card-hover">
-          <div class="flex gap-4">
-            <div class="flex-shrink-0 w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center text-xl font-bold">C</div>
-            <div class="text-left flex-1">
-              <h4 class="text-base font-bold text-gray-900 mb-1">Citra Lestari</h4>
-              <p class="text-[13px] font-semibold text-brand-500 mb-2">PhD Candidate</p>
-              <p class="text-sm text-gray-600 mb-3 leading-relaxed">Investigating defect engineering in graphene for controlled electronic properties.</p>
-              <a href="mailto:citra.l@nano.id" class="text-[13px] text-gray-500 hover:text-brand-600 transition-colors flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>citra.l@nano.id</a>
-            </div>
-          </div>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FORMER MEMBERS SECTION -->
-<section class="py-20 bg-gray-50 border-t border-gray-200" id="alumni">
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-    <div class="text-center mb-12 scroll-reveal">
-      <h2 class="text-3xl font-bold text-gray-900 mb-4">Former Members & Interns</h2>
-      <p class="text-gray-500 max-w-2xl mx-auto">Celebrating the brilliant minds who have contributed to our research journey.</p>
-    </div>
-    
-    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 scroll-reveal">
-      {% assign alumni = site.data.members | where: "status", "alumni" %}
-      {% if alumni.size > 0 %}
-        {% for person in alumni %}
-        <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-center card-hover flex flex-col items-center">
-          <div class="w-16 h-16 bg-gray-200 rounded-full mb-3 overflow-hidden">
-            {% if person.photo_url and person.photo_url != "" %}
-              <img src="{{ person.photo_url }}" alt="{{ person.name }}" class="w-full h-full object-cover">
-            {% else %}
-              <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
-                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
+        <div class="flex-1">
+          <h3 class="text-2xl font-bold text-white mb-1">{{ person.name }}</h3>
+          <p class="text-brand-300 font-semibold text-sm mb-3">{{ person.position }}</p>
+          <p class="text-gray-300 text-sm mb-4">{{ person.institution }}</p>
+          <div class="flex gap-3">
+            {% if person.researchgate_url and person.researchgate_url != "" %}
+            <a href="{{ person.researchgate_url }}" target="_blank" class="text-xs font-semibold px-3 py-1 bg-white/10 hover:bg-white/20 text-white rounded-full transition flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-1.644 0-2.924.588-3.834 1.754C14.842 3.02 14.4 4.696 14.4 6.78c0 2.07.438 3.732 1.318 4.998.886 1.27 2.122 1.906 3.714 1.906.87 0 1.632-.182 2.28-.546.648-.368 1.146-.882 1.494-1.542l-1.2-.852c-.576.93-1.404 1.398-2.484 1.398-1.014 0-1.794-.414-2.34-1.242-.546-.828-.822-1.962-.822-3.402h7.08c.024-.276.036-.57.036-.882 0-1.89-.414-3.396-1.236-4.524C21.396.564 20.274 0 19.586 0z"/></svg>
+              ResearchGate
+            </a>
+            {% endif %}
+            {% if person.linkedin_url and person.linkedin_url != "" %}
+            <a href="{{ person.linkedin_url }}" target="_blank" class="text-xs font-semibold px-3 py-1 bg-white/10 hover:bg-white/20 text-white rounded-full transition flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg>
+              LinkedIn
+            </a>
             {% endif %}
           </div>
-          <h4 class="font-bold text-gray-800 text-sm">{{ person.name }}</h4>
-          <p class="text-xs text-brand-600 font-medium mb-1">{{ person.position }}</p>
-          <p class="text-xs text-gray-500 mb-2 line-clamp-1">{{ person.institution | default: "Nano Center Indonesia" }}</p>
-          <div class="mt-auto">
-            <span class="text-[10px] font-semibold px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">Class of {{ person.join_year | default: "2024" }}</span>
+        </div>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- PRINCIPAL RESEARCHERS -->
+{% assign principals = site.data.members | where: "role", "principal" | where: "status", "active" %}
+{% if principals.size > 0 %}
+<section class="py-16 bg-gray-50 border-b border-gray-100">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 scroll-reveal">
+      <h2 class="text-2xl font-bold text-gray-900">Principal Researchers</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 scroll-reveal">
+      {% for person in principals %}
+      <article class="bg-white p-6 rounded-2xl border border-gray-100 shadow-md card-hover">
+        <div class="flex gap-4 items-center">
+          <div class="flex-shrink-0">
+            {% if person.photo_url and person.photo_url != "" %}
+            <img src="{{ person.photo_url }}" alt="{{ person.name }}" class="w-16 h-16 rounded-full object-cover border-2 border-brand-100">
+            {% else %}
+            <div class="w-16 h-16 rounded-full bg-navy-700 text-white flex items-center justify-center text-2xl font-bold">{{ person.name | slice: 0 }}</div>
+            {% endif %}
+          </div>
+          <div class="flex-1 text-left">
+            <h3 class="text-lg font-bold text-navy-800 mb-0.5">{{ person.name }}</h3>
+            <p class="text-sm font-semibold text-yellow-500 mb-2">{{ person.position }}</p>
+            <p class="text-xs text-gray-500 mb-3">{{ person.institution }}</p>
+            <div class="flex gap-2">
+              {% if person.researchgate_url and person.researchgate_url != "" %}
+              <a href="{{ person.researchgate_url }}" target="_blank" class="text-gray-400 hover:text-brand-600 transition-colors" title="ResearchGate"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-1.644 0-2.924.588-3.834 1.754C14.842 3.02 14.4 4.696 14.4 6.78c0 2.07.438 3.732 1.318 4.998.886 1.27 2.122 1.906 3.714 1.906.87 0 1.632-.182 2.28-.546.648-.368 1.146-.882 1.494-1.542l-1.2-.852c-.576.93-1.404 1.398-2.484 1.398-1.014 0-1.794-.414-2.34-1.242-.546-.828-.822-1.962-.822-3.402h7.08c.024-.276.036-.57.036-.882 0-1.89-.414-3.396-1.236-4.524C21.396.564 20.274 0 19.586 0z"/></svg></a>
+              {% endif %}
+              {% if person.linkedin_url and person.linkedin_url != "" %}
+              <a href="{{ person.linkedin_url }}" target="_blank" class="text-gray-400 hover:text-brand-600 transition-colors" title="LinkedIn"><svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+              {% endif %}
+            </div>
           </div>
         </div>
-        {% endfor %}
-      {% else %}
-        <div class="col-span-full text-center text-gray-500 py-8">
-          <p>No alumni data available at the moment.</p>
-        </div>
-      {% endif %}
+      </article>
+      {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
+
+<!-- RESEARCH MEMBERS -->
+{% assign members = site.data.members | where: "role", "member" | where: "status", "active" %}
+{% if members.size > 0 %}
+<section class="py-16 bg-white border-b border-gray-100">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-10 scroll-reveal">
+      <h2 class="text-2xl font-bold text-gray-900">Research Members</h2>
+      <p class="text-gray-500 mt-2">Active researchers and contributors in our lab</p>
+    </div>
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 scroll-reveal">
+      {% for person in members %}
+      <div class="bg-white p-5 rounded-xl border border-gray-100 shadow-sm text-center card-hover flex flex-col items-center">
+        <div class="w-20 h-20 rounded-full mb-3 overflow-hidden border-2 border-brand-100 flex-shrink-0">
+          {% if person.photo_url and person.photo_url != "" %}
+          <img src="{{ person.photo_url }}" alt="{{ person.name }}" class="w-full h-full object-cover">
+          {% else %}
+          <div class="w-full h-full bg-gradient-to-br from-brand-500 to-brand-700 flex items-center justify-center text-white text-2xl font-bold">{{ person.name | slice: 0 }}</div>
+          {% endif %}
+        </div>
+        <h4 class="font-bold text-gray-800 text-sm mb-0.5">{{ person.name }}</h4>
+        <p class="text-xs text-brand-600 font-medium mb-1">{{ person.position | default: "Research Member" }}</p>
+        <p class="text-[11px] text-gray-400 line-clamp-2">{{ person.institution }}</p>
+        <div class="flex gap-2 mt-2 justify-center">
+          {% if person.researchgate_url and person.researchgate_url != "" %}
+          <a href="{{ person.researchgate_url }}" target="_blank" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19.586 0c-1.644 0-2.924.588-3.834 1.754C14.842 3.02 14.4 4.696 14.4 6.78c0 2.07.438 3.732 1.318 4.998.886 1.27 2.122 1.906 3.714 1.906.87 0 1.632-.182 2.28-.546.648-.368 1.146-.882 1.494-1.542l-1.2-.852c-.576.93-1.404 1.398-2.484 1.398-1.014 0-1.794-.414-2.34-1.242-.546-.828-.822-1.962-.822-3.402h7.08c.024-.276.036-.57.036-.882 0-1.89-.414-3.396-1.236-4.524C21.396.564 20.274 0 19.586 0z"/></svg></a>
+          {% endif %}
+          {% if person.linkedin_url and person.linkedin_url != "" %}
+          <a href="{{ person.linkedin_url }}" target="_blank" class="text-gray-400 hover:text-brand-600 transition-colors"><svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.25A1.75 1.75 0 118.3 6.5a1.78 1.78 0 01-1.8 1.75zM19 19h-3v-4.74c0-1.42-.6-1.93-1.38-1.93A1.74 1.74 0 0013 14.19a.66.66 0 000 .14V19h-3v-9h2.9v1.3a3.11 3.11 0 012.7-1.4c1.55 0 3.36.86 3.36 3.66z"/></svg></a>
+          {% endif %}
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- ALUMNI & FORMER INTERNS — Accordion per University -->
+{% assign alumni = site.data.members | where: "status", "alumni" %}
+{% if alumni.size > 0 %}
+<section class="py-16 bg-gray-50 border-t border-gray-200" id="alumni">
+  <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 scroll-reveal">
+      <h2 class="text-3xl font-bold text-gray-900 mb-3">Alumni & Former Interns</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">Celebrating the brilliant minds who have contributed to our research journey. Click each university to see the members.</p>
+    </div>
+
+    <!-- Group alumni by institution using JS -->
+    <div id="alumni-accordion" class="space-y-3 scroll-reveal"></div>
+
+    <script>
+    (function() {
+      const alumni = [
+        {% for person in alumni %}
+        {
+          name: {{ person.name | jsonify }},
+          position: {{ person.position | default: "Intern" | jsonify }},
+          institution: {{ person.institution | default: "Nano Center Indonesia" | jsonify }},
+          photo_url: {{ person.photo_url | default: "" | jsonify }},
+          internship_period: {{ person.internship_period | default: "" | jsonify }},
+          join_year: {{ person.join_year | default: "" | jsonify }}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+      ];
+
+      // Group by institution
+      const groups = {};
+      alumni.forEach(function(p) {
+        const key = p.institution || "Unknown";
+        if (!groups[key]) groups[key] = [];
+        groups[key].push(p);
+      });
+
+      const container = document.getElementById('alumni-accordion');
+      const colors = ['brand-500','blue-500','teal-500','purple-500','yellow-500','rose-500'];
+      let colorIdx = 0;
+
+      Object.keys(groups).forEach(function(university, idx) {
+        const members = groups[university];
+        const color = colors[colorIdx % colors.length];
+        colorIdx++;
+        const panelId = 'alumni-panel-' + idx;
+
+        const section = document.createElement('div');
+        section.className = 'bg-white rounded-xl border border-gray-100 shadow-sm overflow-hidden';
+
+        const membersHtml = members.map(function(m) {
+          const initials = m.name ? m.name.charAt(0).toUpperCase() : '?';
+          const photoHtml = m.photo_url
+            ? '<img src="' + m.photo_url + '" alt="' + m.name + '" class="w-12 h-12 rounded-full object-cover border-2 border-gray-100">'
+            : '<div class="w-12 h-12 rounded-full bg-gradient-to-br from-gray-300 to-gray-400 flex items-center justify-center text-white font-bold text-lg">' + initials + '</div>';
+          const periodOrYear = m.internship_period || (m.join_year ? 'Class of ' + m.join_year : '');
+          return '<div class="flex items-center gap-3 p-3 rounded-lg hover:bg-gray-50 transition-colors">'
+            + '<div class="flex-shrink-0">' + photoHtml + '</div>'
+            + '<div>'
+            + '<p class="font-semibold text-gray-800 text-sm">' + m.name + '</p>'
+            + '<p class="text-xs text-brand-600">' + m.position + '</p>'
+            + (periodOrYear ? '<p class="text-[11px] text-gray-400 mt-0.5">' + periodOrYear + '</p>' : '')
+            + '</div>'
+            + '</div>';
+        }).join('');
+
+        section.innerHTML =
+          '<button onclick="toggleAccordion(\'' + panelId + '\', this)" class="w-full flex items-center justify-between p-5 text-left hover:bg-gray-50 transition-colors">'
+          + '<div class="flex items-center gap-3">'
+          + '<div class="w-9 h-9 rounded-lg bg-brand-50 text-brand-600 flex items-center justify-center font-bold text-sm">' + (idx + 1) + '</div>'
+          + '<div>'
+          + '<p class="font-bold text-gray-800">' + university + '</p>'
+          + '<p class="text-xs text-gray-500">' + members.length + ' intern' + (members.length > 1 ? 's' : '') + '</p>'
+          + '</div>'
+          + '</div>'
+          + '<svg id="icon-' + panelId + '" class="w-5 h-5 text-gray-400 transform transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>'
+          + '</button>'
+          + '<div id="' + panelId + '" class="hidden border-t border-gray-100">'
+          + '<div class="p-4 grid grid-cols-1 sm:grid-cols-2 gap-1">' + membersHtml + '</div>'
+          + '</div>';
+
+        container.appendChild(section);
+      });
+    })();
+
+    function toggleAccordion(panelId, btn) {
+      const panel = document.getElementById(panelId);
+      const icon = document.getElementById('icon-' + panelId);
+      const isOpen = !panel.classList.contains('hidden');
+      panel.classList.toggle('hidden', isOpen);
+      icon.classList.toggle('rotate-180', !isOpen);
+    }
+    </script>
+  </div>
+</section>
+{% endif %}
 
 <!-- CTA BANNER -->
 <section class="py-16 bg-white">
