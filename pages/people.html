@@ -265,6 +265,45 @@ title: "Team | APC Research"
   </div>
 </section>
 
+<!-- FORMER MEMBERS SECTION -->
+<section class="py-20 bg-gray-50 border-t border-gray-200" id="alumni">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12 scroll-reveal">
+      <h2 class="text-3xl font-bold text-gray-900 mb-4">Former Members & Interns</h2>
+      <p class="text-gray-500 max-w-2xl mx-auto">Celebrating the brilliant minds who have contributed to our research journey.</p>
+    </div>
+    
+    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 scroll-reveal">
+      {% assign alumni = site.data.members | where: "status", "alumni" %}
+      {% if alumni.size > 0 %}
+        {% for person in alumni %}
+        <div class="bg-white p-4 rounded-xl border border-gray-100 shadow-sm text-center card-hover flex flex-col items-center">
+          <div class="w-16 h-16 bg-gray-200 rounded-full mb-3 overflow-hidden">
+            {% if person.photo_url and person.photo_url != "" %}
+              <img src="{{ person.photo_url }}" alt="{{ person.name }}" class="w-full h-full object-cover">
+            {% else %}
+              <div class="w-full h-full flex items-center justify-center text-gray-400 bg-gray-100">
+                <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              </div>
+            {% endif %}
+          </div>
+          <h4 class="font-bold text-gray-800 text-sm">{{ person.name }}</h4>
+          <p class="text-xs text-brand-600 font-medium mb-1">{{ person.position }}</p>
+          <p class="text-xs text-gray-500 mb-2 line-clamp-1">{{ person.institution | default: "Nano Center Indonesia" }}</p>
+          <div class="mt-auto">
+            <span class="text-[10px] font-semibold px-2 py-0.5 bg-gray-100 text-gray-600 rounded-full">Class of {{ person.join_year | default: "2024" }}</span>
+          </div>
+        </div>
+        {% endfor %}
+      {% else %}
+        <div class="col-span-full text-center text-gray-500 py-8">
+          <p>No alumni data available at the moment.</p>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+</section>
+
 <!-- CTA BANNER -->
 <section class="py-16 bg-white">
   <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">

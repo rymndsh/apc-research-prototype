@@ -7,6 +7,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/js-yaml/4.1.0/js-yaml.min.js"></script>
     <style>
       body { background-color: #f0f9ff; }
       .file-input-wrapper input[type="file"] {
@@ -199,22 +200,15 @@
       </div>
     </main>
 
-    <!-- Settings Token (shared) -->
-    <script src="settings-token.js"></script>
+    <!-- Settings Token is now managed by Backend Vercel Functions -->
 
     <script>
       // ============================================================
       // PROTEKSI HALAMAN — redirect ke login kalau belum login
       // ============================================================
-      if (localStorage.getItem("apc_logged_in") !== "true") {
-        window.location.href = "login.html";
-      }
-
+      // Dalam implementasi TRD v2, proteksi sesungguhnya ada di backend via cookie.
+      // JS ini hanya sebagai fallback UX jika cookie belum ter-set dengan baik.
       // ============================================================
-      // KONFIGURASI GITHUB API — dari shared settings-token.js
-      // ============================================================
-      const GITHUB_OWNER = APC_GITHUB.OWNER;
-      const GITHUB_REPO  = APC_GITHUB.REPO;
 
 
       // LOCAL DATA & RENDERING
@@ -309,106 +303,49 @@
       initImageUpload("edit-file", "edit");
 
       // ============================================================
-      // GITHUB API HELPERS
+      // DATA FETCHING HELPERS
       // ============================================================
       async function fetchArticlesFromGitHub() {
-        const token = APC_Settings.getToken();
-        if (!token) return null;
-
-        const url = `https://api.github.com/repos/${APC_GITHUB.OWNER}/${APC_GITHUB.REPO}/contents/_posts?ref=${APC_GITHUB.BRANCH}&t=${Date.now()}`;
+        // Pada TRD v2, kita mengambil data dari _data/publications.yml 
+        // secara public local fetch, bukan direct GitHub API lagi.
         try {
-          const resp = await fetch(url, {
-            headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }
-          });
-          if (resp.status === 404) return []; // No _posts folder yet
+          const resp = await fetch("/_data/publications.yml");
           if (!resp.ok) return null;
-
-          const files = await resp.json();
-          const mdFiles = files.filter(f => f.name.endsWith(".md"));
-
-          // Fetch all files concurrently
-          const articles = await Promise.all(mdFiles.map(async (file) => {
-            const fileResp = await fetch(file.url, {
-              headers: { Authorization: `token ${token}`, Accept: "application/vnd.github.v3+json" }
-            });
-            if (!fileResp.ok) return null;
-            const fileData = await fileResp.json();
-            const content = decodeURIComponent(escape(atob(fileData.content.replace(/\n/g, ""))));
-            
-            // Parse frontmatter
-            let title = "", author = "", year = "", link = "", doi = "", date = "", imageUrl = null;
-            const frontmatterMatch = content.match(/^---\n([\s\S]*?)\n---/);
-            if (frontmatterMatch) {
-              const fm = frontmatterMatch[1];
-              const getVal = (key) => { 
-                const m = fm.match(new RegExp(`^${key}:\\s*(?:"([^"]*)"|(.*))$`, "m")); 
-                return m ? (m[1] || m[2]).trim() : ""; 
-              };
-              title = getVal("title");
-              author = getVal("author");
-              year = getVal("year");
-              link = getVal("link");
-              doi = getVal("doi");
-              date = getVal("date");
-              imageUrl = getVal("imageUrl");
-              if (imageUrl === "null" || imageUrl === "") imageUrl = null;
-            }
-
-            return {
-              id: file.name, // Use fileName as ID
-              fileName: file.name,
-              sha: fileData.sha, // Required for updating/deleting
-              title, author, year, link, doi, date, imageUrl,
-              rawContent: content
-            };
-          }));
           
-          return articles.filter(a => a !== null).sort((a, b) => b.id.localeCompare(a.id)); // Sort newest first
+          const yamlText = await resp.text();
+          const doc = jsyaml.load(yamlText);
+          if (!doc) return [];
+
+          return doc.map(pub => ({
+            id: pub.title.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+            fileName: pub.title.toLowerCase().replace(/[^a-z0-9]+/g, "-") + ".yml",
+            title: pub.title,
+            author: pub.authors,
+            year: pub.year,
+            link: pub.doi || "#",
+            doi: pub.doi || "",
+            imageUrl: pub.graphical_abstract_url || null,
+            rawContent: pub.abstract || ""
+          }));
         } catch (e) {
-          console.error("Fetch GitHub error:", e);
+          console.error("Fetch local data error:", e);
           return null;
         }
       }
 
       async function pushArticleToGitHub(articleObj, commitMessage, isDelete = false) {
-        const token = await APC_Settings.requireToken();
-        if (!token) {
-          Swal.fire({ title: "Token Diperlukan", text: "Set GitHub Token di Settings terlebih dahulu.", icon: "warning", confirmButtonColor: "#0ea5e9" });
-          return false;
-        }
-
-        const apiUrl = `https://api.github.com/repos/${APC_GITHUB.OWNER}/${APC_GITHUB.REPO}/contents/_posts/${articleObj.fileName}`;
-        
-        let payload = {
-          message: commitMessage,
-          branch: APC_GITHUB.BRANCH,
-        };
-
-        if (articleObj.sha) payload.sha = articleObj.sha;
-
-        if (!isDelete) {
-          const markdownContent = `---
-layout: post
-title: "${articleObj.title}"
-author: "${articleObj.author}"
-year: ${articleObj.year}
-link: "${articleObj.link}"
-doi: "${articleObj.doi || ""}"
-date: ${articleObj.date}
-imageUrl: ${articleObj.imageUrl ? `"${articleObj.imageUrl}"` : "null"}
----
-
-Artikel ini diunggah melalui Custom Dashboard APC Research.
-Tautan referensi: [Baca Selengkapnya](${articleObj.link})
-`;
-          payload.content = btoa(unescape(encodeURIComponent(markdownContent)));
-        }
-
+        // Dalam implementasi TRD v2, kita menembak ke Vercel Function untuk security.
+        // Frontend tidak boleh tahu GITHUB_TOKEN.
         try {
-          const response = await fetch(apiUrl, {
-            method: isDelete ? "DELETE" : "PUT",
+          const payload = {
+            action: isDelete ? "delete" : "publish",
+            message: commitMessage,
+            data: articleObj
+          };
+
+          const response = await fetch("/api/publish", {
+            method: "POST",
             headers: {
-              Authorization: `token ${token}`,
               "Content-Type": "application/json",
             },
             body: JSON.stringify(payload),
@@ -416,29 +353,43 @@ Tautan referensi: [Baca Selengkapnya](${articleObj.link})
 
           if (response.ok) {
             const result = await response.json();
-            if (!isDelete) articleObj.sha = result.content.sha; // Update SHA for future edits
-            return true;
-          } else {
-            const errorData = await response.json();
-            if (response.status === 401) {
-              Swal.fire({
-                title: "Token Tidak Valid!",
-                text: "Token GitHub kamu expired atau salah. Silakan update di Settings.",
-                icon: "error",
-                confirmButtonText: "Buka Settings",
-                confirmButtonColor: "#0ea5e9",
-              }).then(() => { APC_Settings.openSettings(); });
-            } else if (response.status === 409) {
-              Swal.fire({ title: "Konflik!", text: "File sudah berubah di GitHub. Halaman akan di-reload.", icon: "warning", confirmButtonColor: "#0ea5e9" })
-                .then(() => location.reload());
+            if (result.success) {
+              return true;
             } else {
-              Swal.fire({ title: "Gagal Push!", text: `Error: ${errorData.message}`, icon: "error" });
+              Swal.fire({ title: "Gagal!", text: result.error || "Gagal menghubungi server.", icon: "error" });
+              return false;
             }
+          } else if (response.status === 401) {
+            Swal.fire({ title: "Sesi Habis", text: "Silakan login kembali.", icon: "error" }).then(() => {
+              window.location.href = "login.html";
+            });
+            return false;
+          } else {
+            Swal.fire({ title: "Error Server", text: "Terjadi kesalahan pada backend.", icon: "error" });
             return false;
           }
         } catch (error) {
-          Swal.fire({ title: "Error Jaringan", text: "Gagal menyambung ke API GitHub.", icon: "error" });
+          Swal.fire({ title: "Error Jaringan", text: "Gagal menyambung ke server.", icon: "error" });
           return false;
+        }
+      }
+
+      async function uploadImageToBlob(file) {
+        try {
+          const response = await fetch(`/api/upload?filename=${encodeURIComponent(file.name)}`, {
+            method: "POST",
+            body: file,
+          });
+          if (response.ok) {
+            const result = await response.json();
+            return result.url; // Returns the public URL of the uploaded image
+          } else {
+            console.error("Upload failed", await response.text());
+            return null;
+          }
+        } catch (e) {
+          console.error("Upload error", e);
+          return null;
         }
       }
 
@@ -459,13 +410,8 @@ Tautan referensi: [Baca Selengkapnya](${articleObj.link})
         const uniqueId = Date.now();
         const fileName = `${today}-${slug}-${uniqueId}.md`; // Cleaned filename without _posts/ prefix
 
-        const newArticle = {
-          id: fileName,
-          fileName: fileName,
-          title, author, year, link, doi, date: today,
-          imageUrl: currentAddImage,
-          sha: null
-        };
+        const fileInput = document.getElementById("add-file");
+        let uploadedImageUrl = null;
 
         Swal.fire({
           title: "Mengunggah ke GitHub...",
@@ -473,6 +419,18 @@ Tautan referensi: [Baca Selengkapnya](${articleObj.link})
           allowOutsideClick: false,
           didOpen: () => { Swal.showLoading(); },
         });
+
+        if (fileInput.files.length > 0) {
+          uploadedImageUrl = await uploadImageToBlob(fileInput.files[0]);
+        }
+
+        const newArticle = {
+          id: fileName,
+          fileName: fileName,
+          title, author, year, link, doi, date: today,
+          imageUrl: uploadedImageUrl,
+          sha: null
+        };
 
         const success = await pushArticleToGitHub(newArticle, `Admin: Publish artikel "${title}"`);
         
@@ -497,20 +455,26 @@ Tautan referensi: [Baca Selengkapnya](${articleObj.link})
         
         if (idx !== -1) {
           const oldData = { ...articlesData[idx] };
-
-          articlesData[idx].title    = document.getElementById("edit-title").value;
-          articlesData[idx].link     = document.getElementById("edit-link").value;
-          articlesData[idx].doi      = document.getElementById("edit-doi").value;
-          articlesData[idx].author   = document.getElementById("edit-author").value;
-          articlesData[idx].year     = document.getElementById("edit-year").value;
-          articlesData[idx].imageUrl = currentEditImage;
-
+          
           Swal.fire({
             title: "Menyimpan ke GitHub...",
             text: "Mohon tunggu sebentar",
             allowOutsideClick: false,
             didOpen: () => { Swal.showLoading(); },
           });
+
+          const fileInput = document.getElementById("edit-file");
+          let uploadedImageUrl = currentEditImage; // keep old if no new file
+          if (fileInput.files.length > 0) {
+            uploadedImageUrl = await uploadImageToBlob(fileInput.files[0]);
+          }
+
+          articlesData[idx].title    = document.getElementById("edit-title").value;
+          articlesData[idx].link     = document.getElementById("edit-link").value;
+          articlesData[idx].doi      = document.getElementById("edit-doi").value;
+          articlesData[idx].author   = document.getElementById("edit-author").value;
+          articlesData[idx].year     = document.getElementById("edit-year").value;
+          articlesData[idx].imageUrl = uploadedImageUrl;
 
           const success = await pushArticleToGitHub(articlesData[idx], `Admin: Update artikel "${articlesData[idx].title}"`);
 

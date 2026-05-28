@@ -52,122 +52,54 @@ title: "Publications | APC Research"
     </div>
 
     <!-- Publications List -->
-    <div class="space-y-6 scroll-reveal">
-      
-      <!-- Pub 1 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Nanobubble Technology for Advanced Wastewater Treatment</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Dr. Sarah Chen, Prof. Ahmad Rahman, Dr. Lisa Wang
+    <div class="space-y-6 scroll-reveal" id="publications-container">
+      {% for pub in site.data.publications %}
+      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow relative flex flex-col md:flex-row gap-6">
+        
+        <!-- Graphical Abstract Image Block -->
+        <div class="w-full md:w-1/3 h-48 md:h-auto flex-shrink-0 bg-gray-50 rounded-lg border border-gray-100 overflow-hidden flex items-center justify-center relative group">
+          {% if pub.graphical_abstract_url %}
+            <img src="{{ pub.graphical_abstract_url }}" alt="Graphical Abstract for {{ pub.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105">
+          {% else %}
+            <!-- Placeholder if no image -->
+            <div class="text-gray-400 text-sm flex flex-col items-center">
+              <svg class="w-8 h-8 mb-2 opacity-50" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              No Graphical Abstract
+            </div>
+          {% endif %}
         </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">Environmental Science &amp; Technology</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>May 2, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-green-50 text-green-600 text-[10px] font-bold uppercase rounded-full">Environmental</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">This study investigates the efficacy of nanobubble technology in degrading persistent organic pollutants in industrial wastewater. Results indicate a 40% increase in treatment efficiency compared to conventional aeration methods.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
-      </article>
 
-      <!-- Pub 2 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Low-Dimensional Materials for Next-Generation Semiconductors</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Prof. John Kim, Dr. Maria Santos, Dr. Wei Zhang
+        <!-- Content Block -->
+        <div class="w-full md:w-2/3 flex flex-col">
+          <h3 class="text-xl font-bold text-brand-700 mb-2">
+            <a href="{{ pub.doi | default: '#' }}" target="_blank" class="hover:underline">{{ pub.title }}</a>
+          </h3>
+          <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
+            <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+            {{ pub.authors }}
+          </div>
+          <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
+            <span class="italic font-medium">{{ pub.journal | default: "Journal" }}</span>
+            <span class="text-gray-300">&bull;</span>
+            <span>{{ pub.year }}</span>
+            {% if pub.tags %}
+              <span class="text-gray-300">&bull;</span>
+              <div class="flex gap-1">
+                {% for tag in pub.tags limit:2 %}
+                <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase rounded-full">{{ tag }}</span>
+                {% endfor %}
+              </div>
+            {% endif %}
+          </div>
+          <p class="text-sm text-gray-600 line-clamp-3 mb-4 flex-grow">{{ pub.abstract }}</p>
+          <div class="mt-auto">
+            <a href="{{ pub.doi | default: '#' }}" target="_blank" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">
+              Read Full Paper &nearr;
+            </a>
+          </div>
         </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">Nature Nanotechnology</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>April 28, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-blue-50 text-blue-600 text-[10px] font-bold uppercase rounded-full">Semiconductor</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">A comprehensive review of the synthesis and device integration of 2D transition metal dichalcogenides (TMDs) for sub-5nm transistor architectures.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
       </article>
-
-      <!-- Pub 3 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Electrospun Nanofibers for Biomedical Applications</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Dr. Emma Taylor, Dr. Ravi Patel, Prof. Ana Costa
-        </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">Advanced Materials</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>April 20, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-teal-50 text-teal-600 text-[10px] font-bold uppercase rounded-full">Biomedical</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">We report a novel electrospinning method to create biocompatible core-shell nanofibers capable of sustained drug release for targeted wound healing applications.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
-      </article>
-
-      <!-- Pub 4 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Nano-Enhanced Oil Recovery: A Sustainable Approach</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Prof. David Lee, Dr. Fatima Hassan, Dr. Chen Liu
-        </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">Energy &amp; Fuels</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>March 15, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-orange-50 text-orange-600 text-[10px] font-bold uppercase rounded-full">Energy</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">Evaluating the potential of silica nanofluids to alter reservoir wettability and improve oil extraction efficiency while minimizing environmental impact.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
-      </article>
-
-      <!-- Pub 5 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Quantum Confinement Effects in Colloidal Nanocrystals</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Dr. Michael Brown, Prof. Aisha Rahman, Dr. Sophie Martin
-        </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">ACS Nano</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>February 10, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-purple-50 text-purple-600 text-[10px] font-bold uppercase rounded-full">Materials Science</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">An experimental analysis of size-dependent optoelectronic properties in highly luminescent perovskite quantum dots synthesized via a novel hot-injection method.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
-      </article>
-
-      <!-- Pub 6 -->
-      <article class="bg-white p-6 rounded-xl border border-gray-200 shadow-sm card-hover relative">
-        <span class="absolute top-6 right-6 bg-gray-100 text-brand-600 text-[10px] font-bold px-2 py-1 rounded shadow-sm">Substack</span>
-        <h3 class="text-xl font-bold text-brand-700 mb-2 pr-20"><a href="#" class="hover:underline">Carbon Nanotubes for High-Performance Energy Storage</a></h3>
-        <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
-          <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-          Prof. James Wilson, Dr. Yuki Tanaka, Dr. Priya Sharma
-        </div>
-        <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
-          <span class="italic font-medium">Nano Energy</span>
-          <span class="text-gray-300">&bull;</span>
-          <span>January 22, 2026</span>
-          <span class="text-gray-300">&bull;</span>
-          <span class="px-2 py-0.5 bg-orange-50 text-orange-600 text-[10px] font-bold uppercase rounded-full">Energy</span>
-        </div>
-        <p class="text-sm text-gray-600 line-clamp-2 mb-4">Demonstrating ultra-high capacitance supercapacitors utilizing aligned carbon nanotube arrays grown directly on conductive substrates.</p>
-        <a href="#" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Full Paper &nearr;</a>
-      </article>
-
+      {% endfor %}
     </div>
 
     <!-- Pagination -->

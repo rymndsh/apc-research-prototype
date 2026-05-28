@@ -1,0 +1,9 @@
+{
+  "name": "apc-research-website",
+  "version": "2.0.0",
+  "description": "APC Research Prototype",
+  "dependencies": {
+    "@vercel/blob": "^0.23.1",
+    "jsonwebtoken": "^9.0.2"
+  }
+}

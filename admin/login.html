@@ -79,26 +79,41 @@
     </div>
 
     <script>
-      // Kredensial admin — ganti sesuai kebutuhan
-      const ADMIN_USERNAME = "admin";
-      const ADMIN_PASSWORD = "apc2026";
-
-      // Kalau sudah login sebelumnya, langsung masuk
-      if (localStorage.getItem("apc_logged_in") === "true") {
-        window.location.href = "dashboard.html";
-      }
-
-      document.getElementById("login-form").addEventListener("submit", function (e) {
+      document.getElementById("login-form").addEventListener("submit", async function (e) {
         e.preventDefault();
 
         const username = document.getElementById("username").value;
         const password = document.getElementById("password").value;
+        const errorMsg = document.getElementById("error-msg");
+        const submitBtn = this.querySelector('button[type="submit"]');
 
-        if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-          localStorage.setItem("apc_logged_in", "true");
-          window.location.href = "dashboard.html";
-        } else {
-          document.getElementById("error-msg").classList.remove("hidden");
+        errorMsg.classList.add("hidden");
+        submitBtn.textContent = "LOGGING IN...";
+        submitBtn.disabled = true;
+
+        try {
+          // Send request to Vercel serverless function
+          const res = await fetch("/api/auth", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ username, password })
+          });
+
+          const data = await res.json();
+
+          if (res.ok && data.success) {
+            // Success, cookie is set automatically as HttpOnly
+            window.location.href = "dashboard.html";
+          } else {
+            errorMsg.textContent = data.error || "Username atau password salah.";
+            errorMsg.classList.remove("hidden");
+          }
+        } catch (error) {
+          errorMsg.textContent = "Terjadi kesalahan koneksi ke server.";
+          errorMsg.classList.remove("hidden");
+        } finally {
+          submitBtn.textContent = "LOGIN";
+          submitBtn.disabled = false;
         }
       });
     </script>
