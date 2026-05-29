@@ -14,15 +14,16 @@
   },
   {
     "id": "principal-1",
-    "name": "Sri Hartati, M.Sc.",
+    "name": "Admin 2",
     "position": "Principal Researcher",
     "role": "principal",
     "institution": "Nano Center Indonesia",
     "status": "active",
     "join_year": 2019,
-    "photo_url": "",
+    "photo_url": null,
     "researchgate_url": "",
-    "linkedin_url": ""
+    "linkedin_url": "",
+    "internship_period": ""
   },
   {
     "id": "principal-2",
