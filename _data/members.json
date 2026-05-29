@@ -108,5 +108,16 @@
     "join_year": 2026,
     "internship_period": "2026-2027",
     "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/boom-8bXWSVmfeYzWxfICq13tzZQWK5O5N2.jpg"
+  },
+  {
+    "id": "member-1780072658982",
+    "name": "jamal",
+    "position": "magang",
+    "role": "member",
+    "institution": "universitas hongkong",
+    "status": "alumni",
+    "join_year": 2023,
+    "internship_period": "2024",
+    "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/%F0%9F%98%85-kkWqhRHiQdV0cpeqacJreNuotGHG5c.jpg"
   }
 ]
