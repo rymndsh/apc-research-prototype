@@ -1,15 +1,16 @@
 [
   {
     "id": "director-1",
-    "name": "Arramel, Ph.D.",
+    "name": "Admin",
     "position": "Director",
     "role": "director",
     "institution": "Nano Center Indonesia",
     "status": "active",
     "join_year": 2018,
-    "photo_url": "",
+    "photo_url": null,
     "researchgate_url": "https://www.researchgate.net",
-    "linkedin_url": ""
+    "linkedin_url": "",
+    "internship_period": ""
   },
   {
     "id": "principal-1",
