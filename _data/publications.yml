@@ -1,4 +1,14 @@
 - title: >-
+    Penerapan Mekanisme Autentikasi dan Perlindungan API terhadap Ancaman OWASP
+    Top 10 pada Sistem Backend Cloud
+  authors: Syaifudin
+  year: 2026
+  link: https://github.com/rymndsh
+  doi: 10.1016/j.jbi.2026.05.004
+  abstract: ''
+  graphical_abstract_url: >-
+    https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/20945836-QcwUn5cMw1jecXoyUqmSHuCXwnyJwr.jpg
+- title: >-
     Analisis Performa dan Optimasi Query Database PostgreSQL pada Lingkungan
     Cloud Berbasis FastAPI
   authors: Nehemia
