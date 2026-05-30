@@ -1,13 +1,7 @@
-- title: Pentingnya Membangun Fondasi Backend yang Kokoh di Era Digital
-  authors: Reymond
-  year: 2010
-  doi: 10.1016/j.jbi.2026.05.003
-  abstract: ''
-  graphical_abstract_url: >-
-    https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/download-UejttZtPqXWTAMSIoYaOo5m9ejehE6.jpg
 - title: adwawdawdjhbadjkhasdjknasjdajsnkdkjasdknjas
   authors: Zulfikar
   year: 2026
+  link: 10.1016/j.jbi.2026.05.009
   doi: 10.1016/j.jbi.2026.05.009
   abstract: ''
   graphical_abstract_url: >-
@@ -15,12 +9,14 @@
 - title: testing
   authors: Nehemia
   year: 2026
+  link: 10.1016/j.jbi.2026.05.0010
   doi: 10.1016/j.jbi.2026.05.0010
   abstract: ''
   graphical_abstract_url: https://dummyimage.com/600x400/0ea5e9/ffffff.png&text=download%20(2).jpg
 - title: test
   authors: jamal
   year: 2023
+  link: as
   doi: as
   abstract: ''
   graphical_abstract_url: https://dummyimage.com/600x400/0ea5e9/ffffff.png&text=boom.jpg
@@ -29,6 +25,7 @@
     pada Aplikasi Mobile Berbasis Gamifikasi
   authors: Adisty
   year: 2026
+  link: 10.1016/j.jbi.2026.05.004
   doi: 10.1016/j.jbi.2026.05.004
   abstract: >
     ---
@@ -64,6 +61,7 @@
     Database PostgreSQL
   authors: Nehemia
   year: 2026
+  link: 10.1016/j.jbi.2026.05.003
   doi: 10.1016/j.jbi.2026.05.003
   abstract: >
     ---
