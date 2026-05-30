@@ -313,7 +313,7 @@
             title: pub.title,
             author: pub.authors,
             year: pub.year,
-            link: pub.doi || "#",
+            link: pub.link || pub.doi || "#",
             doi: pub.doi || "",
             imageUrl: pub.graphical_abstract_url || null,
             rawContent: pub.abstract || ""
@@ -341,6 +341,7 @@
             title: a.title,
             authors: a.author,
             year: parseInt(a.year) || a.year,
+            link: a.link || "",
             doi: a.doi || "",
             abstract: a.rawContent || "",
             graphical_abstract_url: a.imageUrl || ""
