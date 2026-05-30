@@ -86,32 +86,27 @@
       <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
         <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
           <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
-            Total Articles
+            Total Papers
           </p>
-          <p
-            id="total-articles-metric"
-            class="text-4xl font-bold mt-2 text-slate-800"
-          >
-            14
-          </p>
+          <p id="metric-papers" class="text-4xl font-bold mt-2 text-slate-800">0</p>
         </div>
         <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
           <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
-            Total Publications
+            Total Team
           </p>
-          <p class="text-4xl font-bold mt-2 text-slate-800">8</p>
+          <p id="metric-team" class="text-4xl font-bold mt-2 text-slate-800">0</p>
         </div>
         <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
           <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
-            Team Size
+            Active Members
           </p>
-          <p class="text-4xl font-bold mt-2 text-slate-800">7</p>
+          <p id="metric-active" class="text-4xl font-bold mt-2 text-slate-800">0</p>
         </div>
         <div class="bg-white p-5 rounded-xl shadow-sm border border-sky-50">
           <p class="text-xs text-sky-600 font-bold uppercase tracking-wider">
-            Upcoming Agenda
+            Alumni
           </p>
-          <p class="text-4xl font-bold mt-2 text-slate-800">3</p>
+          <p id="metric-alumni" class="text-4xl font-bold mt-2 text-slate-800">0</p>
         </div>
       </div>
 
@@ -141,42 +136,9 @@
             <h3 class="font-semibold text-lg mb-4 text-slate-800">
               System Activity Feed
             </h3>
-            <ul class="text-sm space-y-4 text-slate-600">
-              <li class="flex flex-col gap-1">
-                <span>A. N. updated 'People' profile for J. D.</span>
-                <span class="text-slate-400 text-xs font-mono">2 hrs ago</span>
-              </li>
-              <li class="flex flex-col gap-1 border-t border-sky-50 pt-3">
-                <span>Alice published 'Publication A' draft</span>
-                <span class="text-slate-400 text-xs font-mono">4 hrs ago</span>
-              </li>
-              <li class="flex flex-col gap-1 border-t border-sky-50 pt-3">
-                <span class="text-sky-500 font-medium"
-                  >Jekyll Build Successful</span
-                >
-                <span class="text-slate-400 text-xs font-mono">5 hrs ago</span>
-              </li>
+            <ul id="activity-feed-list" class="text-sm space-y-4 text-slate-600">
+              <!-- JS injected -->
             </ul>
-          </div>
-
-          <div class="bg-white p-6 rounded-xl shadow-sm border border-sky-50">
-            <h3 class="font-semibold text-lg mb-4 text-slate-800">
-              Quick Actions
-            </h3>
-            <div class="space-y-3">
-              <button
-                onclick="window.location.href = 'paper.html'"
-                class="w-full bg-baby-blue-gradient hover:opacity-90 text-white font-bold py-3 px-4 rounded-lg transition uppercase tracking-widest text-xs shadow-sm"
-              >
-                Kelola Paper
-              </button>
-              <button
-                onclick="window.location.href = 'people.html'"
-                class="w-full bg-white hover:bg-sky-50 border border-sky-100 text-sky-700 font-semibold py-3 px-4 rounded-lg transition uppercase tracking-widest text-xs"
-              >
-                Kelola Tim
-              </button>
-            </div>
           </div>
         </div>
       </div>
@@ -185,41 +147,65 @@
     <!-- Settings Token is now managed by Backend Vercel Functions -->
 
     <script>
-      const STORAGE_KEY = "apc_articles_data";
-      const defaultArticles = [
-        { title: "Nanoparticle Synthesis", date: "2026-05-24" },
-        { title: "Nanoparticle Synthesis A", date: "2026-05-24" },
-        { title: "Nanoparticle Publication Draft", date: "2026-05-24" },
-      ];
-
-      // Mengambil data dari local storage (disimpan dari halaman paper.html)
-      let articlesData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      // Data Paper
+      const articlesData = JSON.parse(localStorage.getItem("apc_articles_data")) || [];
       const tbody = document.getElementById("recent-drafts-body");
       tbody.innerHTML = "";
 
-      // Jika belum ada paper yang diupload, tampilkan data default
-      if (!articlesData || articlesData.length === 0) {
-        articlesData = defaultArticles;
+      if (articlesData.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="3" class="py-4 text-slate-400 text-center">Belum ada data paper.</td></tr>';
+      } else {
+        articlesData.slice(0, 5).forEach((article) => {
+          const tr = document.createElement("tr");
+          tr.className = "border-b border-sky-50 hover:bg-sky-50 transition";
+          tr.innerHTML = `
+                  <td class="py-4 font-medium text-slate-800 line-clamp-1 max-w-[200px] truncate" title="${article.title}">${article.title}</td>
+                  <td class="py-4 text-sky-500 font-mono text-xs">Publication</td>
+                  <td class="py-4 text-slate-400 font-mono text-xs text-right">${article.date || article.year || '-'}</td>
+              `;
+          tbody.appendChild(tr);
+        });
       }
 
-      // Tampilkan maksimal 5 paper terbaru di tabel dashboard
-      articlesData.slice(0, 5).forEach((article) => {
-        const tr = document.createElement("tr");
-        tr.className = "border-b border-sky-50 hover:bg-sky-50 transition";
-        tr.innerHTML = `
-                <td class="py-4 font-medium text-slate-800 line-clamp-1 max-w-[200px] truncate">${article.title}</td>
-                <td class="py-4 text-sky-500 font-mono text-xs">Publication</td>
-                <td class="py-4 text-slate-400 font-mono text-xs text-right">${article.date}</td>
-            `;
-        tbody.appendChild(tr);
-      });
+      // Data People
+      const membersData = JSON.parse(localStorage.getItem("apc_members_data")) || [];
+      
+      // Update Metrics
+      document.getElementById("metric-papers").innerText = articlesData.length;
+      document.getElementById("metric-team").innerText = membersData.length;
+      document.getElementById("metric-active").innerText = membersData.filter(m => m.status !== 'alumni').length;
+      document.getElementById("metric-alumni").innerText = membersData.filter(m => m.status === 'alumni').length;
 
-      // Hitung total paper (Data awal 14 + jumlah paper yang diupload)
-      const totalBase = 14;
-      const uploadedCount =
-        JSON.parse(localStorage.getItem(STORAGE_KEY))?.length || 0;
-      document.getElementById("total-articles-metric").innerText =
-        totalBase + uploadedCount;
+      // System Activity Feed
+      const logs = JSON.parse(localStorage.getItem("apc_activity_log")) || [];
+      const logList = document.getElementById("activity-feed-list");
+      logList.innerHTML = "";
+      
+      function timeSince(date) {
+        const seconds = Math.floor((new Date() - new Date(date)) / 1000);
+        let interval = seconds / 31536000;
+        if (interval > 1) return Math.floor(interval) + " yrs ago";
+        interval = seconds / 2592000;
+        if (interval > 1) return Math.floor(interval) + " mos ago";
+        interval = seconds / 86400;
+        if (interval > 1) return Math.floor(interval) + " days ago";
+        interval = seconds / 3600;
+        if (interval > 1) return Math.floor(interval) + " hrs ago";
+        interval = seconds / 60;
+        if (interval > 1) return Math.floor(interval) + " mins ago";
+        return Math.floor(seconds) + " sec ago";
+      }
+
+      if (logs.length === 0) {
+         logList.innerHTML = '<li class="text-slate-400">Belum ada aktivitas.</li>';
+      } else {
+         logs.forEach((log, i) => {
+           const li = document.createElement("li");
+           li.className = "flex flex-col gap-1 " + (i > 0 ? "border-t border-sky-50 pt-3" : "");
+           li.innerHTML = `<span>${log.msg}</span><span class="text-slate-400 text-xs font-mono">${timeSince(log.time)}</span>`;
+           logList.appendChild(li);
+         });
+      }
 
       // ==========================================
       // FUNGSI LOGOUT YANG AMAN UNTUK GITHUB PAGES

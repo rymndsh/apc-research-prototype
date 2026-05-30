@@ -207,6 +207,13 @@
 
       function saveArticles() { localStorage.setItem(STORAGE_KEY, JSON.stringify(articlesData)); }
 
+      function logActivity(msg) {
+        let logs = JSON.parse(localStorage.getItem('apc_activity_log') || '[]');
+        logs.unshift({ msg, time: new Date().toISOString() });
+        if (logs.length > 5) logs.length = 5;
+        localStorage.setItem('apc_activity_log', JSON.stringify(logs));
+      }
+
       function renderArticles() {
         const tbody = document.getElementById("articles-table-body");
         tbody.innerHTML = "";
@@ -450,6 +457,7 @@
         if (success) {
           articlesData.unshift(newArticle);
           saveArticles();
+          logActivity("Admin menambahkan paper baru: " + title);
           renderArticles();
           showView("list-view");
           document.getElementById("add-form").reset();
@@ -493,6 +501,7 @@
 
           if (success) {
             saveArticles();
+            logActivity("Admin mengedit paper: " + articlesData[idx].title);
             renderArticles();
             showView("list-view");
             Swal.fire({ title: "Diperbarui!", text: "Perubahan paper berhasil disimpan.", icon: "success", timer: 1500, showConfirmButton: false });
@@ -538,6 +547,7 @@
           if (success) {
             articlesData.splice(idx, 1);
             saveArticles();
+            logActivity("Admin menghapus paper: " + title);
             renderArticles();
             showView("list-view");
             Swal.fire({ title: "Terhapus!", text: "Paper telah berhasil dihapus.", icon: "success", timer: 1500, showConfirmButton: false });
