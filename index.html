@@ -40,7 +40,7 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {% for post in site.data.publications limit:3 %}
       <article class="card-hover group scroll-reveal bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden relative">
-        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-600 text-xs font-bold px-2 py-1 rounded shadow-sm z-10">Artikel</span>
+        <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-600 text-xs font-bold px-2 py-1 rounded shadow-sm z-10">Paper</span>
         <div class="h-48 bg-gray-200 relative overflow-hidden">
            {% if post.graphical_abstract_url and post.graphical_abstract_url != "null" and post.graphical_abstract_url != "" %}
            <img src="{{ post.graphical_abstract_url }}" alt="{{ post.title }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"/>
@@ -68,7 +68,7 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
         </div>
       </article>
       {% else %}
-      <p class="text-center text-gray-500 col-span-3 py-8">Belum ada artikel terbaru.</p>
+      <p class="text-center text-gray-500 col-span-3 py-8">Belum ada paper terbaru.</p>
       {% endfor %}
     </div>
     <div class="text-center scroll-reveal">
@@ -397,3 +397,4 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
     </div>
   </div>
 </section>
+

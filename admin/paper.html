@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Manajemen Artikel - APC Research Admin</title>
+    <title>Manajemen Paper - APC Research Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -32,11 +32,11 @@
         </a>
       </div>
       <nav class="flex-1 mt-6">
-        <a href="artikel.html" class="flex items-center px-8 py-3 bg-sky-50 border-r-4 border-sky-500 text-sky-600 transition-colors">
+        <a href="paper.html" class="flex items-center px-8 py-3 bg-sky-50 border-r-4 border-sky-500 text-sky-600 transition-colors">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
             <path stroke-linecap="round" stroke-linejoin="round" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
           </svg>
-          <span class="font-medium text-sm">Artikel</span>
+          <span class="font-medium text-sm">Paper</span>
         </a>
         <a href="people.html" class="flex items-center px-8 py-3 text-slate-500 hover:bg-sky-50 hover:text-sky-600 transition-colors cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -64,7 +64,7 @@
         <!-- LIST VIEW -->
         <div id="list-view" class="block w-full h-full flex flex-col relative">
           <h2 class="text-3xl font-medium mb-8 flex items-center text-slate-800">
-            <i class="fa-regular fa-file-lines text-sky-500 mr-3"></i> Daftar Artikel
+            <i class="fa-regular fa-file-lines text-sky-500 mr-3"></i> Daftar Paper
           </h2>
 
           <!-- Loading indicator -->
@@ -79,7 +79,7 @@
             <table class="w-full text-left text-sm text-slate-700 border-collapse">
               <thead>
                 <tr class="text-slate-500 border-b border-sky-100 bg-sky-50/50 text-xs font-semibold uppercase">
-                  <th class="p-4">Judul Artikel</th>
+                  <th class="p-4">Judul Paper</th>
                   <th class="p-4">Penulis</th>
                   <th class="p-4">Tahun</th>
                   <th class="p-4 text-right">Aksi</th>
@@ -90,7 +90,7 @@
           </div>
           <div class="absolute bottom-0 right-0 p-2 bg-white rounded-full">
             <button onclick="showView('add-view')" class="bg-sky-100 hover:bg-sky-200 text-sky-700 font-semibold py-2.5 px-6 rounded-full flex items-center gap-2 transition-colors text-sm shadow-sm">
-              <i class="fa-solid fa-plus text-sky-700"></i> Upload Artikel Baru
+              <i class="fa-solid fa-plus text-sky-700"></i> Upload Paper Baru
             </button>
           </div>
         </div>
@@ -98,35 +98,35 @@
         <!-- ADD VIEW -->
         <div id="add-view" class="hidden w-full h-full flex flex-col relative">
           <h2 class="text-3xl font-medium mb-8 flex items-center text-slate-800">
-            <i class="fa-solid fa-plus text-sky-500 mr-3"></i> Upload Artikel Baru
+            <i class="fa-solid fa-plus text-sky-500 mr-3"></i> Upload Paper Baru
           </h2>
           <form id="add-form" class="space-y-6 max-w-4xl pb-16">
             <div class="border border-sky-200 rounded-xl p-4 bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Judul Artikel</label>
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Judul Paper</label>
               <input type="text" id="add-title" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Link Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Link Paper</label>
                 <input type="url" id="add-link" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Paper</label>
                 <input type="text" id="add-doi" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Pembuat Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Pembuat Paper</label>
                 <input type="text" id="add-author" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Paper</label>
                 <input type="number" id="add-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
             </div>
             <div class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Gambar Artikel</label>
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Gambar Paper</label>
               <input type="file" id="add-file" accept="image/*" />
               <div class="border border-dashed border-sky-300 rounded-lg h-32 flex items-center justify-center bg-sky-50/50 hover:bg-sky-100 transition-colors text-sky-400 overflow-hidden">
                 <img id="add-preview" src="#" alt="Preview" class="hidden h-full w-full object-cover" />
@@ -138,7 +138,7 @@
                 <i class="fa-solid fa-xmark"></i> BATAL
               </button>
               <button type="submit" class="flex items-center gap-2 bg-sky-500 hover:bg-sky-600 text-white text-sm font-bold py-2.5 px-6 rounded-full transition-colors shadow-sm">
-                <i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN ARTIKEL
+                <i class="fa-solid fa-cloud-arrow-up"></i> SIMPAN PAPER
               </button>
             </div>
           </form>
@@ -147,36 +147,36 @@
         <!-- EDIT VIEW -->
         <div id="edit-view" class="hidden w-full h-full flex flex-col relative">
           <h2 class="text-3xl font-medium mb-8 flex items-center text-slate-800">
-            <i class="fa-solid fa-marker text-sky-500 mr-3"></i> Edit Artikel
+            <i class="fa-solid fa-marker text-sky-500 mr-3"></i> Edit Paper
           </h2>
           <form id="edit-form" class="space-y-6 max-w-4xl pb-16">
             <input type="hidden" id="edit-id" />
             <div class="border border-sky-200 rounded-xl p-4 bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Judul Artikel</label>
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Judul Paper</label>
               <input type="text" id="edit-title" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Link Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Link Paper</label>
                 <input type="url" id="edit-link" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Paper</label>
                 <input type="text" id="edit-doi" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Pembuat Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Pembuat Paper</label>
                 <input type="text" id="edit-author" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
-                <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Artikel</label>
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Paper</label>
                 <input type="number" id="edit-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
             </div>
             <div class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Ganti Gambar Artikel</label>
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Ganti Gambar Paper</label>
               <input type="file" id="edit-file" accept="image/*" />
               <div class="border border-dashed border-sky-300 rounded-lg h-32 flex items-center justify-center bg-sky-50/50 hover:bg-sky-100 transition-colors text-sky-400 overflow-hidden">
                 <img id="edit-preview" src="#" alt="Preview" class="hidden h-full w-full object-cover" />
@@ -185,7 +185,7 @@
             </div>
             <div class="absolute bottom-0 right-0 flex gap-3 p-2 bg-white rounded-full w-full justify-end">
               <button type="button" id="delete-article-btn" class="flex items-center gap-2 bg-red-100 hover:bg-red-200 text-red-700 text-sm font-bold py-2.5 px-6 rounded-full transition-colors mr-auto">
-                <i class="fa-solid fa-trash-can"></i> HAPUS ARTIKEL
+                <i class="fa-solid fa-trash-can"></i> HAPUS PAPER
               </button>
               <button type="button" onclick="showView('list-view')" class="flex items-center gap-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-sm font-bold py-2.5 px-6 rounded-full transition-colors">
                 <i class="fa-solid fa-xmark"></i> BATAL
@@ -212,7 +212,7 @@
         tbody.innerHTML = "";
         
         if (articlesData.length === 0) {
-          tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400">Belum ada artikel. Klik "Upload Artikel Baru" untuk menambahkan.</td></tr>';
+          tbody.innerHTML = '<tr><td colspan="4" class="p-8 text-center text-slate-400">Belum ada paper. Klik "Upload Paper Baru" untuk menambahkan.</td></tr>';
           return;
         }
 
@@ -407,7 +407,7 @@
       }
 
       // ============================================================
-      // SUBMIT — Upload Artikel Baru ke GitHub
+      // SUBMIT — Upload Paper Baru ke GitHub
       // ============================================================
       document.getElementById("add-form").addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -427,7 +427,7 @@
         let uploadedImageUrl = null;
 
         Swal.fire({
-          title: "Mengunggah artikel...",
+          title: "Mengunggah paper...",
           text: "Mohon tunggu sebentar",
           allowOutsideClick: false,
           didOpen: () => { Swal.showLoading(); },
@@ -445,7 +445,7 @@
           sha: null
         };
 
-        const success = await pushArticleToGitHub(newArticle, `Admin: Publish artikel "${title}"`);
+        const success = await pushArticleToGitHub(newArticle, `Admin: Publish paper "${title}"`);
         
         if (success) {
           articlesData.unshift(newArticle);
@@ -454,12 +454,12 @@
           showView("list-view");
           document.getElementById("add-form").reset();
           resetImage("add");
-          Swal.fire({ title: "Berhasil Publish!", text: "Artikel berhasil dipublikasikan.", icon: "success", confirmButtonColor: "#0ea5e9" });
+          Swal.fire({ title: "Berhasil Publish!", text: "Paper berhasil dipublikasikan.", icon: "success", confirmButtonColor: "#0ea5e9" });
         }
       });
 
       // ============================================================
-      // EDIT ARTIKEL
+      // EDIT PAPER
       // ============================================================
       document.getElementById("edit-form").addEventListener("submit", async function (e) {
         e.preventDefault();
@@ -489,13 +489,13 @@
           articlesData[idx].year     = document.getElementById("edit-year").value;
           articlesData[idx].imageUrl = uploadedImageUrl;
 
-          const success = await pushArticleToGitHub(articlesData[idx], `Admin: Update artikel "${articlesData[idx].title}"`);
+          const success = await pushArticleToGitHub(articlesData[idx], `Admin: Update paper "${articlesData[idx].title}"`);
 
           if (success) {
             saveArticles();
             renderArticles();
             showView("list-view");
-            Swal.fire({ title: "Diperbarui!", text: "Perubahan artikel berhasil disimpan.", icon: "success", timer: 1500, showConfirmButton: false });
+            Swal.fire({ title: "Diperbarui!", text: "Perubahan paper berhasil disimpan.", icon: "success", timer: 1500, showConfirmButton: false });
           } else {
             articlesData[idx] = oldData; // Rollback
           }
@@ -503,7 +503,7 @@
       });
 
       // ============================================================
-      // HAPUS ARTIKEL
+      // HAPUS PAPER
       // ============================================================
       document.getElementById("delete-article-btn").addEventListener("click", async function () {
         const id    = document.getElementById("edit-id").value;
@@ -513,8 +513,8 @@
         if (idx === -1) return;
 
         const result = await Swal.fire({
-          title: "Hapus Artikel?",
-          text: `Yakin ingin menghapus artikel "${title}"? Perubahan akan langsung disimpan secara permanen.`,
+          title: "Hapus Paper?",
+          text: `Yakin ingin menghapus paper "${title}"? Perubahan akan langsung disimpan secara permanen.`,
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#ef4444",
@@ -526,21 +526,21 @@
 
         if (result.isConfirmed) {
           Swal.fire({
-            title: "Menghapus artikel...",
+            title: "Menghapus paper...",
             text: "Mohon tunggu sebentar",
             allowOutsideClick: false,
             didOpen: () => { Swal.showLoading(); },
           });
 
           const articleToDelete = articlesData[idx];
-          const success = await pushArticleToGitHub(articleToDelete, `Admin: Hapus artikel "${title}"`, true);
+          const success = await pushArticleToGitHub(articleToDelete, `Admin: Hapus paper "${title}"`, true);
 
           if (success) {
             articlesData.splice(idx, 1);
             saveArticles();
             renderArticles();
             showView("list-view");
-            Swal.fire({ title: "Terhapus!", text: "Artikel telah berhasil dihapus.", icon: "success", timer: 1500, showConfirmButton: false });
+            Swal.fire({ title: "Terhapus!", text: "Paper telah berhasil dihapus.", icon: "success", timer: 1500, showConfirmButton: false });
           }
         }
       });
@@ -578,3 +578,4 @@
     </script>
   </body>
 </html>
+
