@@ -126,7 +126,7 @@
           <div id="loading-indicator" class="flex items-center justify-center py-12">
             <div class="flex flex-col items-center gap-3">
               <i class="fa-solid fa-spinner fa-spin text-3xl text-sky-400"></i>
-              <span class="text-sm text-slate-400">Memuat data dari GitHub...</span>
+              <span class="text-sm text-slate-400">Memuat data dari server...</span>
             </div>
           </div>
 
@@ -622,7 +622,7 @@
         let uploadedImageUrl = "";
 
         Swal.fire({
-          title: "Menyimpan ke GitHub...",
+          title: "Menyimpan anggota...",
           text: "Mohon tunggu sebentar",
           allowOutsideClick: false,
           didOpen: function () { Swal.showLoading(); },
@@ -656,7 +656,7 @@
           this.reset();
           resetImagePreview("add");
           showView("list-view");
-          Swal.fire({ title: "Berhasil!", text: 'Member "' + name + '" berhasil ditambahkan dan di-push ke GitHub.', icon: "success", confirmButtonColor: "#0ea5e9" });
+          Swal.fire({ title: "Berhasil!", text: 'Anggota "' + name + '" berhasil ditambahkan.', icon: "success", confirmButtonColor: "#0ea5e9" });
         } else {
           // Revert local change if push failed
           membersData = membersData.filter(function (m) { return m.id !== newId; });
@@ -679,7 +679,7 @@
         const oldData = { ...membersData[index] };
 
         Swal.fire({
-          title: "Menyimpan ke GitHub...",
+          title: "Menyimpan perubahan...",
           text: "Mohon tunggu sebentar",
           allowOutsideClick: false,
           didOpen: function () { Swal.showLoading(); },
@@ -708,7 +708,7 @@
 
         if (success) {
           showView("list-view");
-          Swal.fire({ title: "Diperbarui!", text: "Data member berhasil diubah dan di-push ke GitHub.", icon: "success", timer: 1500, showConfirmButton: false });
+          Swal.fire({ title: "Diperbarui!", text: "Data anggota berhasil diubah.", icon: "success", timer: 1500, showConfirmButton: false });
         } else {
           // Rollback
           membersData[index] = oldData;
@@ -726,7 +726,7 @@
 
         const result = await Swal.fire({
           title: "Hapus Member?",
-          text: 'Apakah Anda yakin ingin menghapus "' + memberName + '"? Perubahan akan langsung di-push ke GitHub.',
+          text: 'Apakah Anda yakin ingin menghapus "' + memberName + '"? Perubahan akan permanen.',
           icon: "warning",
           showCancelButton: true,
           confirmButtonColor: "#ef4444",
@@ -746,7 +746,7 @@
         showView("list-view");
 
         Swal.fire({
-          title: "Menghapus dari GitHub...",
+          title: "Menghapus anggota...",
           text: "Mohon tunggu sebentar",
           allowOutsideClick: false,
           didOpen: function () { Swal.showLoading(); },
@@ -755,7 +755,7 @@
         const success = await pushMembersToGitHub(membersData, 'Admin: Hapus member "' + memberName + '"');
 
         if (success) {
-          Swal.fire({ title: "Terhapus!", text: 'Member "' + memberName + '" berhasil dihapus dari GitHub.', icon: "success", timer: 1500, showConfirmButton: false });
+          Swal.fire({ title: "Terhapus!", text: 'Anggota "' + memberName + '" berhasil dihapus.', icon: "success", timer: 1500, showConfirmButton: false });
         } else {
           // Rollback
           membersData.splice(deletedIndex, 0, deletedMember);
