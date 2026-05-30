@@ -1,13 +1,13 @@
 [
   {
     "id": "director-1",
-    "name": "Admin",
+    "name": "Adminoke",
     "position": "Director",
     "role": "director",
     "institution": "Nano Center Indonesia",
     "status": "active",
     "join_year": 2018,
-    "photo_url": null,
+    "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/99df05b4-d55b-4277-9c89-9da815ff34ca-Jqpg5P6dnPPQguSxV5vfqs5qfTwUpD.jpg",
     "researchgate_url": "https://www.researchgate.net",
     "linkedin_url": "",
     "internship_period": ""
