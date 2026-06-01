@@ -197,25 +197,20 @@ title: "Team | APC Research"
 
     <div id="alumni-accordion" class="space-y-3 scroll-reveal"></div>
 
+    <script id="alumni-data" type="application/json">
+      {{ alumni | jsonify }}
+    </script>
     <script>
     (function() {
-      const alumni = [
-        {% for person in alumni %}
-        {
-          name: {{ person.name | jsonify }},
-          position: {{ person.position | default: "Intern" | jsonify }},
-          institution: {{ person.institution | default: "Nano Center Indonesia" | jsonify }},
-          photo_url: {{ person.photo_url | default: "" | jsonify }},
-          internship_period: {{ person.internship_period | default: "" | jsonify }},
-          join_year: {{ person.join_year | default: "" | jsonify }}
-        }{% unless forloop.last %},{% endunless %}
-        {% endfor %}
-      ];
+      const alumniData = JSON.parse(document.getElementById('alumni-data').textContent);
 
       const groups = {};
-      alumni.forEach(function(p) {
-        const key = p.institution || "Unknown";
+      alumniData.forEach(function(p) {
+        const key = p.institution || "Nano Center Indonesia";
         if (!groups[key]) groups[key] = [];
+        
+        // Ensure defaults are applied similar to previous liquid defaults
+        p.position = p.position || "Intern";
         groups[key].push(p);
       });
 
