@@ -19,20 +19,6 @@
     "internship_period": ""
   },
   {
-    "id": "member-wastewater-2",
-    "name": "Aulia Sofia",
-    "position": "Research Student",
-    "role": "member",
-    "subteam": "wastewater",
-    "institution": "Nano Center Indonesia",
-    "status": "active",
-    "join_year": 2023,
-    "bio": "Investigating nanomaterial-assisted filtration and adsorption for industrial wastewater treatment.",
-    "photo_url": "",
-    "researchgate_url": "",
-    "linkedin_url": ""
-  },
-  {
     "id": "member-wastewater-3",
     "name": "Yoyon Yuningsih",
     "position": "Research Student",
