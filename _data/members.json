@@ -3,12 +3,12 @@
     "id": "director-1",
     "name": "Arramel, Ph.D.",
     "position": "Head of APC Research Group",
-    "role": "head_of_apc",
+    "role": "principal",
     "institution": "Nano Center Indonesia",
     "status": "active",
     "join_year": 2022,
     "bio": "Physicist and principal investigator at Nano Center Indonesia. Leads the APC Research Group since its inauguration in May 2022, with research spanning low-dimensional materials, nanofibers, and environmental nanotechnology.",
-    "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/99df05b4-d55b-4277-9c89-9da815ff34ca-Jqpg5P6dnPPQguSxV5vfqs5qfTwUpD.jpg",
+    "photo_url": "https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/Picture2-xqzze1mVKM5IgQL2FFTeOCbYTYraKO.jpg",
     "email": "",
     "researchgate_url": "https://www.researchgate.net",
     "linkedin_url": "https://www.linkedin.com",
@@ -16,7 +16,8 @@
     "scopus_url": "",
     "orcid_url": "",
     "google_scholar_url": "",
-    "internship_period": ""
+    "internship_period": "",
+    "research_focus": ""
   },
   {
     "id": "alumni-bsi-1",
