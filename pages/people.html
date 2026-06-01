@@ -15,14 +15,14 @@ title: "Team | APC Research"
 </section>
 
 <!-- LEADERSHIP SECTION -->
-{% assign director = site.data.members | where: "role", "director" %}
-{% if director.size > 0 %}
+{% assign head_of_apc = site.data.members | where: "role", "head_of_apc" %}
+{% if head_of_apc.size > 0 %}
 <section class="py-16 bg-gray-50 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="text-center mb-10 scroll-reveal">
-      <h2 class="text-2xl font-bold text-gray-900">Leadership</h2>
+      <h2 class="text-2xl font-bold text-gray-900">Head of APC</h2>
     </div>
-    {% for person in director %}
+    {% for person in head_of_apc %}
     <article class="bg-white rounded-2xl border border-gray-100 shadow-md p-6 flex flex-col sm:flex-row items-start gap-5 scroll-reveal">
       <!-- Avatar -->
       <div class="flex-shrink-0">
