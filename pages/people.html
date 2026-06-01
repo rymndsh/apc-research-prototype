@@ -77,7 +77,7 @@ title: "Team | APC Research"
     </div>
 
     <!-- SUBTEAM 1: WASTEWATER SOLUTIONS -->
-    {% assign wastewater_members = active_members | where: "subteam", "wastewater" %}
+    {% assign wastewater_members = active_members | where: "research_focus", "Wastewater Solutions" %}
     {% if wastewater_members.size > 0 %}
     <div class="mb-12 scroll-reveal">
       <!-- Subteam Header -->
@@ -112,7 +112,7 @@ title: "Team | APC Research"
     {% endif %}
 
     <!-- SUBTEAM 2: NANOFIBER & ELECTROSPINNING -->
-    {% assign nanofiber_members = active_members | where: "subteam", "nanofiber" %}
+    {% assign nanofiber_members = active_members | where: "research_focus", "Nanofibers" %}
     {% if nanofiber_members.size > 0 %}
     <div class="mb-12 scroll-reveal">
       <!-- Subteam Header -->
@@ -147,7 +147,7 @@ title: "Team | APC Research"
     {% endif %}
 
     <!-- SUBTEAM 3: LOW-DIMENSIONAL MATERIALS -->
-    {% assign lowdim_members = active_members | where: "subteam", "lowdim" %}
+    {% assign lowdim_members = active_members | where: "research_focus", "Low-dimensional Materials" %}
     {% if lowdim_members.size > 0 %}
     <div class="mb-4 scroll-reveal">
       <!-- Subteam Header -->
