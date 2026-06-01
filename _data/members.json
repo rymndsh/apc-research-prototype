@@ -28,9 +28,15 @@
     "status": "active",
     "join_year": 2022,
     "bio": "Lead researcher on nano-silica gel synthesis and wastewater remediation. First author on the group's 2025 Next Research publication.",
-    "photo_url": "",
+    "photo_url": null,
     "researchgate_url": "",
-    "linkedin_url": ""
+    "linkedin_url": "",
+    "research_focus": "Wastewater Solutions",
+    "internship_period": "",
+    "web_profile_url": "",
+    "scopus_url": "",
+    "orcid_url": "",
+    "google_scholar_url": ""
   },
   {
     "id": "member-wastewater-2",
