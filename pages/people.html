@@ -68,7 +68,7 @@ title: "Team | APC Research"
 {% endif %}
 
 <!-- RESEARCH SUBTEAMS SECTION -->
-{% assign active_members = site.data.members | where: "status", "active" | where: "role", "member" %}
+{% assign active_members = site.data.members | where: "status", "active" | where_exp: "item", "item.role != 'head_of_apc'" %}
 {% if active_members.size > 0 %}
 <section class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
