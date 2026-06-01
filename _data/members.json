@@ -194,9 +194,15 @@
     "status": "active",
     "join_year": 2022,
     "bio": "Leads synthesis and characterization of low-dimensional organic-inorganic hybrid materials for optoelectronic applications.",
-    "photo_url": "",
+    "photo_url": null,
     "researchgate_url": "",
-    "linkedin_url": ""
+    "linkedin_url": "",
+    "research_focus": "Low-dimensional Materials",
+    "internship_period": "",
+    "web_profile_url": "",
+    "scopus_url": "",
+    "orcid_url": "",
+    "google_scholar_url": ""
   },
   {
     "id": "member-lowdim-2",
