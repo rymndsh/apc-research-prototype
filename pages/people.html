@@ -100,7 +100,7 @@ title: "Team | APC Research"
           <div class="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">{{ person.name | slice: 0 | upcase }}</div>
           <div class="flex-1 min-w-0">
             <p class="font-bold text-gray-900 text-sm">{{ person.name }}</p>
-            <p class="text-blue-600 text-xs font-medium mb-1.5">{{ person.position | default: "Research Member" }}</p>
+            <p class="text-blue-600 text-xs font-medium mb-1.5">{% if person.role == 'principal' %}Principal Researcher{% else %}Research Member{% endif %}</p>
             {% if person.bio and person.bio != "" %}
             <p class="text-gray-500 text-xs leading-relaxed">{{ person.bio }}</p>
             {% endif %}
@@ -135,7 +135,7 @@ title: "Team | APC Research"
           <div class="w-10 h-10 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-sm flex-shrink-0">{{ person.name | slice: 0 | upcase }}</div>
           <div class="flex-1 min-w-0">
             <p class="font-bold text-gray-900 text-sm">{{ person.name }}</p>
-            <p class="text-amber-600 text-xs font-medium mb-1.5">{{ person.position | default: "Research Member" }}</p>
+            <p class="text-amber-600 text-xs font-medium mb-1.5">{% if person.role == 'principal' %}Principal Researcher{% else %}Research Member{% endif %}</p>
             {% if person.bio and person.bio != "" %}
             <p class="text-gray-500 text-xs leading-relaxed">{{ person.bio }}</p>
             {% endif %}
@@ -170,7 +170,7 @@ title: "Team | APC Research"
           <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-sm flex-shrink-0" style="background-color:#1e3a5f;">{{ person.name | slice: 0 | upcase }}</div>
           <div class="flex-1 min-w-0">
             <p class="font-bold text-gray-900 text-sm">{{ person.name }}</p>
-            <p class="text-xs font-medium mb-1.5" style="color:#1e3a5f;">{{ person.position | default: "Research Member" }}</p>
+            <p class="text-xs font-medium mb-1.5" style="color:#1e3a5f;">{% if person.role == 'principal' %}Principal Researcher{% else %}Research Member{% endif %}</p>
             {% if person.bio and person.bio != "" %}
             <p class="text-gray-500 text-xs leading-relaxed">{{ person.bio }}</p>
             {% endif %}
