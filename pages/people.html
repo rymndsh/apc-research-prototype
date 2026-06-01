@@ -15,7 +15,7 @@ title: "Team | APC Research"
 </section>
 
 <!-- LEADERSHIP SECTION -->
-{% assign head_of_apc = site.data.members | where: "role", "head_of_apc" %}
+{% assign head_of_apc = site.data.members | where_exp: "item", "item.name contains 'Arramel'" %}
 {% if head_of_apc.size > 0 %}
 <section class="py-16 bg-gray-50 border-b border-gray-200">
   <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,7 +74,7 @@ title: "Team | APC Research"
 {% endif %}
 
 <!-- RESEARCH SUBTEAMS SECTION -->
-{% assign active_members = site.data.members | where: "status", "active" | where_exp: "item", "item.role != 'head_of_apc'" %}
+{% assign active_members = site.data.members | where: "status", "active" | where_exp: "item", "item.name != 'Arramel, Ph.D.'" %}
 {% if active_members.size > 0 %}
 <section class="py-16 bg-white">
   <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
