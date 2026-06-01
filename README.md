@@ -14,13 +14,6 @@
 
 ---
 
-## 🔐 Admin Access
-
-To access the admin dashboard, please use the following credentials:
-- **Username:** `admin`
-- **Password:** `apc2026`
-
----
 
 ## 🔬 About
 
