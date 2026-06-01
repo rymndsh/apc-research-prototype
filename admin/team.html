@@ -157,10 +157,7 @@
                 class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
               />
             </div>
-            <div class="border border-sky-200 rounded-xl p-4 bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Posisi / Jabatan</label>
-              <input type="text" id="add-position" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
-            </div>
+
             <div class="grid grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Role</label>
@@ -305,10 +302,7 @@
                 class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30"
               />
             </div>
-            <div class="border border-sky-200 rounded-xl p-4 bg-white">
-              <label class="block text-sm font-semibold text-sky-700 mb-2">Posisi / Jabatan</label>
-              <input type="text" id="edit-position" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
-            </div>
+
             <div class="grid grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Role</label>
@@ -578,11 +572,13 @@
           let statusBadge = member.status === 'alumni' ? '<span class="text-[10px] px-2 py-0.5 bg-gray-100 text-gray-500 rounded-full mb-2">Alumni</span>' : '<span class="text-[10px] px-2 py-0.5 bg-sky-100 text-sky-600 rounded-full mb-2">Active</span>';
           let focusBadge = member.research_focus ? '<span class="text-[10px] px-2 py-0.5 bg-indigo-100 text-indigo-600 rounded-full mb-2 ml-1">' + member.research_focus + '</span>' : '';
 
+          let roleDisplay = member.role === 'director' ? 'Director' : (member.role === 'principal' ? 'Principal Researcher' : 'Research Member');
+
           card.innerHTML =
             '<div class="flex justify-center gap-1 flex-wrap">' + statusBadge + focusBadge + '</div>' +
             imageElement +
             '<h3 class="font-bold text-slate-800 text-sm line-clamp-2">' + member.name + "</h3>" +
-            '<p class="text-xs text-sky-600 mt-1">' + (member.position || 'Member') + "</p>" +
+            '<p class="text-xs text-sky-600 mt-1">' + roleDisplay + "</p>" +
             '<p class="text-[10px] text-slate-500 mt-1 line-clamp-1">' + member.institution + "</p>";
 
           grid.appendChild(card);
@@ -609,7 +605,6 @@
           document.getElementById("edit-id").value = member.id;
           document.getElementById("edit-name").value = member.name;
           document.getElementById("edit-institution").value = member.institution;
-          document.getElementById("edit-position").value = member.position || "";
           document.getElementById("edit-role").value = member.role || "member";
           document.getElementById("edit-status").value = member.status || "active";
           document.getElementById("edit-focus").value = member.research_focus || "";
@@ -685,7 +680,6 @@
 
         const name = document.getElementById("add-name").value.trim();
         const institution = document.getElementById("add-institution").value.trim();
-        const position = document.getElementById("add-position").value.trim();
         const role = document.getElementById("add-role").value;
         const status = document.getElementById("add-status").value;
         const research_focus = document.getElementById("add-focus").value;
@@ -716,7 +710,6 @@
         const newMember = {
           id: newId,
           name: name,
-          position: position,
           role: role,
           institution: institution,
           status: status,
@@ -782,7 +775,6 @@
 
         membersData[index].name = document.getElementById("edit-name").value.trim();
         membersData[index].institution = document.getElementById("edit-institution").value.trim();
-        membersData[index].position = document.getElementById("edit-position").value.trim();
         membersData[index].role = document.getElementById("edit-role").value;
         membersData[index].status = document.getElementById("edit-status").value;
         membersData[index].research_focus = document.getElementById("edit-focus").value;
