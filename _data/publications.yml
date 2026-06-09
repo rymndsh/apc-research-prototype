@@ -1,13 +1,4 @@
-<<<<<<< HEAD
-- title: Nano-Silica Gel Synthesis for Advanced Wastewater Remediation
-  authors: '--'
-  year: 2026
-  link: https://apcresearch.substack.com/
-  doi: as
-  abstract: ''
-  graphical_abstract_url: >-
-    https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/tobias%20on%20TikTok-tui29B6iK9CmJOdOyDPcyIfdHygqRq.jpg
-=======
+
 - title: "Nano-Silica Gel Synthesis for Advanced Wastewater Remediation"
   authors: "APC Research Team — Wastewater Solutions"
   year: "To be confirmed"
@@ -58,4 +49,4 @@
   conclusion: "Quasi-2D hybrid perovskites with systematically varied organic spacers demonstrate precise control over quantum confinement and optical emission across the visible spectrum. The PEA-based n=2 compound exhibits an optimal balance of high PLQY and ambient stability. These findings provide a clear structure-property roadmap for the rational design of next-generation perovskite optoelectronic devices."
   references: "1. Tsai, H. et al. (2016). High-efficiency two-dimensional Ruddlesden–Popper perovskite solar cells. *Nature*, 536, 312–316.\n2. Mao, L. et al. (2019). Structural diversity in white-light-emitting hybrid lead bromide perovskites. *J. Am. Chem. Soc.*, 141(3), 1171–1175."
   graphical_abstract_url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60"
->>>>>>> dda29c7 (Feat: Add paper detail modal with full academic layout + extended admin form)
+
