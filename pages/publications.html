@@ -77,7 +77,14 @@ title: "Publications | APC Research"
           </h3>
           <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
             <svg class="w-4 h-4 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-            {{ pub.authors }}
+            <span>
+              {% assign authors_array = pub.authors | split: "," %}
+              {% if authors_array.size > 3 %}
+                {{ authors_array[0] | strip }}, {{ authors_array[1] | strip }}, {{ authors_array[2] | strip }} <em>et al.</em>
+              {% else %}
+                {{ pub.authors | default: "APC Research Team" }}
+              {% endif %}
+            </span>
           </div>
           <div class="flex flex-wrap items-center gap-3 text-sm text-gray-500 mb-4">
             <span class="italic font-medium">{{ pub.journal | default: "Journal" }}</span>
