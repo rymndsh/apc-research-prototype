@@ -1,52 +1,294 @@
+- title: >-
+    Bottom ash waste conversion into nano-silica gel for high-performance
+    adsorption of dye-pigment
+  authors: APC Research Team — Wastewater Solutions
+  year: '2025'
+  link: >-
+    https://www.sciencedirect.com/science/article/abs/pii/S3050475925002088?via%3Dihub
+  doi: 10.1021/acs.est.6b01234
+  journal: Environmental Nanotechnology
+  subteam: Wastewater Solutions
+  tags:
+    - Wastewater
+    - Nanomaterials
+  keywords:
+    - nanobubbles
+    - wastewater treatment
+    - advanced oxidation
+    - hydroxyl radicals
+    - pollutant degradation
+  abstract: >-
+    Synthesizing nano-silica gel with multilayer adsorption capabilities for
+    environmental remediation. Our work achieves a 15.37% yield with 80.9% SiO₂
+    content and a surface area of 124.000 m²/g.
+  introduction: >-
+    Industrial wastewater contamination represents one of the most pressing
+    environmental challenges of the 21st century. Conventional biological and
+    chemical treatment processes often fail to achieve removal of recalcitrant
+    organic pollutants, heavy metals, and emerging micro-contaminants such as
+    pharmaceuticals and endocrine disruptors.
 
-- title: "Nano-Silica Gel Synthesis for Advanced Wastewater Remediation"
-  authors: "APC Research Team — Wastewater Solutions"
-  year: "To be confirmed"
-  journal: "Environmental Nanotechnology"
-  link: "#"
-  doi: "10.1021/acs.est.6b01234"
-  tags: ["Wastewater", "Nanomaterials"]
-  subteam: "Wastewater Solutions"
-  keywords: ["nanobubbles", "wastewater treatment", "advanced oxidation", "hydroxyl radicals", "pollutant degradation"]
-  abstract: "Synthesizing nano-silica gel with multilayer adsorption capabilities for environmental remediation. Our work achieves a 15.37% yield with 80.9% SiO₂ content and a surface area of 124.000 m²/g."
-  introduction: "Industrial wastewater contamination represents one of the most pressing environmental challenges of the 21st century. Conventional biological and chemical treatment processes often fail to achieve removal of recalcitrant organic pollutants, heavy metals, and emerging micro-contaminants such as pharmaceuticals and endocrine disruptors.\n\nNanobubbles — gas-filled cavities with diameters below 200 nm — have garnered significant scientific interest due to their exceptional physicochemical properties. Unlike macrobubbles, nanobubbles exhibit long-term stability in aqueous media, high internal pressure, and a negatively charged surface that prevents coalescence. Upon collapse, they generate reactive oxygen species (ROS), particularly hydroxyl radicals (•OH), making them powerful oxidizing agents for organic pollutant degradation.\n\nThis study presents a comprehensive investigation of ultrafine nanobubble technology applied to industrial wastewater treatment, examining both the mechanistic pathways of pollutant degradation and the scalability of the system for real-world deployment."
-  methods: "2.1 Nanobubble Generation\nNanobubbles were generated using a high-shear hydrodynamic cavitation system (NanoBubble Pro-X, Nano Center Indonesia). Oxygen and ozone gas mixtures (O₂:O₃ = 4:1 v/v) were introduced at a flow rate of 2.5 L/min under a working pressure of 0.4 MPa. Bubble size distributions were characterized by nanoparticle tracking analysis (NTA, Malvern NanoSight NS300), confirming mean diameters of 142 ± 23 nm.\n\n2.2 Wastewater Characterization\nSynthetic wastewater samples were prepared to simulate textile effluent, containing methylene blue (50 mg/L), reactive red 198 (30 mg/L), and chemical oxygen demand (COD) of 850 mg/L. Real effluent samples were collected from three industrial facilities in Tangerang Selatan.\n\n2.3 Treatment Protocol\nBatch experiments were conducted in 10-L stainless steel reactors at ambient temperature (25 ± 2°C) and pH 7.0 ± 0.2. Samples were withdrawn at 15-minute intervals and analyzed for COD (Standard Method 5220-D), total organic carbon (TOC, Shimadzu TOC-L), and color removal by UV-Vis spectrophotometry."
-  results: "3.1 Nanobubble Characterization\nNTA measurements confirmed stable nanobubble populations persisting for 72 hours without significant size drift (Δd < 8%). Zeta potential values of −28.4 ± 3.1 mV indicated sufficient electrostatic repulsion to prevent coalescence, consistent with prior literature on oxygen nanobubbles in neutral aqueous media.\n\n3.2 Pollutant Degradation Performance\nThe nanobubble treatment system achieved 95.2 ± 1.8% COD removal within 90 minutes of treatment. Methylene blue decolorization followed pseudo-first-order kinetics (k = 0.042 min⁻¹, R² = 0.997). The system outperformed conventional ozonation by 34% in COD reduction at equivalent energy input.\n\n3.3 Real Effluent Validation\nField trials at three industrial sites demonstrated consistent performance, with COD reductions ranging from 91.4% to 96.8%. Energy consumption averaged 0.38 kWh/m³, representing a 42% reduction compared to conventional ozonation systems of equivalent capacity."
-  conclusion: "This study demonstrates that nanobubble-mediated oxidation represents a highly effective, energy-efficient approach to industrial wastewater remediation. The system achieves superior pollutant removal through synergistic mechanisms of physical adsorption and radical-based oxidation. Scale-up trials confirm process robustness across diverse real-world effluent matrices. Future work will focus on integrating nanobubble treatment with membrane filtration for zero-liquid-discharge applications."
-  references: "1. Wang, L. et al. (2023). Nanobubble technology for advanced wastewater treatment: A review. *Water Research*, 228, 119387.\n2. Takahashi, M. (2005). ζ potential of microbubbles in aqueous solutions. *J. Phys. Chem. B*, 109(46), 21858–21864.\n3. Agarwal, A. et al. (2011). Principle and applications of microbubble and nanobubble technology for water treatment. *Chemosphere*, 84(9), 1175–1180."
-  graphical_abstract_url: "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&auto=format&fit=crop&q=60"
 
-- title: "ChNPs-PS Composite Nanofibers via Electrospinning"
-  authors: "APC Research Team — Nanofibers"
-  year: "To be confirmed"
-  journal: "Journal of Materials Chemistry A"
-  link: "#"
-  doi: "10.1039/d3ta01234a"
-  tags: ["Nanofibers", "Electrospinning"]
-  subteam: "Nanofibers"
-  keywords: ["electrospinning", "nanofibers", "chitosan", "polystyrene", "composite", "filtration"]
-  abstract: "Fabricating functional nanofibers using high-voltage electrospinning. Our ChNPs-PS composite nanofibers show tunable optoelectronic properties with excellent mechanical stability for biomedical and air filtration applications."
-  introduction: "Electrospun nanofibers have emerged as a transformative class of materials owing to their exceptionally high surface-area-to-volume ratios, tunable morphology, and straightforward fabrication via the electrospinning process. The ability to engineer fiber diameter, porosity, and surface chemistry at the nanoscale opens unprecedented opportunities in filtration, wound healing, drug delivery, and energy harvesting.\n\nChitosan nanoparticles (ChNPs) offer intrinsic antimicrobial and biocompatible properties while polystyrene (PS) provides excellent mechanical robustness and processability. The combination of these two materials in a composite nanofiber architecture is hypothesized to yield synergistic functional properties surpassing those of either constituent."
-  methods: "3.1 Preparation of Chitosan Nanoparticles\nChNPs were synthesized via ionic gelation using tripolyphosphate (TPP) as crosslinker. Chitosan (MW = 200 kDa, DD = 85%) was dissolved in 1% acetic acid and added dropwise to 0.1% TPP solution under magnetic stirring. The resulting suspension was centrifuged and the pellet redispersed in deionized water.\n\n3.2 Electrospinning Process\nPS was dissolved in DMF:THF (7:3 v/v) at 15 wt%. ChNPs were dispersed into the PS solution at weight ratios of 5%, 10%, and 15% relative to PS mass. Solutions were loaded into a 10 mL syringe and electrospun at 15–20 kV applied voltage, 15 cm working distance, and 0.8 mL/h flow rate onto aluminum foil collectors."
-  results: "4.1 Fiber Morphology\nSEM analysis confirmed bead-free fiber formation across all compositions. Mean fiber diameters ranged from 312 ± 45 nm (pure PS) to 489 ± 67 nm (15% ChNPs loading), indicating a systematic increase in diameter with ChNP content attributable to increased solution viscosity.\n\n4.2 Mechanical Properties\nTensile testing revealed a 28% improvement in Young's modulus at 10% ChNPs loading (1.84 GPa vs. 1.44 GPa for pure PS) without significant reduction in elongation at break. Higher ChNP loadings (15%) led to slight embrittlement.\n\n4.3 Antimicrobial Efficacy\nZone of inhibition assays against S. aureus and E. coli demonstrated statistically significant antimicrobial activity for ChNP-containing membranes (p < 0.01), with inhibition zones of 14.2 ± 1.3 mm and 11.8 ± 1.1 mm, respectively."
-  conclusion: "Composite ChNPs-PS nanofibers fabricated via electrospinning demonstrate a successful integration of antimicrobial functionality with mechanical robustness. The 10% ChNPs loading emerges as optimal, balancing fiber morphology, tensile properties, and biological activity. These membranes hold strong potential for next-generation air filtration and wound dressing applications."
-  references: "1. Doshi, J. & Reneker, D.H. (1995). Electrospinning process and applications of electrospun fibers. *J. Electrostatics*, 35(2–3), 151–160.\n2. Bhattarai, N. et al. (2006). Electrospun chitosan-based nanofibers and their cellular compatibility. *Biomaterials*, 26(31), 6176–6184."
-  graphical_abstract_url: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&auto=format&fit=crop&q=60"
+    Nanobubbles — gas-filled cavities with diameters below 200 nm — have
+    garnered significant scientific interest due to their exceptional
+    physicochemical properties. Unlike macrobubbles, nanobubbles exhibit
+    long-term stability in aqueous media, high internal pressure, and a
+    negatively charged surface that prevents coalescence. Upon collapse, they
+    generate reactive oxygen species (ROS), particularly hydroxyl radicals
+    (•OH), making them powerful oxidizing agents for organic pollutant
+    degradation.
 
-- title: "Quasi-2D Organic–Inorganic Hybrid Perovskites for Optoelectronics"
-  authors: "APC Research Team — Low-Dimensional Materials"
-  year: "To be confirmed"
-  journal: "Advanced Materials"
-  link: "#"
-  doi: "10.1002/adma.202300456"
-  tags: ["Perovskites", "Low-Dimensional"]
-  subteam: "Low-Dimensional Materials"
-  keywords: ["perovskites", "2D materials", "optoelectronics", "PMA", "PEA", "quantum confinement"]
-  abstract: "Engineering quasi-2D organic-inorganic hybrid perovskites (PMA, PEA, PPA) for advanced optoelectronics — probing crystal structure, quantum confinement, and luminescence tunability across visible spectrum."
-  introduction: "Quasi-two-dimensional (quasi-2D) Ruddlesden-Popper perovskites represent an exciting evolution beyond their three-dimensional counterparts, offering enhanced moisture stability and quantum confinement effects that enable precise bandgap engineering. These layered structures adopt the general formula (RNH₃)₂(A)ₙ₋₁BₙX₃ₙ₊₁, where n controls the number of inorganic octahedral layers and fundamentally determines electronic and optical properties.\n\nBy varying the organic spacer cation (R), researchers can systematically tune exciton binding energies, carrier mobilities, and emission wavelengths across the visible spectrum. This structural tunability positions quasi-2D perovskites as highly promising candidates for light-emitting diodes (LEDs), photodetectors, and next-generation solar cells."
-  methods: "2.1 Material Synthesis\nThree organic spacer cations were investigated: phenylmethylammonium (PMA), phenylethylammonium (PEA), and phenylpropylammonium (PPA). Quasi-2D perovskites were synthesized via hot-injection in dimethylformamide, with n values of 1, 2, 3, and 4 targeted by stoichiometric adjustment of spacer:MA:Pb ratios.\n\n2.2 Characterization\nCrystal structures were determined by single-crystal X-ray diffraction (SCXRD). Optical absorption was measured by UV-Vis spectroscopy, and photoluminescence (PL) spectra were acquired under 365 nm excitation. Time-resolved PL (TRPL) lifetimes were measured using a time-correlated single-photon counting system."
-  results: "3.1 Structural Analysis\nSCXRD confirmed successful formation of layered perovskite structures for all three spacer cations. The degree of octahedral distortion increased in the order PPA > PEA > PMA, correlating with the increasing chain length of the organic spacer.\n\n3.2 Optical Properties\nA clear blue-shift of the absorption onset was observed with decreasing n, consistent with enhanced quantum confinement. PL emission peaks ranged from 510 nm (n=1, PMA) to 535 nm (n=4, PPA), with PLQY values reaching 72% for n=2 PEA compounds, the highest among the series.\n\n3.3 Stability\nFilms retained >85% of initial PL intensity after 500 hours under ambient conditions (45% RH, 25°C), significantly outperforming 3D MAPbI₃ reference samples which degraded completely within 100 hours."
-  conclusion: "Quasi-2D hybrid perovskites with systematically varied organic spacers demonstrate precise control over quantum confinement and optical emission across the visible spectrum. The PEA-based n=2 compound exhibits an optimal balance of high PLQY and ambient stability. These findings provide a clear structure-property roadmap for the rational design of next-generation perovskite optoelectronic devices."
-  references: "1. Tsai, H. et al. (2016). High-efficiency two-dimensional Ruddlesden–Popper perovskite solar cells. *Nature*, 536, 312–316.\n2. Mao, L. et al. (2019). Structural diversity in white-light-emitting hybrid lead bromide perovskites. *J. Am. Chem. Soc.*, 141(3), 1171–1175."
-  graphical_abstract_url: "https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60"
 
+    This study presents a comprehensive investigation of ultrafine nanobubble
+    technology applied to industrial wastewater treatment, examining both the
+    mechanistic pathways of pollutant degradation and the scalability of the
+    system for real-world deployment.
+  methods: >-
+    2.1 Nanobubble Generation
+
+    Nanobubbles were generated using a high-shear hydrodynamic cavitation system
+    (NanoBubble Pro-X, Nano Center Indonesia). Oxygen and ozone gas mixtures
+    (O₂:O₃ = 4:1 v/v) were introduced at a flow rate of 2.5 L/min under a
+    working pressure of 0.4 MPa. Bubble size distributions were characterized by
+    nanoparticle tracking analysis (NTA, Malvern NanoSight NS300), confirming
+    mean diameters of 142 ± 23 nm.
+
+
+    2.2 Wastewater Characterization
+
+    Synthetic wastewater samples were prepared to simulate textile effluent,
+    containing methylene blue (50 mg/L), reactive red 198 (30 mg/L), and
+    chemical oxygen demand (COD) of 850 mg/L. Real effluent samples were
+    collected from three industrial facilities in Tangerang Selatan.
+
+
+    2.3 Treatment Protocol
+
+    Batch experiments were conducted in 10-L stainless steel reactors at ambient
+    temperature (25 ± 2°C) and pH 7.0 ± 0.2. Samples were withdrawn at 15-minute
+    intervals and analyzed for COD (Standard Method 5220-D), total organic
+    carbon (TOC, Shimadzu TOC-L), and color removal by UV-Vis spectrophotometry.
+  results: >-
+    3.1 Nanobubble Characterization
+
+    NTA measurements confirmed stable nanobubble populations persisting for 72
+    hours without significant size drift (Δd < 8%). Zeta potential values of
+    −28.4 ± 3.1 mV indicated sufficient electrostatic repulsion to prevent
+    coalescence, consistent with prior literature on oxygen nanobubbles in
+    neutral aqueous media.
+
+
+    3.2 Pollutant Degradation Performance
+
+    The nanobubble treatment system achieved 95.2 ± 1.8% COD removal within 90
+    minutes of treatment. Methylene blue decolorization followed
+    pseudo-first-order kinetics (k = 0.042 min⁻¹, R² = 0.997). The system
+    outperformed conventional ozonation by 34% in COD reduction at equivalent
+    energy input.
+
+
+    3.3 Real Effluent Validation
+
+    Field trials at three industrial sites demonstrated consistent performance,
+    with COD reductions ranging from 91.4% to 96.8%. Energy consumption averaged
+    0.38 kWh/m³, representing a 42% reduction compared to conventional ozonation
+    systems of equivalent capacity.
+  conclusion: >-
+    This study demonstrates that nanobubble-mediated oxidation represents a
+    highly effective, energy-efficient approach to industrial wastewater
+    remediation. The system achieves superior pollutant removal through
+    synergistic mechanisms of physical adsorption and radical-based oxidation.
+    Scale-up trials confirm process robustness across diverse real-world
+    effluent matrices. Future work will focus on integrating nanobubble
+    treatment with membrane filtration for zero-liquid-discharge applications.
+  references: >-
+    1. Wang, L. et al. (2023). Nanobubble technology for advanced wastewater
+    treatment: A review. *Water Research*, 228, 119387.
+
+    2. Takahashi, M. (2005). ζ potential of microbubbles in aqueous solutions.
+    *J. Phys. Chem. B*, 109(46), 21858–21864.
+
+    3. Agarwal, A. et al. (2011). Principle and applications of microbubble and
+    nanobubble technology for water treatment. *Chemosphere*, 84(9), 1175–1180.
+  graphical_abstract_url: >-
+    https://fzvta12ip1i5mwyx.public.blob.vercel-storage.com/Picturewastewater-0Osh9SfCC6cZrR6z9X89NBlynoM3t7.jpg
+- title: ChNPs-PS Composite Nanofibers via Electrospinning
+  authors: APC Research Team — Nanofibers
+  year: To be confirmed
+  link: '#'
+  doi: 10.1039/d3ta01234a
+  journal: Journal of Materials Chemistry A
+  subteam: Nanofibers
+  tags:
+    - Nanofibers
+    - Electrospinning
+  keywords:
+    - electrospinning
+    - nanofibers
+    - chitosan
+    - polystyrene
+    - composite
+    - filtration
+  abstract: >-
+    Fabricating functional nanofibers using high-voltage electrospinning. Our
+    ChNPs-PS composite nanofibers show tunable optoelectronic properties with
+    excellent mechanical stability for biomedical and air filtration
+    applications.
+  introduction: >-
+    Electrospun nanofibers have emerged as a transformative class of materials
+    owing to their exceptionally high surface-area-to-volume ratios, tunable
+    morphology, and straightforward fabrication via the electrospinning process.
+    The ability to engineer fiber diameter, porosity, and surface chemistry at
+    the nanoscale opens unprecedented opportunities in filtration, wound
+    healing, drug delivery, and energy harvesting.
+
+
+    Chitosan nanoparticles (ChNPs) offer intrinsic antimicrobial and
+    biocompatible properties while polystyrene (PS) provides excellent
+    mechanical robustness and processability. The combination of these two
+    materials in a composite nanofiber architecture is hypothesized to yield
+    synergistic functional properties surpassing those of either constituent.
+  methods: >-
+    3.1 Preparation of Chitosan Nanoparticles
+
+    ChNPs were synthesized via ionic gelation using tripolyphosphate (TPP) as
+    crosslinker. Chitosan (MW = 200 kDa, DD = 85%) was dissolved in 1% acetic
+    acid and added dropwise to 0.1% TPP solution under magnetic stirring. The
+    resulting suspension was centrifuged and the pellet redispersed in deionized
+    water.
+
+
+    3.2 Electrospinning Process
+
+    PS was dissolved in DMF:THF (7:3 v/v) at 15 wt%. ChNPs were dispersed into
+    the PS solution at weight ratios of 5%, 10%, and 15% relative to PS mass.
+    Solutions were loaded into a 10 mL syringe and electrospun at 15–20 kV
+    applied voltage, 15 cm working distance, and 0.8 mL/h flow rate onto
+    aluminum foil collectors.
+  results: >-
+    4.1 Fiber Morphology
+
+    SEM analysis confirmed bead-free fiber formation across all compositions.
+    Mean fiber diameters ranged from 312 ± 45 nm (pure PS) to 489 ± 67 nm (15%
+    ChNPs loading), indicating a systematic increase in diameter with ChNP
+    content attributable to increased solution viscosity.
+
+
+    4.2 Mechanical Properties
+
+    Tensile testing revealed a 28% improvement in Young's modulus at 10% ChNPs
+    loading (1.84 GPa vs. 1.44 GPa for pure PS) without significant reduction in
+    elongation at break. Higher ChNP loadings (15%) led to slight embrittlement.
+
+
+    4.3 Antimicrobial Efficacy
+
+    Zone of inhibition assays against S. aureus and E. coli demonstrated
+    statistically significant antimicrobial activity for ChNP-containing
+    membranes (p < 0.01), with inhibition zones of 14.2 ± 1.3 mm and 11.8 ± 1.1
+    mm, respectively.
+  conclusion: >-
+    Composite ChNPs-PS nanofibers fabricated via electrospinning demonstrate a
+    successful integration of antimicrobial functionality with mechanical
+    robustness. The 10% ChNPs loading emerges as optimal, balancing fiber
+    morphology, tensile properties, and biological activity. These membranes
+    hold strong potential for next-generation air filtration and wound dressing
+    applications.
+  references: >-
+    1. Doshi, J. & Reneker, D.H. (1995). Electrospinning process and
+    applications of electrospun fibers. *J. Electrostatics*, 35(2–3), 151–160.
+
+    2. Bhattarai, N. et al. (2006). Electrospun chitosan-based nanofibers and
+    their cellular compatibility. *Biomaterials*, 26(31), 6176–6184.
+  graphical_abstract_url: >-
+    https://images.unsplash.com/photo-1576086213369-97a306d36557?w=800&auto=format&fit=crop&q=60
+- title: Quasi-2D Organic–Inorganic Hybrid Perovskites for Optoelectronics
+  authors: APC Research Team — Low-Dimensional Materials
+  year: To be confirmed
+  link: '#'
+  doi: 10.1002/adma.202300456
+  journal: Advanced Materials
+  subteam: Low-Dimensional Materials
+  tags:
+    - Perovskites
+    - Low-Dimensional
+  keywords:
+    - perovskites
+    - 2D materials
+    - optoelectronics
+    - PMA
+    - PEA
+    - quantum confinement
+  abstract: >-
+    Engineering quasi-2D organic-inorganic hybrid perovskites (PMA, PEA, PPA)
+    for advanced optoelectronics — probing crystal structure, quantum
+    confinement, and luminescence tunability across visible spectrum.
+  introduction: >-
+    Quasi-two-dimensional (quasi-2D) Ruddlesden-Popper perovskites represent an
+    exciting evolution beyond their three-dimensional counterparts, offering
+    enhanced moisture stability and quantum confinement effects that enable
+    precise bandgap engineering. These layered structures adopt the general
+    formula (RNH₃)₂(A)ₙ₋₁BₙX₃ₙ₊₁, where n controls the number of inorganic
+    octahedral layers and fundamentally determines electronic and optical
+    properties.
+
+
+    By varying the organic spacer cation (R), researchers can systematically
+    tune exciton binding energies, carrier mobilities, and emission wavelengths
+    across the visible spectrum. This structural tunability positions quasi-2D
+    perovskites as highly promising candidates for light-emitting diodes (LEDs),
+    photodetectors, and next-generation solar cells.
+  methods: >-
+    2.1 Material Synthesis
+
+    Three organic spacer cations were investigated: phenylmethylammonium (PMA),
+    phenylethylammonium (PEA), and phenylpropylammonium (PPA). Quasi-2D
+    perovskites were synthesized via hot-injection in dimethylformamide, with n
+    values of 1, 2, 3, and 4 targeted by stoichiometric adjustment of
+    spacer:MA:Pb ratios.
+
+
+    2.2 Characterization
+
+    Crystal structures were determined by single-crystal X-ray diffraction
+    (SCXRD). Optical absorption was measured by UV-Vis spectroscopy, and
+    photoluminescence (PL) spectra were acquired under 365 nm excitation.
+    Time-resolved PL (TRPL) lifetimes were measured using a time-correlated
+    single-photon counting system.
+  results: >-
+    3.1 Structural Analysis
+
+    SCXRD confirmed successful formation of layered perovskite structures for
+    all three spacer cations. The degree of octahedral distortion increased in
+    the order PPA > PEA > PMA, correlating with the increasing chain length of
+    the organic spacer.
+
+
+    3.2 Optical Properties
+
+    A clear blue-shift of the absorption onset was observed with decreasing n,
+    consistent with enhanced quantum confinement. PL emission peaks ranged from
+    510 nm (n=1, PMA) to 535 nm (n=4, PPA), with PLQY values reaching 72% for
+    n=2 PEA compounds, the highest among the series.
+
+
+    3.3 Stability
+
+    Films retained >85% of initial PL intensity after 500 hours under ambient
+    conditions (45% RH, 25°C), significantly outperforming 3D MAPbI₃ reference
+    samples which degraded completely within 100 hours.
+  conclusion: >-
+    Quasi-2D hybrid perovskites with systematically varied organic spacers
+    demonstrate precise control over quantum confinement and optical emission
+    across the visible spectrum. The PEA-based n=2 compound exhibits an optimal
+    balance of high PLQY and ambient stability. These findings provide a clear
+    structure-property roadmap for the rational design of next-generation
+    perovskite optoelectronic devices.
+  references: >-
+    1. Tsai, H. et al. (2016). High-efficiency two-dimensional Ruddlesden–Popper
+    perovskite solar cells. *Nature*, 536, 312–316.
+
+    2. Mao, L. et al. (2019). Structural diversity in white-light-emitting
+    hybrid lead bromide perovskites. *J. Am. Chem. Soc.*, 141(3), 1171–1175.
+  graphical_abstract_url: >-
+    https://images.unsplash.com/photo-1635070041078-e363dbe005cb?w=800&auto=format&fit=crop&q=60
