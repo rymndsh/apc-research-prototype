@@ -117,7 +117,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Link Paper</label>
-                <input type="url" id="add-link" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+                <input type="url" id="add-link" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Paper</label>
@@ -131,8 +131,57 @@
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Paper</label>
-                <input type="number" id="add-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+                <input type="text" id="add-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Jurnal</label>
+                <input type="text" id="add-journal" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" placeholder="cth: Environmental Nanotechnology" />
+              </div>
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Subteam</label>
+                <select id="add-subteam" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30">
+                  <option value="">-- Pilih Subteam --</option>
+                  <option value="Wastewater Solutions">Wastewater Solutions</option>
+                  <option value="Nanofibers">Nanofibers</option>
+                  <option value="Low-Dimensional Materials">Low-Dimensional Materials</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Tags <span class="text-xs font-normal text-gray-400">(pisah dengan koma)</span></label>
+                <input type="text" id="add-tags" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" placeholder="cth: Wastewater, Nanomaterials" />
+              </div>
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Keywords <span class="text-xs font-normal text-gray-400">(pisah dengan koma)</span></label>
+                <input type="text" id="add-keywords" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" placeholder="cth: nanobubbles, wastewater" />
+              </div>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Abstract</label>
+              <textarea id="add-abstract" rows="3" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-none"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Introduction <span class="text-xs font-normal text-gray-400">(baris baru = paragraf baru)</span></label>
+              <textarea id="add-introduction" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Materials and Methods</label>
+              <textarea id="add-methods" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Results and Discussion</label>
+              <textarea id="add-results" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Conclusion</label>
+              <textarea id="add-conclusion" rows="3" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-none"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">References <span class="text-xs font-normal text-gray-400">(satu referensi per baris)</span></label>
+              <textarea id="add-references" rows="4" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
             </div>
             <div class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white">
               <label class="block text-sm font-semibold text-sky-700 mb-2">Gambar Paper</label>
@@ -167,7 +216,7 @@
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Link Paper</label>
-                <input type="url" id="edit-link" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+                <input type="url" id="edit-link" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">DOI Paper</label>
@@ -181,8 +230,57 @@
               </div>
               <div class="border border-sky-200 rounded-xl p-4 bg-white">
                 <label class="block text-sm font-semibold text-sky-700 mb-2">Tahun Paper</label>
-                <input type="number" id="edit-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+                <input type="text" id="edit-year" required class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
               </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Nama Jurnal</label>
+                <input type="text" id="edit-journal" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+              </div>
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Subteam</label>
+                <select id="edit-subteam" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30">
+                  <option value="">-- Pilih Subteam --</option>
+                  <option value="Wastewater Solutions">Wastewater Solutions</option>
+                  <option value="Nanofibers">Nanofibers</option>
+                  <option value="Low-Dimensional Materials">Low-Dimensional Materials</option>
+                </select>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Tags <span class="text-xs font-normal text-gray-400">(pisah dengan koma)</span></label>
+                <input type="text" id="edit-tags" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+              </div>
+              <div class="border border-sky-200 rounded-xl p-4 bg-white">
+                <label class="block text-sm font-semibold text-sky-700 mb-2">Keywords <span class="text-xs font-normal text-gray-400">(pisah dengan koma)</span></label>
+                <input type="text" id="edit-keywords" class="w-full border border-sky-200 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30" />
+              </div>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-2">Abstract</label>
+              <textarea id="edit-abstract" rows="3" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-none"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Introduction</label>
+              <textarea id="edit-introduction" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Materials and Methods</label>
+              <textarea id="edit-methods" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Results and Discussion</label>
+              <textarea id="edit-results" rows="5" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">Conclusion</label>
+              <textarea id="edit-conclusion" rows="3" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-none"></textarea>
+            </div>
+            <div class="border border-sky-200 rounded-xl p-4 bg-white">
+              <label class="block text-sm font-semibold text-sky-700 mb-1">References <span class="text-xs font-normal text-gray-400">(satu per baris)</span></label>
+              <textarea id="edit-references" rows="4" class="w-full border border-sky-200 rounded-xl px-4 py-2 focus:outline-none focus:ring-2 focus:ring-sky-400 bg-sky-50/30 resize-y"></textarea>
             </div>
             <div class="border border-sky-200 rounded-xl p-4 relative file-input-wrapper overflow-hidden cursor-pointer bg-white">
               <label class="block text-sm font-semibold text-sky-700 mb-2">Ganti Gambar Paper</label>
@@ -259,10 +357,20 @@
         if (art) {
           document.getElementById("edit-id").value = art.id;
           document.getElementById("edit-title").value = art.title;
-          document.getElementById("edit-link").value = art.link;
+          document.getElementById("edit-link").value = art.link || "";
           document.getElementById("edit-doi").value = art.doi || "";
-          document.getElementById("edit-author").value = art.author;
-          document.getElementById("edit-year").value = art.year;
+          document.getElementById("edit-author").value = art.author || "";
+          document.getElementById("edit-year").value = art.year || "";
+          document.getElementById("edit-journal").value = art.journal || "";
+          document.getElementById("edit-subteam").value = art.subteam || "";
+          document.getElementById("edit-tags").value = (art.tags || []).join(", ");
+          document.getElementById("edit-keywords").value = (art.keywords || []).join(", ");
+          document.getElementById("edit-abstract").value = art.abstract || "";
+          document.getElementById("edit-introduction").value = art.introduction || "";
+          document.getElementById("edit-methods").value = art.methods || "";
+          document.getElementById("edit-results").value = art.results || "";
+          document.getElementById("edit-conclusion").value = art.conclusion || "";
+          document.getElementById("edit-references").value = art.references || "";
           currentEditImage = art.imageUrl;
           art.imageUrl ? showPreview("edit", art.imageUrl) : resetImage("edit");
           showView("edit-view");
@@ -329,10 +437,19 @@
             title: pub.title,
             author: pub.authors,
             year: pub.year,
-            link: pub.link || pub.doi || "#",
+            link: pub.link || "",
             doi: pub.doi || "",
-            imageUrl: pub.graphical_abstract_url || null,
-            rawContent: pub.abstract || ""
+            journal: pub.journal || "",
+            subteam: pub.subteam || "",
+            tags: pub.tags || [],
+            keywords: pub.keywords || [],
+            abstract: pub.abstract || "",
+            introduction: pub.introduction || "",
+            methods: pub.methods || "",
+            results: pub.results || "",
+            conclusion: pub.conclusion || "",
+            references: pub.references || "",
+            imageUrl: pub.graphical_abstract_url || null
           }));
         } catch (e) {
           console.error("Fetch API data error:", e);
@@ -356,10 +473,19 @@
           const yamlObj = newArray.map(a => ({
             title: a.title,
             authors: a.author,
-            year: parseInt(a.year) || a.year,
+            year: a.year,
             link: a.link || "",
             doi: a.doi || "",
-            abstract: a.rawContent || "",
+            journal: a.journal || "",
+            subteam: a.subteam || "",
+            tags: a.tags || [],
+            keywords: a.keywords || [],
+            abstract: a.abstract || "",
+            introduction: a.introduction || "",
+            methods: a.methods || "",
+            results: a.results || "",
+            conclusion: a.conclusion || "",
+            references: a.references || "",
             graphical_abstract_url: a.imageUrl || ""
           }));
           
@@ -456,7 +582,18 @@
         const newArticle = {
           id: fileName,
           fileName: fileName,
-          title, author, year, link, doi, date: today,
+          title, author, year, link, doi,
+          journal: document.getElementById("add-journal").value,
+          subteam: document.getElementById("add-subteam").value,
+          tags: document.getElementById("add-tags").value.split(",").map(t => t.trim()).filter(Boolean),
+          keywords: document.getElementById("add-keywords").value.split(",").map(k => k.trim()).filter(Boolean),
+          abstract: document.getElementById("add-abstract").value,
+          introduction: document.getElementById("add-introduction").value,
+          methods: document.getElementById("add-methods").value,
+          results: document.getElementById("add-results").value,
+          conclusion: document.getElementById("add-conclusion").value,
+          references: document.getElementById("add-references").value,
+          date: today,
           imageUrl: uploadedImageUrl,
           sha: null
         };
@@ -499,12 +636,22 @@
             uploadedImageUrl = await uploadImageToBlob(fileInput.files[0]);
           }
 
-          articlesData[idx].title    = document.getElementById("edit-title").value;
-          articlesData[idx].link     = document.getElementById("edit-link").value;
-          articlesData[idx].doi      = document.getElementById("edit-doi").value;
-          articlesData[idx].author   = document.getElementById("edit-author").value;
-          articlesData[idx].year     = document.getElementById("edit-year").value;
-          articlesData[idx].imageUrl = uploadedImageUrl;
+          articlesData[idx].title        = document.getElementById("edit-title").value;
+          articlesData[idx].link         = document.getElementById("edit-link").value;
+          articlesData[idx].doi          = document.getElementById("edit-doi").value;
+          articlesData[idx].author       = document.getElementById("edit-author").value;
+          articlesData[idx].year         = document.getElementById("edit-year").value;
+          articlesData[idx].journal      = document.getElementById("edit-journal").value;
+          articlesData[idx].subteam      = document.getElementById("edit-subteam").value;
+          articlesData[idx].tags         = document.getElementById("edit-tags").value.split(",").map(t => t.trim()).filter(Boolean);
+          articlesData[idx].keywords     = document.getElementById("edit-keywords").value.split(",").map(k => k.trim()).filter(Boolean);
+          articlesData[idx].abstract     = document.getElementById("edit-abstract").value;
+          articlesData[idx].introduction = document.getElementById("edit-introduction").value;
+          articlesData[idx].methods      = document.getElementById("edit-methods").value;
+          articlesData[idx].results      = document.getElementById("edit-results").value;
+          articlesData[idx].conclusion   = document.getElementById("edit-conclusion").value;
+          articlesData[idx].references   = document.getElementById("edit-references").value;
+          articlesData[idx].imageUrl     = uploadedImageUrl;
 
           const success = await pushArticleToGitHub(articlesData[idx], `Admin: Update paper "${articlesData[idx].title}"`);
 

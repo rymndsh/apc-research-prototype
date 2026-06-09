@@ -39,6 +39,7 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
     </div>
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
       {% for post in site.data.publications limit:3 %}
+      {% assign post_index = forloop.index0 %}
       <article class="card-hover group scroll-reveal bg-white rounded-2xl border border-gray-100 shadow-sm overflow-hidden relative">
         <span class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm text-brand-600 text-xs font-bold px-2 py-1 rounded shadow-sm z-10">Paper</span>
         <div class="h-48 bg-gray-200 relative overflow-hidden">
@@ -51,20 +52,22 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
            {% endif %}
         </div>
         <div class="p-6">
-          <div class="flex gap-2 mb-3">
-            <span class="tag-pill px-2 py-1 bg-sky-50 text-sky-600 text-[10px] font-bold uppercase rounded-full tracking-wide">Research</span>
+          <div class="flex gap-2 mb-3 flex-wrap">
+            {% for tag in post.tags %}
+            <span class="px-2 py-1 bg-sky-50 text-sky-600 text-[10px] font-bold uppercase rounded-full tracking-wide">{{ tag }}</span>
+            {% endfor %}
           </div>
-          <h3 class="text-lg font-bold text-brand-700 mb-3 line-clamp-2"><a href="{{ post.link | default: '#' }}">{{ post.title | escape }}</a></h3>
+          <h3 class="text-lg font-bold text-brand-700 mb-3 line-clamp-2">{{ post.title | escape }}</h3>
           <div class="flex items-center gap-2 text-xs text-gray-500 mb-2">
              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg>
-             <span>{{ post.authors | default: "Tim Peneliti APC" }}</span>
+             <span>{{ post.authors | default: "APC Research Team" }}</span>
           </div>
           <div class="flex items-center gap-2 text-xs text-gray-500 mb-4">
              <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg>
              <span>{{ post.year }}</span>
           </div>
           <p class="text-sm text-gray-600 line-clamp-2 mb-4">{{ post.abstract | strip_html | truncatewords: 20 }}</p>
-          <a href="{{ post.link | default: '#' }}" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Paper &rarr;</a>
+          <button onclick="openPaperModal({{ post_index }})" class="inline-flex items-center text-sm font-bold text-brand-600 hover:text-brand-800 transition-colors">Read Paper &rarr;</button>
         </div>
       </article>
       {% else %}
@@ -78,6 +81,206 @@ title: "Applied Physics and Chemistry | Nano Center Indonesia"
     </div>
   </div>
 </section>
+
+<!-- PAPER DATA FOR MODAL -->
+<script id="papers-data" type="application/json">{{ site.data.publications | jsonify }}</script>
+
+<!-- PAPER DETAIL MODAL -->
+<div id="paper-modal" class="fixed inset-0 z-50 hidden" aria-modal="true" role="dialog">
+  <!-- Backdrop -->
+  <div class="absolute inset-0 bg-black/60 backdrop-blur-sm" onclick="closePaperModal()"></div>
+  <!-- Modal Panel -->
+  <div class="relative z-10 flex items-center justify-center min-h-screen p-4">
+    <div class="bg-white rounded-2xl shadow-2xl w-full max-w-5xl max-h-[92vh] flex flex-col overflow-hidden">
+      
+      <!-- Modal Top Bar -->
+      <div class="flex items-center gap-3 px-6 py-3 border-b border-gray-100 flex-shrink-0">
+        <span id="modal-tag" class="px-3 py-1 bg-green-500 text-white text-xs font-bold rounded-full">Research</span>
+        <span id="modal-journal" class="text-sm text-gray-600"></span>
+        <span class="text-gray-300 text-xs">·</span>
+        <span id="modal-year" class="text-sm text-gray-500"></span>
+        <div class="ml-auto flex items-center gap-3">
+          <button onclick="window.open(document.getElementById('modal-doi-link').href)" class="flex items-center gap-1.5 text-xs font-semibold text-gray-500 hover:text-brand-600 border border-gray-200 rounded-full px-3 py-1.5 transition-colors">
+            <svg class="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 011.242 7.244l-4.5 4.5a4.5 4.5 0 01-6.364-6.364l1.757-1.757m13.35-.622l1.757-1.757a4.5 4.5 0 00-6.364-6.364l-4.5 4.5a4.5 4.5 0 001.242 7.244"/></svg>
+            Substack
+          </button>
+          <button onclick="closePaperModal()" class="text-gray-400 hover:text-gray-700 transition-colors p-1 rounded-full hover:bg-gray-100">
+            <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body -->
+      <div class="flex flex-1 overflow-hidden">
+
+        <!-- Left Sidebar -->
+        <aside class="w-56 flex-shrink-0 border-r border-gray-100 p-6 overflow-y-auto bg-white">
+          <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-3">Contents</p>
+          <nav class="space-y-1 mb-6" id="modal-toc">
+            <a href="#ms-abstract" onclick="scrollToSection('ms-abstract')" class="block text-sm text-brand-600 font-medium py-1 px-2 rounded bg-blue-50">Abstract</a>
+            <a href="#ms-intro" onclick="scrollToSection('ms-intro')" class="block text-sm text-gray-600 hover:text-brand-600 py-1 px-2 rounded hover:bg-gray-50">1. Introduction</a>
+            <a href="#ms-methods" onclick="scrollToSection('ms-methods')" class="block text-sm text-gray-600 hover:text-brand-600 py-1 px-2 rounded hover:bg-gray-50">2. Materials and Methods</a>
+            <a href="#ms-results" onclick="scrollToSection('ms-results')" class="block text-sm text-gray-600 hover:text-brand-600 py-1 px-2 rounded hover:bg-gray-50">3. Results and Discussion</a>
+            <a href="#ms-conclusion" onclick="scrollToSection('ms-conclusion')" class="block text-sm text-gray-600 hover:text-brand-600 py-1 px-2 rounded hover:bg-gray-50">4. Conclusion</a>
+            <a href="#ms-refs" onclick="scrollToSection('ms-refs')" class="block text-sm text-gray-600 hover:text-brand-600 py-1 px-2 rounded hover:bg-gray-50">References</a>
+          </nav>
+
+          <div class="mb-5">
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">DOI</p>
+            <a id="modal-doi-link" href="#" target="_blank" class="text-xs text-brand-600 hover:underline break-all" id="modal-doi"></a>
+          </div>
+          <div>
+            <p class="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Keywords</p>
+            <div id="modal-keywords" class="flex flex-wrap gap-1"></div>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="flex-1 overflow-y-auto p-8" id="modal-content-scroll">
+          <h1 id="modal-title" class="text-2xl font-bold text-gray-900 mb-4 leading-tight"></h1>
+          <div class="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-8 pb-6 border-b border-gray-100">
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z"/></svg><span id="modal-authors"></span></span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 012.25-2.25h13.5A2.25 2.25 0 0121 7.5v11.25m-18 0A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75m-18 0v-7.5A2.25 2.25 0 015.25 9h13.5A2.25 2.25 0 0121 11.25v7.5"/></svg><span id="modal-year-body"></span></span>
+            <span class="flex items-center gap-1.5"><svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg><span id="modal-journal-body"></span></span>
+          </div>
+
+          <!-- Abstract -->
+          <section id="ms-abstract" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> Abstract
+            </h2>
+            <div class="bg-sky-50/50 rounded-xl p-4 border border-sky-100">
+              <p id="modal-abstract" class="text-sm text-gray-700 leading-relaxed"></p>
+              <div id="modal-kw-pills" class="flex flex-wrap gap-1.5 mt-3"></div>
+            </div>
+          </section>
+
+          <!-- Introduction -->
+          <section id="ms-intro" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> 1. Introduction
+            </h2>
+            <div id="modal-intro" class="text-sm text-gray-700 leading-relaxed space-y-3"></div>
+          </section>
+
+          <!-- Methods -->
+          <section id="ms-methods" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> 2. Materials and Methods
+            </h2>
+            <div id="modal-methods" class="text-sm text-gray-700 leading-relaxed space-y-3"></div>
+          </section>
+
+          <!-- Results -->
+          <section id="ms-results" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> 3. Results and Discussion
+            </h2>
+            <div id="modal-results" class="text-sm text-gray-700 leading-relaxed space-y-3"></div>
+          </section>
+
+          <!-- Conclusion -->
+          <section id="ms-conclusion" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> 4. Conclusion
+            </h2>
+            <div id="modal-conclusion" class="text-sm text-gray-700 leading-relaxed space-y-3"></div>
+          </section>
+
+          <!-- References -->
+          <section id="ms-refs" class="mb-8">
+            <h2 class="text-xs font-bold uppercase tracking-widest text-gray-500 mb-3 flex items-center gap-2">
+              <span class="w-1 h-4 bg-brand-500 rounded-full inline-block"></span> References
+            </h2>
+            <div id="modal-refs" class="text-sm text-gray-600 space-y-2"></div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+const papersData = JSON.parse(document.getElementById('papers-data').textContent);
+
+function renderParagraphs(containerId, text) {
+  const el = document.getElementById(containerId);
+  if (!text) { el.innerHTML = '<p class="text-gray-400 italic">Content not available.</p>'; return; }
+  const paras = text.split('\n').filter(p => p.trim());
+  el.innerHTML = paras.map(p => `<p>${p}</p>`).join('');
+}
+
+function openPaperModal(index) {
+  const p = papersData[index];
+  if (!p) return;
+  // Top bar
+  document.getElementById('modal-tag').textContent = p.tags ? p.tags[0] : 'Research';
+  document.getElementById('modal-journal').textContent = p.journal || '';
+  document.getElementById('modal-year').textContent = p.year || '';
+  // Sidebar
+  const doiLink = document.getElementById('modal-doi-link');
+  doiLink.href = p.doi ? 'https://doi.org/' + p.doi : (p.link || '#');
+  doiLink.textContent = p.doi || 'N/A';
+  const kwContainer = document.getElementById('modal-keywords');
+  kwContainer.innerHTML = (p.keywords || []).map(k =>
+    `<span class="text-[10px] bg-gray-100 text-gray-600 rounded-full px-2 py-0.5">${k}</span>`
+  ).join('');
+  // Main content
+  document.getElementById('modal-title').textContent = p.title || '';
+  document.getElementById('modal-authors').textContent = p.authors || '';
+  document.getElementById('modal-year-body').textContent = p.year || '';
+  document.getElementById('modal-journal-body').textContent = p.journal || '';
+  document.getElementById('modal-abstract').textContent = p.abstract || '';
+  const kwPills = document.getElementById('modal-kw-pills');
+  kwPills.innerHTML = '<span class="text-xs font-semibold text-gray-500 mr-1">Keywords:</span>' +
+    (p.keywords || []).map(k =>
+      `<span class="text-[11px] bg-blue-100 text-blue-700 rounded-full px-2 py-0.5">${k}</span>`
+    ).join('');
+  renderParagraphs('modal-intro', p.introduction);
+  renderParagraphs('modal-methods', p.methods);
+  renderParagraphs('modal-results', p.results);
+  renderParagraphs('modal-conclusion', p.conclusion);
+  // References
+  const refsEl = document.getElementById('modal-refs');
+  if (p.references) {
+    const refs = p.references.split('\n').filter(r => r.trim());
+    refsEl.innerHTML = refs.map(r => `<p class="text-xs leading-relaxed text-gray-500">${r}</p>`).join('');
+  } else {
+    refsEl.innerHTML = '<p class="text-gray-400 italic text-xs">No references available.</p>';
+  }
+  // Show modal
+  document.getElementById('paper-modal').classList.remove('hidden');
+  document.body.style.overflow = 'hidden';
+  // Scroll to top
+  document.getElementById('modal-content-scroll').scrollTop = 0;
+}
+
+function closePaperModal() {
+  document.getElementById('paper-modal').classList.add('hidden');
+  document.body.style.overflow = '';
+}
+
+function scrollToSection(id) {
+  event.preventDefault();
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  // Update active TOC
+  document.querySelectorAll('#modal-toc a').forEach(a => {
+    a.classList.remove('text-brand-600', 'font-medium', 'bg-blue-50');
+    a.classList.add('text-gray-600');
+  });
+  const clicked = document.querySelector(`#modal-toc a[href='#${id}']`);
+  if (clicked) {
+    clicked.classList.add('text-brand-600', 'font-medium', 'bg-blue-50');
+    clicked.classList.remove('text-gray-600');
+  }
+}
+
+// Close on Escape
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') closePaperModal();
+});
+</script>
 
 
 
